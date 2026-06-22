@@ -1,29 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
+import HomePage from "@/components/home-page";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "TheDevFlo | Web Development, Mobile Apps & UI/UX Design" },
+      { name: "description", content: "TheDevFlo helps startups and businesses build scalable web applications, mobile apps, UI/UX experiences, SEO strategies, and cloud solutions." },
+      { property: "og:title", content: "TheDevFlo | Software Studio" },
+      { property: "og:description", content: "Web, mobile, UI/UX, SEO, and cloud — engineered for ambitious teams." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "TheDevFlo",
+        url: "https://thedevflo.com",
+        email: "hello@thedevflo.com",
+        sameAs: ["https://www.linkedin.com/", "https://www.instagram.com/", "https://github.com/"],
+      }),
+    }],
   }),
-  component: Index,
+  component: HomePage,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
