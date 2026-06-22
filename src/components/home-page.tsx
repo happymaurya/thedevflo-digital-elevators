@@ -13,7 +13,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 // ────────────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: EASE as unknown as number[] } },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: EASE as any } },
 };
 
 function SectionTag({ children }: { children: React.ReactNode }) {
@@ -61,7 +61,7 @@ function Nav() {
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }}
       className="fixed inset-x-0 top-0 z-50 px-4 pt-4"
     >
       <div
@@ -224,7 +224,7 @@ function Services() {
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as any }}
                 whileHover={{ y: -4 }}
                 className={`group relative overflow-hidden rounded-3xl border border-border bg-surface p-6 transition-all hover:border-primary/40 hover:shadow-glow-sm ${s.span}`}
               >
@@ -288,7 +288,7 @@ function Work() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as any }}
               className="group relative block aspect-[4/3] overflow-hidden rounded-3xl border border-border"
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${p.gradient} opacity-80 transition-transform duration-700 group-hover:scale-110`} />
@@ -341,7 +341,7 @@ function Process() {
               initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }}
               className={`relative mb-10 grid grid-cols-[3rem_1fr] gap-6 md:grid-cols-2 md:gap-12 ${i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}
             >
               <div className={`md:text-right ${i % 2 === 1 ? "md:text-left" : ""}`}>
@@ -510,7 +510,7 @@ function CTA() {
       <div className="mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] as any }}
           className="relative isolate overflow-hidden rounded-[2rem] border border-primary/30 bg-gradient-to-br from-primary/20 via-background to-background p-10 text-center sm:p-20"
         >
           <div aria-hidden className="absolute -inset-20 -z-10 bg-radial-glow animate-pulse-glow" />
