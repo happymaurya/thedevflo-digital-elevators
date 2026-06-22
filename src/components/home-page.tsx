@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, type Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import {
   Code2, Smartphone, Palette, Search, Cloud, ArrowUpRight,
@@ -6,12 +6,14 @@ import {
 } from "lucide-react";
 import tdfLogo from "@/assets/tdf-logo.asset.json";
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 // ────────────────────────────────────────────────────────────
 // Reusable bits
 // ────────────────────────────────────────────────────────────
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: EASE as unknown as number[] } },
 };
 
 function SectionTag({ children }: { children: React.ReactNode }) {
