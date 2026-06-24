@@ -179,13 +179,10 @@ function Nav() {
     return () => window.removeEventListener("scroll", on);
   }, []);
   const links = [
-    { label: "Home", to: "/" as const },
-    { label: "Marketplace", href: "/#work" },
     { label: "Services", href: "/#services" },
-    { label: "Products", href: "/#work" },
-    { label: "Blog", to: "/blog" as const },
+    { label: "Work", href: "/#work" },
+    { label: "Blog", to: "/blog" },
     { label: "About", href: "/#why" },
-    { label: "Contact", href: "#cta" },
   ];
   return (
     <motion.header
@@ -199,20 +196,20 @@ function Nav() {
           <div className="grid size-9 place-items-center rounded-lg bg-white">
             <img src={tdfLogo.url} alt="TheDevFlo" className="size-7 object-contain" />
           </div>
-          <span className="text-display text-base font-bold tracking-tight">TDF</span>
+          <span className="text-display text-base font-bold tracking-tight">TheDevFlo</span>
         </Link>
-        <nav className="hidden items-center gap-0.5 lg:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) =>
             l.to ? (
-              <Link key={l.label} to={l.to} className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</Link>
+              <Link key={l.label} to={l.to} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</Link>
             ) : (
-              <a key={l.label} href={l.href} className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</a>
+              <a key={l.label} href={l.href} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</a>
             )
           )}
         </nav>
         <a href="#cta"
           className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] sm:inline-flex">
-          Launch Store →
+          Start project →
         </a>
       </div>
     </motion.header>
@@ -220,189 +217,69 @@ function Nav() {
 }
 
 // ────────────────────────────────────────────────────────────
-// Hero 3D "TDF" — parallax, float, glow, glassmorphism
-// ────────────────────────────────────────────────────────────
-function Hero3DLetters() {
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rx = useSpring(useTransform(my, [-1, 1], [18, -18]), { stiffness: 80, damping: 18 });
-  const ry = useSpring(useTransform(mx, [-1, 1], [-22, 22]), { stiffness: 80, damping: 18 });
-
-  useEffect(() => {
-    const on = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      mx.set((e.clientX - cx) / cx);
-      my.set((e.clientY - cy) / cy);
-    };
-    window.addEventListener("mousemove", on);
-    return () => window.removeEventListener("mousemove", on);
-  }, [mx, my]);
-
-  const letters = ["T", "D", "F"];
-  return (
-    <div className="pointer-events-none absolute inset-0 flex items-center justify-center [perspective:1400px]">
-      <motion.div
-        className="flex items-center justify-center gap-2 sm:gap-6 [transform-style:preserve-3d]"
-        style={{ rotateX: rx, rotateY: ry }}
-      >
-        {letters.map((ch, i) => (
-          <motion.span
-            key={ch}
-            className="text-display select-none font-black leading-none"
-            style={{
-              fontSize: "clamp(8rem, 26vw, 22rem)",
-              letterSpacing: "-0.06em",
-              background: "linear-gradient(135deg, oklch(0.85 0.18 290) 0%, oklch(0.92 0.18 160) 50%, oklch(0.7 0.22 250) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              filter: "drop-shadow(0 20px 60px rgba(140,90,255,0.45)) drop-shadow(0 0 80px rgba(100,255,200,0.25))",
-              transformStyle: "preserve-3d",
-            }}
-            animate={{
-              y: [0, -18, 0, 12, 0],
-              rotateZ: [0, 2, -2, 1, 0],
-              translateZ: [0, 30, 0],
-            }}
-            transition={{ duration: 7 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-          >
-            {ch}
-          </motion.span>
-        ))}
-      </motion.div>
-    </div>
-  );
-}
-
-// Slow horizontal scrolling DEVFLOHUB.COM band behind letters
-function HeroBackdropWordmark() {
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 flex items-center overflow-hidden">
-      <motion.div
-        className="flex w-max whitespace-nowrap text-display font-black"
-        style={{
-          opacity: 0.05,
-          fontSize: "clamp(6rem, 16vw, 18rem)",
-          letterSpacing: "-0.05em",
-          lineHeight: 1,
-        }}
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-      >
-        {Array.from({ length: 6 }).map((_, i) => (
-          <span key={i} className="px-12">DEVFLOHUB.COM</span>
-        ))}
-      </motion.div>
-    </div>
-  );
-}
-
-// Animated particles
-function HeroParticles() {
-  const particles = Array.from({ length: 40 }).map((_, i) => ({
-    i,
-    left: `${(i * 53) % 100}%`,
-    top: `${(i * 37) % 100}%`,
-    dur: 6 + (i % 8),
-    delay: (i % 10) * 0.3,
-    size: 1 + (i % 3),
-  }));
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      {particles.map(p => (
-        <motion.span
-          key={p.i}
-          className="absolute rounded-full bg-white"
-          style={{ left: p.left, top: p.top, width: p.size, height: p.size, boxShadow: "0 0 8px rgba(255,255,255,0.8)" }}
-          animate={{ y: [0, -40, 0], opacity: [0.2, 0.9, 0.2] }}
-          transition={{ duration: p.dur, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
-        />
-      ))}
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
-    <section ref={ref} className="relative isolate min-h-[100svh] overflow-hidden px-4 pt-32">
-      {/* Layered background */}
-      <HeroBackdropWordmark />
-      <HeroParticles />
-      <Hero3DLetters />
+    <section ref={ref} className="relative isolate overflow-hidden px-4 pt-32 sm:pt-28">
+      <FloatingText />
 
-      {/* Noise/grain overlay */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
-        style={{ backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>\")" }} />
-
-      {/* Foreground content */}
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto flex max-w-5xl flex-col items-center pt-24 pb-32 text-center sm:pt-32">
+      <motion.div style={{ y }} className="mx-auto mb-12 grid max-w-6xl grid-cols-3 gap-4 sm:gap-6">
         <motion.div
-          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <SectionTag>India's modern marketplace — DevFloHub</SectionTag>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as any }}
-          className="text-display mt-6 text-[3.2rem] font-black leading-[0.92] tracking-tighter sm:text-7xl md:text-[6rem]"
-        >
-          Build. Launch. <span style={{ background: "linear-gradient(120deg, var(--violet), var(--primary))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Scale.</span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25 }}
-          className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg"
-        >
-          India's modern marketplace for digital products, web development, mobile apps, SaaS solutions and AI-powered business growth.
-        </motion.p>
-
+          className="aspect-square rounded-2xl sm:aspect-[3/4] sm:rounded-[2rem]"
+          style={{ background: "linear-gradient(135deg, var(--violet), color-mix(in oklab, var(--violet) 60%, black))" }}
+        />
         <motion.div
-          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-3"
+          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] as any }}
+          className="relative aspect-square overflow-hidden rounded-2xl sm:aspect-[3/4] sm:rounded-[2rem]"
+          style={{ background: "linear-gradient(160deg, color-mix(in oklab, var(--violet) 90%, white 5%), color-mix(in oklab, var(--violet) 60%, black))" }}
         >
-          <a href="#work" className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.04]">
-            Explore Marketplace
-            <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.4, repeat: Infinity }}>
-              <ArrowRight className="size-4" />
-            </motion.span>
-          </a>
-          <a href="#cta" className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-foreground backdrop-blur-md transition-colors hover:bg-white/10">
-            Start Selling
-            <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.4, repeat: Infinity, delay: 0.2 }}>
-              <ArrowRight className="size-4" />
-            </motion.span>
-          </a>
+          <div className="absolute inset-x-6 top-8 h-8 rounded-md bg-white/15" />
+          <div className="absolute inset-x-6 top-20 h-3 w-2/3 rounded-md bg-white/15" />
+          <div className="absolute inset-x-6 bottom-10 h-16 rounded-xl bg-white/20" />
         </motion.div>
-
-        {/* Glass stat strip */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.6 }}
-          className="mt-16 grid w-full max-w-3xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl"
+          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] as any }}
+          className="relative aspect-square rounded-2xl border border-white/15 sm:aspect-[3/4] sm:rounded-[2rem]"
         >
-          {[
-            { k: "120+", v: "Products shipped" },
-            { k: "40+", v: "Sellers onboard" },
-            { k: "99.9%", v: "Platform uptime" },
-          ].map((s) => (
-            <div key={s.v} className="bg-black/40 px-4 py-5">
-              <div className="text-display text-2xl font-bold sm:text-3xl">{s.k}</div>
-              <div className="mt-1 text-xs text-muted-foreground">{s.v}</div>
-            </div>
-          ))}
+          <svg className="absolute inset-0 size-full text-white/20" viewBox="0 0 200 200" fill="none" preserveAspectRatio="none">
+            <path d="M0 60 H140 Q160 60 160 80 V200" stroke="currentColor" strokeWidth="1" />
+            <path d="M40 0 V100 Q40 120 60 120 H200" stroke="currentColor" strokeWidth="1" />
+          </svg>
         </motion.div>
       </motion.div>
+
+      <div className="mx-auto grid max-w-6xl gap-8 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
+        <motion.h1
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as any }}
+          className="text-display text-[3.2rem] font-bold leading-[0.95] tracking-tighter sm:text-7xl md:text-[5.5rem]"
+        >
+          Be Part Of <span className="text-primary">TheDevFlo.</span><br />
+          Build. Ship. <span className="text-primary">Scale.</span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="flex flex-col justify-end gap-6"
+        >
+          <p className="max-w-md text-base text-muted-foreground sm:text-lg">
+            We help startups and businesses build scalable web apps, mobile apps, and digital products through engineering, design, and cloud expertise.
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <PillButton href="#cta">Start a project</PillButton>
+            <PillButton href="#work" variant="ghost">View work</PillButton>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
