@@ -6,13 +6,26 @@ import { Nav, Footer, blogPosts } from "@/components/home-page";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "TheDevFlo Blog — Insights, Tutorials & Tech News" },
-      { name: "description", content: "Stay updated with the latest web development trends, startup insights, UI/UX strategies, SEO tips, and technology news from TheDevFlo." },
+      { title: "TheDevFlo Blog — Web Dev, UI/UX, SEO & Tech Insights" },
+      { name: "description", content: "Insights, tutorials and tech news on web development, startup growth, UI/UX, SEO and cloud — from the TheDevFlo team." },
       { property: "og:title", content: "TheDevFlo Blog — Insights, Tutorials & Tech News" },
       { property: "og:description", content: "Web dev trends, startup insights, UI/UX strategies, SEO tips, and tech news." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/blog" },
+      { name: "twitter:title", content: "TheDevFlo Blog" },
+      { name: "twitter:description", content: "Web dev, UI/UX, SEO and startup insights from TheDevFlo." },
     ],
     links: [{ rel: "canonical", href: "/blog" }],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        name: "TheDevFlo Blog",
+        url: "/blog",
+        publisher: { "@type": "Organization", name: "TheDevFlo" },
+      }),
+    }],
   }),
   component: BlogPage,
 });
