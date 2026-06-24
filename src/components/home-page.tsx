@@ -226,33 +226,33 @@ function Hero() {
     <section ref={ref} className="relative isolate overflow-hidden px-4 pt-32 sm:pt-28">
       <FloatingText />
 
-      <motion.div style={{ y }} className="mx-auto mb-12 grid max-w-6xl grid-cols-3 gap-4 sm:gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as any }}
-          className="aspect-square rounded-2xl sm:aspect-[3/4] sm:rounded-[2rem]"
-          style={{ background: "linear-gradient(135deg, var(--violet), color-mix(in oklab, var(--violet) 60%, black))" }}
-        />
-        <motion.div
-          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] as any }}
-          className="relative aspect-square overflow-hidden rounded-2xl sm:aspect-[3/4] sm:rounded-[2rem]"
-          style={{ background: "linear-gradient(160deg, color-mix(in oklab, var(--violet) 90%, white 5%), color-mix(in oklab, var(--violet) 60%, black))" }}
-        >
-          <div className="absolute inset-x-6 top-8 h-8 rounded-md bg-white/15" />
-          <div className="absolute inset-x-6 top-20 h-3 w-2/3 rounded-md bg-white/15" />
-          <div className="absolute inset-x-6 bottom-10 h-16 rounded-xl bg-white/20" />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] as any }}
-          className="relative aspect-square rounded-2xl border border-white/15 sm:aspect-[3/4] sm:rounded-[2rem]"
-        >
-          <svg className="absolute inset-0 size-full text-white/20" viewBox="0 0 200 200" fill="none" preserveAspectRatio="none">
-            <path d="M0 60 H140 Q160 60 160 80 V200" stroke="currentColor" strokeWidth="1" />
-            <path d="M40 0 V100 Q40 120 60 120 H200" stroke="currentColor" strokeWidth="1" />
-          </svg>
-        </motion.div>
+      <motion.div style={{ y }} className="mx-auto mb-12 grid max-w-3xl grid-cols-3 gap-3 sm:gap-5">
+        {[
+          { letter: "T", bg: "linear-gradient(135deg, var(--violet), color-mix(in oklab, var(--violet) 55%, black))", color: "white" },
+          { letter: "D", bg: "linear-gradient(160deg, color-mix(in oklab, var(--primary) 95%, white 5%), color-mix(in oklab, var(--primary) 55%, black))", color: "var(--primary-foreground)" },
+          { letter: "F", bg: "linear-gradient(145deg, oklch(0.18 0 0), oklch(0.08 0 0))", color: "var(--primary)" },
+        ].map((c, i) => (
+          <motion.div
+            key={c.letter}
+            initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as any }}
+            className="relative grid aspect-square place-items-center overflow-hidden rounded-2xl border border-white/10 sm:rounded-[1.75rem]"
+            style={{ background: c.bg }}
+          >
+            <span
+              className="text-display select-none"
+              style={{
+                color: c.color,
+                fontSize: "clamp(3.5rem, 10vw, 7rem)",
+                fontWeight: 700,
+                lineHeight: 1,
+                textShadow: "0 4px 30px rgba(0,0,0,0.25)",
+              }}
+            >
+              {c.letter}
+            </span>
+          </motion.div>
+        ))}
       </motion.div>
 
       <div className="mx-auto grid max-w-6xl gap-8 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
