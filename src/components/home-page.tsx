@@ -6,7 +6,7 @@ import {
   Zap, Star, ArrowRight, Calendar, User,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import tdfLogo from "@/assets/tdf-logo.asset.json";
+import tdfLogo from "@/assets/tdf-logo.png";
 import workGoCart from "@/assets/work-gocart.jpg";
 import workAdventure from "@/assets/work-adventure.jpg";
 
@@ -94,7 +94,7 @@ function FloatingLogos() {
           animate={{ y: [0, -30, 0], rotate: [0, 10, -10, 0] }}
           transition={{ duration: l.dur, delay: l.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src={tdfLogo.url} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
+          <img src={tdfLogo} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
         </motion.div>
       ))}
     </motion.div>
@@ -194,7 +194,7 @@ function Nav() {
       <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-4 py-2.5 transition-all duration-500 sm:px-6 ${scrolled ? "bg-black/70 backdrop-blur-xl" : "bg-black/30 backdrop-blur-md"}`}>
         <Link to="/" className="flex items-center gap-2.5">
           <div className="grid size-9 place-items-center rounded-lg bg-white">
-            <img src={tdfLogo.url} alt="TheDevFlo" className="size-7 object-contain" />
+            <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
           </div>
           <span className="text-display text-base font-bold tracking-tight">TheDevFlo</span>
         </Link>
@@ -721,7 +721,7 @@ function Footer() {
           <div className="col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="grid size-9 place-items-center rounded-lg bg-white">
-                <img src={tdfLogo.url} alt="TheDevFlo" className="size-7 object-contain" />
+                <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
               </div>
               <span className="text-display text-base font-bold">TheDevFlo</span>
             </div>
