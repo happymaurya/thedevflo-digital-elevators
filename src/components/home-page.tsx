@@ -6,7 +6,7 @@ import {
   Zap, Star, ArrowRight, Calendar, User,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import tdfLogo from "@/assets/tdf-logo.asset.json";
+import tdfLogo from "@/assets/tdf-logo.png";
 import workGoCart from "@/assets/work-gocart.jpg";
 import workAdventure from "@/assets/work-adventure.jpg";
 
@@ -94,7 +94,7 @@ function FloatingLogos() {
           animate={{ y: [0, -30, 0], rotate: [0, 10, -10, 0] }}
           transition={{ duration: l.dur, delay: l.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src={tdfLogo.url} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
+          <img src={tdfLogo} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
         </motion.div>
       ))}
     </motion.div>
@@ -194,7 +194,7 @@ function Nav() {
       <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-4 py-2.5 transition-all duration-500 sm:px-6 ${scrolled ? "bg-black/70 backdrop-blur-xl" : "bg-black/30 backdrop-blur-md"}`}>
         <Link to="/" className="flex items-center gap-2.5">
           <div className="grid size-9 place-items-center rounded-lg bg-white">
-            <img src={tdfLogo.url} alt="TheDevFlo" className="size-7 object-contain" />
+            <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
           </div>
           <span className="text-display text-base font-bold tracking-tight">TheDevFlo</span>
         </Link>
@@ -377,8 +377,8 @@ function Services() {
 
 // ────────────────────────────────────────────────────────────
 const projects = [
-  { name: "GoCart", tag: "E-commerce Platform", image: workGoCart },
-  { name: "AdventureExplorer", tag: "Travel Booking", image: workAdventure },
+  { name: "GoCart", tag: "E-commerce Platform", image: workGoCart, href: "/projects/gocart" },
+  { name: "AdventureExplorer", tag: "Travel Booking", image: workAdventure, href: "/projects/adventure-explorer" },
 ];
 
 function Work() {
@@ -400,25 +400,29 @@ function Work() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {projects.map((p, i) => (
-            <motion.a
-              key={p.name} href="#"
+            <motion.div
+              key={p.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.7, delay: i * 0.1 }}
-              className="group relative block overflow-hidden rounded-3xl border border-white/10"
             >
-              <img src={p.image} alt={p.name} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 sm:p-7">
-                <div>
-                  <div className="text-xs uppercase tracking-widest text-white/70">{p.tag}</div>
-                  <h3 className="text-display mt-1 text-3xl text-white sm:text-4xl">{p.name}</h3>
+              <Link
+                to={p.href}
+                className="group relative block overflow-hidden rounded-3xl border border-white/10"
+              >
+                <img src={p.image} alt={p.name} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 sm:p-7">
+                  <div>
+                    <div className="text-xs uppercase tracking-widest text-white/70">{p.tag}</div>
+                    <h3 className="text-display mt-1 text-3xl text-white sm:text-4xl">{p.name}</h3>
+                  </div>
+                  <div className="grid size-11 place-items-center rounded-full bg-white text-black transition-transform group-hover:rotate-45">
+                    <ArrowUpRight className="size-5" />
+                  </div>
                 </div>
-                <div className="grid size-11 place-items-center rounded-full bg-white text-black transition-transform group-hover:rotate-45">
-                  <ArrowUpRight className="size-5" />
-                </div>
-              </div>
-            </motion.a>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -721,7 +725,7 @@ function Footer() {
           <div className="col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="grid size-9 place-items-center rounded-lg bg-white">
-                <img src={tdfLogo.url} alt="TheDevFlo" className="size-7 object-contain" />
+                <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
               </div>
               <span className="text-display text-base font-bold">TheDevFlo</span>
             </div>
