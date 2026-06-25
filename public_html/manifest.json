@@ -1,0 +1,13 @@
+{
+  "name": "TheDevFlo — Web, Mobile, UI/UX & Cloud Studio",
+  "short_name": "TheDevFlo",
+  "description": "TheDevFlo is a software studio helping startups and businesses build scalable web apps, mobile apps, UI/UX experiences, SEO strategies, and cloud solutions.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
