@@ -6,6 +6,7 @@ import {
   Zap, Star, ArrowRight, Calendar, User,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useIsMobile } from "@/hooks/use-mobile";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workGoCart from "@/assets/work-gocart.jpg";
 import workAdventure from "@/assets/work-adventure.jpg";
@@ -60,12 +61,14 @@ function PillButton({
 // Floating background TDF logos (NewForm-style)
 // ────────────────────────────────────────────────────────────
 function FloatingLogos() {
+  const isMobile = useIsMobile();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const x = useSpring(mx, { stiffness: 50, damping: 20 });
   const y = useSpring(my, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
+    if (isMobile) return;
     const on = (e: MouseEvent) => {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
@@ -74,7 +77,9 @@ function FloatingLogos() {
     };
     window.addEventListener("mousemove", on);
     return () => window.removeEventListener("mousemove", on);
-  }, [mx, my]);
+  }, [mx, my, isMobile]);
+
+  if (isMobile) return null;
 
   const logos = [
     { top: "8%", left: "6%", size: 90, delay: 0, dur: 9, blur: 6 },
@@ -105,13 +110,15 @@ function FloatingLogos() {
 // Premium background — aurora gradient + grid + spotlight
 // ────────────────────────────────────────────────────────────
 function PremiumBackground() {
+  const isMobile = useIsMobile();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   useEffect(() => {
+    if (isMobile) return;
     const on = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
     window.addEventListener("mousemove", on);
     return () => window.removeEventListener("mousemove", on);
-  }, [mx, my]);
+  }, [mx, my, isMobile]);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
@@ -125,12 +132,21 @@ function PremiumBackground() {
       {/* Grid */}
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-      {/* Mouse spotlight */}
-      <motion.div
-        className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x: useTransform(mx, v => v - 250), y: useTransform(my, v => v - 250) }}
-      />
+      {/* Mouse spotlight (desktop only) */}
+      <MouseSpotlight mx={mx} my={my} hidden={isMobile} />
     </div>
+  );
+}
+
+function MouseSpotlight({ mx, my, hidden }: { mx: any; my: any; hidden: boolean }) {
+  const x = useTransform(mx, (v: number) => v - 250);
+  const y = useTransform(my, (v: number) => v - 250);
+  if (hidden) return null;
+  return (
+    <motion.div
+      className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
+      style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x, y }}
+    />
   );
 }
 
@@ -138,6 +154,8 @@ function PremiumBackground() {
 // Floating hero background text (marquee bands)
 // ────────────────────────────────────────────────────────────
 function FloatingText() {
+  const isMobile = useIsMobile();
+  if (isMobile) return null;
   const bands = [
     { words: ["TDF", "THEDEVFLO", "WEB DEVELOPMENT", "APP DEVELOPMENT"], top: "12%", dur: 60, dir: 1 },
     { words: ["UI/UX DESIGN", "SEO", "CLOUD", "MERN", "NEXT.JS"], top: "55%", dur: 80, dir: -1 },
@@ -260,10 +278,10 @@ function Hero() {
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as any }}
-          className="text-display text-[3.2rem] font-bold leading-[0.95] tracking-tighter sm:text-7xl md:text-[5.5rem]"
+          className="text-display text-[2.6rem] font-bold leading-[1] tracking-tighter sm:text-7xl md:text-[5.5rem]"
         >
-          Be Part Of <span className="text-primary">TheDevFlo.</span><br />
-          Build. Ship. <span className="text-primary">Scale.</span>
+          Engineering <span className="text-primary">Velocity.</span><br />
+          Designing <span className="text-primary">Excellence.</span>
         </motion.h1>
 
         <motion.div
@@ -272,11 +290,11 @@ function Hero() {
           className="flex flex-col justify-end gap-6"
         >
           <p className="max-w-md text-base text-muted-foreground sm:text-lg">
-            We help startups and businesses build scalable web apps, mobile apps, and digital products through engineering, design, and cloud expertise.
+            We build production-grade web apps, mobile applications, and cloud architecture for ambitious startups and enterprise teams. From blueprint to launch, we ship with absolute taste.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <PillButton href="#cta">Start a project</PillButton>
-            <PillButton href="#work" variant="ghost">View work</PillButton>
+            <PillButton href="#cta">Start a Project</PillButton>
+            <PillButton href="#work" variant="ghost">Explore Our Work</PillButton>
           </div>
         </motion.div>
       </div>
@@ -322,11 +340,11 @@ function WhoWeAre() {
 
 // ────────────────────────────────────────────────────────────
 const services = [
-  { n: "01", icon: Code2, title: "Web Development", desc: "MERN stack, Next.js, Node.js — production-grade apps with edge-native performance.", tags: ["Next.js", "Node", "React"] },
-  { n: "02", icon: Smartphone, title: "Mobile App Development", desc: "Flutter & React Native — one codebase, native feel, fast to ship.", tags: ["Flutter", "React Native"] },
-  { n: "03", icon: Palette, title: "UI / UX Design", desc: "Figma, user research, design systems that scale with your product.", tags: ["Figma", "Design systems"] },
-  { n: "04", icon: Search, title: "SEO Optimization", desc: "Technical SEO, local SEO, content strategy — built to rank and convert.", tags: ["Technical SEO", "Schema"] },
-  { n: "05", icon: Cloud, title: "Cloud Solutions", desc: "AWS, Vercel, Docker — scalable infrastructure from day one.", tags: ["AWS", "Vercel", "Docker"] },
+  { n: "01", icon: Code2, title: "Web Engineering", desc: "Fast, SEO-optimized, edge-native web applications built with Next.js, React, and robust Node.js backends.", tags: ["Next.js", "Node", "React"] },
+  { n: "02", icon: Smartphone, title: "Mobile Development", desc: "High-performance, native-feeling iOS and Android apps engineered from a single, fast-to-ship codebase using Flutter and React Native.", tags: ["Flutter", "React Native"] },
+  { n: "03", icon: Palette, title: "UI/UX Design Systems", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
+  { n: "04", icon: Search, title: "SEO Optimization", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
+  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
 ];
 
 function Services() {
@@ -432,11 +450,11 @@ function Work() {
 
 // ────────────────────────────────────────────────────────────
 const steps = [
-  { n: "01", title: "Discovery", desc: "Workshops to align on goals, users, and constraints." },
-  { n: "02", title: "Strategy", desc: "Roadmap, scope, and architecture blueprint." },
-  { n: "03", title: "Design", desc: "Brand-aligned UI, design systems, prototypes." },
-  { n: "04", title: "Development", desc: "Engineering with weekly demos and tight feedback loops." },
-  { n: "05", title: "Launch", desc: "Ship, measure, iterate. We stick around post-launch." },
+  { n: "01", title: "Discovery & Blueprinting", desc: "Deep-dive alignment workshops to map technical scope, architecture constraints, and user journeys." },
+  { n: "02", title: "Iterative Design", desc: "Interactive prototypes and premium dark/light interfaces that establish instant brand authority." },
+  { n: "03", title: "Agile Engineering", desc: "Rapid cycles with weekly live demos, transparent feedback loops, and strict, typed, clean codebases." },
+  { n: "04", title: "Deployment & Scale", desc: "Zero-downtime launches, CI pipelines, and proactive post-launch optimization." },
+  { n: "05", title: "Ongoing Partnership", desc: "We stick around — measuring, iterating, and scaling the product with you." },
 ];
 
 function Process() {
