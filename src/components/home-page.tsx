@@ -68,6 +68,7 @@ function FloatingLogos() {
   const y = useSpring(my, { stiffness: 50, damping: 20 });
 
   useEffect(() => {
+    if (isMobile) return;
     const on = (e: MouseEvent) => {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
@@ -76,7 +77,9 @@ function FloatingLogos() {
     };
     window.addEventListener("mousemove", on);
     return () => window.removeEventListener("mousemove", on);
-  }, [mx, my]);
+  }, [mx, my, isMobile]);
+
+  if (isMobile) return null;
 
   const logos = [
     { top: "8%", left: "6%", size: 90, delay: 0, dur: 9, blur: 6 },
