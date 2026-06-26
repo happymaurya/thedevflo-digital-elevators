@@ -278,10 +278,10 @@ function Hero() {
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as any }}
-          className="text-display text-[3.2rem] font-bold leading-[0.95] tracking-tighter sm:text-7xl md:text-[5.5rem]"
+          className="text-display text-[2.6rem] font-bold leading-[1] tracking-tighter sm:text-7xl md:text-[5.5rem]"
         >
-          Be Part Of <span className="text-primary">TheDevFlo.</span><br />
-          Build. Ship. <span className="text-primary">Scale.</span>
+          Engineering <span className="text-primary">Velocity.</span><br />
+          Designing <span className="text-primary">Excellence.</span>
         </motion.h1>
 
         <motion.div
@@ -290,11 +290,11 @@ function Hero() {
           className="flex flex-col justify-end gap-6"
         >
           <p className="max-w-md text-base text-muted-foreground sm:text-lg">
-            We help startups and businesses build scalable web apps, mobile apps, and digital products through engineering, design, and cloud expertise.
+            We build production-grade web apps, mobile applications, and cloud architecture for ambitious startups and enterprise teams. From blueprint to launch, we ship with absolute taste.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <PillButton href="#cta">Start a project</PillButton>
-            <PillButton href="#work" variant="ghost">View work</PillButton>
+            <PillButton href="#cta">Start a Project</PillButton>
+            <PillButton href="#work" variant="ghost">Explore Our Work</PillButton>
           </div>
         </motion.div>
       </div>
