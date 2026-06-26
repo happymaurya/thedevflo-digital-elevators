@@ -340,11 +340,11 @@ function WhoWeAre() {
 
 // ────────────────────────────────────────────────────────────
 const services = [
-  { n: "01", icon: Code2, title: "Web Development", desc: "MERN stack, Next.js, Node.js — production-grade apps with edge-native performance.", tags: ["Next.js", "Node", "React"] },
-  { n: "02", icon: Smartphone, title: "Mobile App Development", desc: "Flutter & React Native — one codebase, native feel, fast to ship.", tags: ["Flutter", "React Native"] },
-  { n: "03", icon: Palette, title: "UI / UX Design", desc: "Figma, user research, design systems that scale with your product.", tags: ["Figma", "Design systems"] },
-  { n: "04", icon: Search, title: "SEO Optimization", desc: "Technical SEO, local SEO, content strategy — built to rank and convert.", tags: ["Technical SEO", "Schema"] },
-  { n: "05", icon: Cloud, title: "Cloud Solutions", desc: "AWS, Vercel, Docker — scalable infrastructure from day one.", tags: ["AWS", "Vercel", "Docker"] },
+  { n: "01", icon: Code2, title: "Web Engineering", desc: "Fast, SEO-optimized, edge-native web applications built with Next.js, React, and robust Node.js backends.", tags: ["Next.js", "Node", "React"] },
+  { n: "02", icon: Smartphone, title: "Mobile Development", desc: "High-performance, native-feeling iOS and Android apps engineered from a single, fast-to-ship codebase using Flutter and React Native.", tags: ["Flutter", "React Native"] },
+  { n: "03", icon: Palette, title: "UI/UX Design Systems", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
+  { n: "04", icon: Search, title: "SEO Optimization", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
+  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
 ];
 
 function Services() {
