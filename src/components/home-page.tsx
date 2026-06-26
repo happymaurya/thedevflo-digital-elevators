@@ -133,13 +133,20 @@ function PremiumBackground() {
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
       {/* Mouse spotlight (desktop only) */}
-      {!isMobile && (
-        <motion.div
-          className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
-          style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x: useTransform(mx, v => v - 250), y: useTransform(my, v => v - 250) }}
-        />
-      )}
+      <MouseSpotlight mx={mx} my={my} hidden={isMobile} />
     </div>
+  );
+}
+
+function MouseSpotlight({ mx, my, hidden }: { mx: any; my: any; hidden: boolean }) {
+  const x = useTransform(mx, (v: number) => v - 250);
+  const y = useTransform(my, (v: number) => v - 250);
+  if (hidden) return null;
+  return (
+    <motion.div
+      className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
+      style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x, y }}
+    />
   );
 }
 
