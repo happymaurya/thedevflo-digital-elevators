@@ -110,13 +110,15 @@ function FloatingLogos() {
 // Premium background — aurora gradient + grid + spotlight
 // ────────────────────────────────────────────────────────────
 function PremiumBackground() {
+  const isMobile = useIsMobile();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   useEffect(() => {
+    if (isMobile) return;
     const on = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
     window.addEventListener("mousemove", on);
     return () => window.removeEventListener("mousemove", on);
-  }, [mx, my]);
+  }, [mx, my, isMobile]);
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
@@ -130,11 +132,13 @@ function PremiumBackground() {
       {/* Grid */}
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-      {/* Mouse spotlight */}
-      <motion.div
-        className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x: useTransform(mx, v => v - 250), y: useTransform(my, v => v - 250) }}
-      />
+      {/* Mouse spotlight (desktop only) */}
+      {!isMobile && (
+        <motion.div
+          className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
+          style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x: useTransform(mx, v => v - 250), y: useTransform(my, v => v - 250) }}
+        />
+      )}
     </div>
   );
 }
