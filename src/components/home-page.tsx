@@ -6,6 +6,7 @@ import {
   Zap, Star, ArrowRight, Calendar, User,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { useIsMobile } from "@/hooks/use-mobile";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workGoCart from "@/assets/work-gocart.jpg";
 import workAdventure from "@/assets/work-adventure.jpg";
