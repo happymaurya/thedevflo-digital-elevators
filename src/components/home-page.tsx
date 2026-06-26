@@ -61,6 +61,7 @@ function PillButton({
 // Floating background TDF logos (NewForm-style)
 // ────────────────────────────────────────────────────────────
 function FloatingLogos() {
+  const isMobile = useIsMobile();
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const x = useSpring(mx, { stiffness: 50, damping: 20 });
