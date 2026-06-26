@@ -450,11 +450,11 @@ function Work() {
 
 // ────────────────────────────────────────────────────────────
 const steps = [
-  { n: "01", title: "Discovery", desc: "Workshops to align on goals, users, and constraints." },
-  { n: "02", title: "Strategy", desc: "Roadmap, scope, and architecture blueprint." },
-  { n: "03", title: "Design", desc: "Brand-aligned UI, design systems, prototypes." },
-  { n: "04", title: "Development", desc: "Engineering with weekly demos and tight feedback loops." },
-  { n: "05", title: "Launch", desc: "Ship, measure, iterate. We stick around post-launch." },
+  { n: "01", title: "Discovery & Blueprinting", desc: "Deep-dive alignment workshops to map technical scope, architecture constraints, and user journeys." },
+  { n: "02", title: "Iterative Design", desc: "Interactive prototypes and premium dark/light interfaces that establish instant brand authority." },
+  { n: "03", title: "Agile Engineering", desc: "Rapid cycles with weekly live demos, transparent feedback loops, and strict, typed, clean codebases." },
+  { n: "04", title: "Deployment & Scale", desc: "Zero-downtime launches, CI pipelines, and proactive post-launch optimization." },
+  { n: "05", title: "Ongoing Partnership", desc: "We stick around — measuring, iterating, and scaling the product with you." },
 ];
 
 function Process() {
