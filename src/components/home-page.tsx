@@ -154,6 +154,8 @@ function MouseSpotlight({ mx, my, hidden }: { mx: any; my: any; hidden: boolean 
 // Floating hero background text (marquee bands)
 // ────────────────────────────────────────────────────────────
 function FloatingText() {
+  const isMobile = useIsMobile();
+  if (isMobile) return null;
   const bands = [
     { words: ["TDF", "THEDEVFLO", "WEB DEVELOPMENT", "APP DEVELOPMENT"], top: "12%", dur: 60, dir: 1 },
     { words: ["UI/UX DESIGN", "SEO", "CLOUD", "MERN", "NEXT.JS"], top: "55%", dur: 80, dir: -1 },
