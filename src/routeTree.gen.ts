@@ -12,8 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectsGocartRouteImport } from './routes/projects.gocart'
-import { Route as ProjectsAdventureExplorerRouteImport } from './routes/projects.adventure-explorer'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -30,70 +28,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectsGocartRoute = ProjectsGocartRouteImport.update({
-  id: '/projects/gocart',
-  path: '/projects/gocart',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsAdventureExplorerRoute =
-  ProjectsAdventureExplorerRouteImport.update({
-    id: '/projects/adventure-explorer',
-    path: '/projects/adventure-explorer',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projects/adventure-explorer': typeof ProjectsAdventureExplorerRoute
-  '/projects/gocart': typeof ProjectsGocartRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projects/adventure-explorer': typeof ProjectsAdventureExplorerRoute
-  '/projects/gocart': typeof ProjectsGocartRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/projects/adventure-explorer': typeof ProjectsAdventureExplorerRoute
-  '/projects/gocart': typeof ProjectsGocartRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/blog'
-    | '/sitemap.xml'
-    | '/projects/adventure-explorer'
-    | '/projects/gocart'
+  fullPaths: '/' | '/blog' | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/blog'
-    | '/sitemap.xml'
-    | '/projects/adventure-explorer'
-    | '/projects/gocart'
-  id:
-    | '__root__'
-    | '/'
-    | '/blog'
-    | '/sitemap.xml'
-    | '/projects/adventure-explorer'
-    | '/projects/gocart'
+  to: '/' | '/blog' | '/sitemap.xml'
+  id: '__root__' | '/' | '/blog' | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ProjectsAdventureExplorerRoute: typeof ProjectsAdventureExplorerRoute
-  ProjectsGocartRoute: typeof ProjectsGocartRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -119,20 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/gocart': {
-      id: '/projects/gocart'
-      path: '/projects/gocart'
-      fullPath: '/projects/gocart'
-      preLoaderRoute: typeof ProjectsGocartRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/adventure-explorer': {
-      id: '/projects/adventure-explorer'
-      path: '/projects/adventure-explorer'
-      fullPath: '/projects/adventure-explorer'
-      preLoaderRoute: typeof ProjectsAdventureExplorerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -140,8 +89,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ProjectsAdventureExplorerRoute: ProjectsAdventureExplorerRoute,
-  ProjectsGocartRoute: ProjectsGocartRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
