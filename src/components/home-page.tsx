@@ -8,8 +8,8 @@ import {
 import { Link } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 import tdfLogo from "@/assets/tdf-logo.png";
-import workGoCart from "@/assets/work-gocart.jpg";
-import workAdventure from "@/assets/work-adventure.jpg";
+import workRollingPanda from "@/assets/work-rollingpanda.jpg";
+import workCandidClicks from "@/assets/work-candidclicks.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
@@ -395,8 +395,8 @@ function Services() {
 
 // ────────────────────────────────────────────────────────────
 const projects = [
-  { name: "GoCart", tag: "E-commerce Platform", image: workGoCart, href: "/projects/gocart" },
-  { name: "AdventureExplorer", tag: "Travel Booking", image: workAdventure, href: "/projects/adventure-explorer" },
+  { name: "The Rolling Panda", tag: "Film Production House", image: workRollingPanda, href: "/projects/rolling-panda" },
+  { name: "Candid Clicks", tag: "Wedding Photography Studio", image: workCandidClicks, href: "/projects/candid-clicks" },
 ];
 
 function Work() {
@@ -541,10 +541,10 @@ function Why() {
 
 // ────────────────────────────────────────────────────────────
 const reviews = [
-  { name: "Aarav Mehta", co: "GoCart", quote: "TheDevFlo turned our scrappy MVP into a polished product that scaled to 100k users." },
+  { name: "Saurabh Verma", co: "Candid Clicks", quote: "TheDevFlo rebuilt our studio site into a cinematic showcase — bookings from Gorakhpur & Lucknow doubled in weeks." },
   { name: "Sofia Reyes", co: "FameX", quote: "Their attention to detail is rare. Shipped on time, with taste." },
   { name: "James Carter", co: "Vendly", quote: "A true extension of our team. Engineering quality is genuinely top-tier." },
-  { name: "Priya Shah", co: "AdventureExplorer", quote: "The redesign moved our conversion by 38% in the first month." },
+  { name: "Rolling Panda Studio", co: "The Rolling Panda Productions", quote: "The site finally matches the energy of our films — cinematic, bold, unforgettable." },
   { name: "Liam Novak", co: "Stellar SaaS", quote: "Best agency we've worked with. Period." },
 ];
 
