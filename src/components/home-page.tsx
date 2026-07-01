@@ -544,7 +544,7 @@ const reviews = [
   { name: "Saurabh Verma", co: "Candid Clicks", quote: "TheDevFlo rebuilt our studio site into a cinematic showcase — bookings from Gorakhpur & Lucknow doubled in weeks." },
   { name: "Sofia Reyes", co: "FameX", quote: "Their attention to detail is rare. Shipped on time, with taste." },
   { name: "James Carter", co: "Vendly", quote: "A true extension of our team. Engineering quality is genuinely top-tier." },
-  { name: "Priya Shah", co: "AdventureExplorer", quote: "The redesign moved our conversion by 38% in the first month." },
+  { name: "Rolling Panda Studio", co: "The Rolling Panda Productions", quote: "The site finally matches the energy of our films — cinematic, bold, unforgettable." },
   { name: "Liam Novak", co: "Stellar SaaS", quote: "Best agency we've worked with. Period." },
 ];
 
