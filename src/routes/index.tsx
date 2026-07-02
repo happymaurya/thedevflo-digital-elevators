@@ -1,23 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import HomePage from "@/components/home-page";
 
-const TITLE = "TheDevFlo — Web Development, Mobile Apps, UI/UX & Cloud Studio";
-const DESC = "TheDevFlo is a software studio helping startups and businesses build scalable web apps, mobile apps, UI/UX experiences, SEO strategies, and cloud solutions.";
+const SITE = "https://thedevflo.com";
+const TITLE = "TheDevFlo — Web & Mobile App Development, UI/UX, SEO & Cloud Studio";
+const DESC = "TheDevFlo is a premium software studio building scalable web apps, mobile apps, UI/UX, SEO and cloud solutions for startups and businesses worldwide.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: "web development, mobile app development, UI UX design, SEO, cloud, software agency, MERN, Next.js, React, TheDevFlo" },
+      { name: "keywords", content: "web development agency, mobile app development company, UI UX design studio, SEO agency, cloud consulting, React developers, Next.js agency, MERN stack, hire software agency, TheDevFlo" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: `${SITE}/` },
+      { property: "og:image", content: `${SITE}/favicon.svg` },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
+      { name: "twitter:image", content: `${SITE}/favicon.svg` },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: `${SITE}/` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -26,9 +30,11 @@ export const Route = createFileRoute("/")({
           "@graph": [
             {
               "@type": "Organization",
-              "@id": "#org",
+              "@id": `${SITE}/#organization`,
               name: "TheDevFlo",
-              url: "/",
+              alternateName: ["Dev Flo", "The Dev Flo"],
+              url: `${SITE}/`,
+              logo: `${SITE}/favicon.svg`,
               email: "hello@thedevflo.com",
               description: DESC,
               sameAs: [
@@ -40,18 +46,26 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "WebSite",
-              "@id": "#site",
+              "@id": `${SITE}/#website`,
+              url: `${SITE}/`,
               name: "TheDevFlo",
-              url: "/",
-              publisher: { "@id": "#org" },
+              publisher: { "@id": `${SITE}/#organization` },
+              inLanguage: "en",
             },
             {
-              "@type": "LocalBusiness",
+              "@type": "ProfessionalService",
               name: "TheDevFlo",
+              url: `${SITE}/`,
               email: "hello@thedevflo.com",
-              url: "/",
               priceRange: "$$",
-              description: DESC,
+              areaServed: "Worldwide",
+              makesOffer: [
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Web Application Development" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Mobile App Development" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "UI/UX Design" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO & Growth" } },
+                { "@type": "Offer", itemOffered: { "@type": "Service", name: "Cloud & DevOps" } },
+              ],
             },
           ],
         }),

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/projects/rolling-panda")({
       { name: "twitter:description", content: DESC },
       { name: "twitter:image", content: cover },
     ],
-    links: [{ rel: "canonical", href: "/projects/rolling-panda" }],
+    links: [{ rel: "canonical", href: "https://thedevflo.com/projects/rolling-panda" }],
   }),
   component: RollingPandaPage,
 });
