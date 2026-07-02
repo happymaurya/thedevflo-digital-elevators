@@ -63,49 +63,32 @@ function PillButton({
 // ────────────────────────────────────────────────────────────
 function FloatingLogos() {
   const isMobile = useIsMobile();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 50, damping: 20 });
-  const y = useSpring(my, { stiffness: 50, damping: 20 });
-
-  useEffect(() => {
-    if (isMobile) return;
-    const on = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      mx.set(((e.clientX - cx) / cx) * 20);
-      my.set(((e.clientY - cy) / cy) * 20);
-    };
-    window.addEventListener("mousemove", on);
-    return () => window.removeEventListener("mousemove", on);
-  }, [mx, my, isMobile]);
-
   if (isMobile) return null;
 
   const logos = [
-    { top: "8%", left: "6%", size: 90, delay: 0, dur: 9, blur: 6 },
-    { top: "22%", left: "78%", size: 130, delay: 1.2, dur: 11, blur: 8 },
-    { top: "55%", left: "3%", size: 110, delay: 0.6, dur: 10, blur: 7 },
-    { top: "72%", left: "85%", size: 80, delay: 1.8, dur: 8, blur: 5 },
-    { top: "40%", left: "50%", size: 160, delay: 0.3, dur: 13, blur: 10 },
+    { top: "8%", left: "6%", size: 90, delay: 0, dur: 9 },
+    { top: "22%", left: "78%", size: 130, delay: 1.2, dur: 11 },
+    { top: "55%", left: "3%", size: 110, delay: 0.6, dur: 10 },
+    { top: "72%", left: "85%", size: 80, delay: 1.8, dur: 8 },
   ];
 
   return (
-    <motion.div style={{ x, y }} className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {logos.map((l, i) => (
         <motion.div
           key={i}
-          className="absolute opacity-[0.08]"
-          style={{ top: l.top, left: l.left, filter: `blur(${l.blur}px) drop-shadow(0 0 40px var(--primary))` }}
-          animate={{ y: [0, -30, 0], rotate: [0, 10, -10, 0] }}
+          className="absolute opacity-[0.07]"
+          style={{ top: l.top, left: l.left, willChange: "transform" }}
+          animate={{ y: [0, -24, 0] }}
           transition={{ duration: l.dur, delay: l.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src={tdfLogo} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
+          <img src={tdfLogo} alt="" width={l.size} height={l.size} loading="lazy" decoding="async" className="select-none" style={{ width: l.size, height: l.size }} />
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 }
+
 
 // ────────────────────────────────────────────────────────────
 // Premium background — aurora gradient + grid + spotlight
