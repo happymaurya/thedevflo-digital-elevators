@@ -13,8 +13,8 @@ import workCandidClicks from "@/assets/work-candidclicks.jpg";
 import workFingertipFlow from "@/assets/work-fingertipflow.jpg";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } },
 };
 
 // ────────────────────────────────────────────────────────────
@@ -123,13 +123,22 @@ function PremiumBackground() {
 
   return (
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
-      {/* Aurora */}
-      <div className="absolute -top-40 left-1/2 size-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[120px]"
-        style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
-      <div className="absolute top-1/3 -right-40 size-[600px] rounded-full opacity-25 blur-[120px]"
-        style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
-      <div className="absolute bottom-0 -left-40 size-[600px] rounded-full opacity-25 blur-[120px]"
-        style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
+      {/* Aurora — desktop only (heavy blur tanks mobile GPUs) */}
+      {!isMobile && (
+        <>
+          <div className="absolute -top-40 left-1/2 size-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[120px]"
+            style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
+          <div className="absolute top-1/3 -right-40 size-[600px] rounded-full opacity-25 blur-[120px]"
+            style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
+          <div className="absolute bottom-0 -left-40 size-[600px] rounded-full opacity-25 blur-[120px]"
+            style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
+        </>
+      )}
+      {/* Lightweight static tint for mobile */}
+      {isMobile && (
+        <div className="absolute inset-0 opacity-60"
+          style={{ background: "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--violet) 30%, transparent) 0%, transparent 60%)" }} />
+      )}
       {/* Grid */}
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
@@ -237,15 +246,17 @@ function Nav() {
 
 // ────────────────────────────────────────────────────────────
 function Hero() {
+  const isMobile = useIsMobile();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const yRaw = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y = isMobile ? 0 : yRaw;
 
   return (
     <section ref={ref} className="relative isolate overflow-hidden px-4 pt-32 sm:pt-28">
       <FloatingText />
 
-      <motion.div style={{ y }} className="mx-auto mb-12 grid max-w-3xl grid-cols-3 gap-3 sm:gap-5">
+      <motion.div style={isMobile ? undefined : { y }} className="mx-auto mb-12 grid max-w-3xl grid-cols-3 gap-3 sm:gap-5">
         {[
           { letter: "T", bg: "linear-gradient(135deg, var(--violet), color-mix(in oklab, var(--violet) 55%, black))", color: "white" },
           { letter: "D", bg: "linear-gradient(160deg, color-mix(in oklab, var(--primary) 95%, white 5%), color-mix(in oklab, var(--primary) 55%, black))", color: "var(--primary-foreground)" },
@@ -254,7 +265,7 @@ function Hero() {
           <motion.div
             key={c.letter}
             initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as any }}
+            transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as any }}
             className="relative grid aspect-square place-items-center overflow-hidden rounded-2xl border border-white/10 sm:rounded-[1.75rem]"
             style={{ background: c.bg }}
           >
@@ -276,9 +287,9 @@ function Hero() {
 
       <div className="mx-auto grid max-w-6xl gap-8 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
         <motion.h1
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] as any }}
+          initial={isMobile ? { opacity: 0, y: 20 } : { opacity: 0, y: 30, filter: "blur(8px)" }}
+          animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as any }}
           className="text-display text-[2.6rem] font-bold leading-[1] tracking-tighter sm:text-7xl md:text-[5.5rem]"
         >
           Engineering <span className="text-primary">Velocity.</span><br />
@@ -287,7 +298,7 @@ function Hero() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
           className="flex flex-col justify-end gap-6"
         >
           <p className="max-w-md text-base text-muted-foreground sm:text-lg">
