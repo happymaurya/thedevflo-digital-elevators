@@ -10,6 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workRollingPanda from "@/assets/work-rollingpanda.jpg";
 import workCandidClicks from "@/assets/work-candidclicks.jpg";
+import workFingertipFlow from "@/assets/work-fingertipflow.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
@@ -395,6 +396,7 @@ function Services() {
 
 // ────────────────────────────────────────────────────────────
 const projects = [
+  { name: "FingertipFlow", tag: "Minimalist Typing Trainer", image: workFingertipFlow, href: "/projects/fingertipflow" },
   { name: "The Rolling Panda", tag: "Film Production House", image: workRollingPanda, href: "/projects/rolling-panda" },
   { name: "Candid Clicks", tag: "Wedding Photography Studio", image: workCandidClicks, href: "/projects/candid-clicks" },
 ];

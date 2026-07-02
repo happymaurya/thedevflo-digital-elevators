@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
+import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
 import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -35,6 +36,11 @@ const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
   path: '/projects/rolling-panda',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsFingertipflowRoute = ProjectsFingertipflowRouteImport.update({
+  id: '/projects/fingertipflow',
+  path: '/projects/fingertipflow',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
   id: '/projects/candid-clicks',
   path: '/projects/candid-clicks',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
+  '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
+  '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
 }
 export interface FileRoutesById {
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
+  '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
 }
 export interface FileRouteTypes {
@@ -70,6 +79,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
+    | '/projects/fingertipflow'
     | '/projects/rolling-panda'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -77,6 +87,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
+    | '/projects/fingertipflow'
     | '/projects/rolling-panda'
   id:
     | '__root__'
@@ -84,6 +95,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
+    | '/projects/fingertipflow'
     | '/projects/rolling-panda'
   fileRoutesById: FileRoutesById
 }
@@ -92,6 +104,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProjectsCandidClicksRoute: typeof ProjectsCandidClicksRoute
+  ProjectsFingertipflowRoute: typeof ProjectsFingertipflowRoute
   ProjectsRollingPandaRoute: typeof ProjectsRollingPandaRoute
 }
 
@@ -125,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsRollingPandaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/fingertipflow': {
+      id: '/projects/fingertipflow'
+      path: '/projects/fingertipflow'
+      fullPath: '/projects/fingertipflow'
+      preLoaderRoute: typeof ProjectsFingertipflowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/candid-clicks': {
       id: '/projects/candid-clicks'
       path: '/projects/candid-clicks'
@@ -140,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProjectsCandidClicksRoute: ProjectsCandidClicksRoute,
+  ProjectsFingertipflowRoute: ProjectsFingertipflowRoute,
   ProjectsRollingPandaRoute: ProjectsRollingPandaRoute,
 }
 export const routeTree = rootRouteImport
