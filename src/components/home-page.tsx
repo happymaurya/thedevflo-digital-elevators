@@ -115,6 +115,51 @@ function PremiumBackground() {
   );
 }
 
+// ────────────────────────────────────────────────────────────
+// Cursor spotlight — rAF-throttled, desktop only, respects reduced-motion
+// ────────────────────────────────────────────────────────────
+function CursorSpotlight() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  useEffect(() => {
+    if (isMobile) return;
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = ref.current;
+    if (!el) return;
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let raf = 0;
+    let pending = false;
+    const apply = () => {
+      pending = false;
+      el.style.transform = `translate3d(${x - 300}px, ${y - 300}px, 0)`;
+    };
+    const onMove = (e: MouseEvent) => {
+      x = e.clientX; y = e.clientY;
+      if (!pending) { pending = true; raf = requestAnimationFrame(apply); }
+    };
+    el.style.opacity = "1";
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, [isMobile]);
+  return (
+    <div
+      ref={ref}
+      aria-hidden
+      className="pointer-events-none fixed left-0 top-0 -z-10 size-[600px] rounded-full opacity-0 transition-opacity duration-500 will-change-transform"
+      style={{
+        background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 60%)",
+        filter: "blur(40px)",
+      }}
+    />
+  );
+}
+
 
 
 // ────────────────────────────────────────────────────────────
@@ -765,6 +810,7 @@ export default function HomePage() {
   return (
     <main className="relative">
       <PremiumBackground />
+      <CursorSpotlight />
       <FloatingLogos />
       <Nav />
       <Hero />
