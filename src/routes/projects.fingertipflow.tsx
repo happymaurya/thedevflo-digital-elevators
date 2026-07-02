@@ -5,7 +5,7 @@ import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-fingertipflow.jpg";
 
 const TITLE = "FingertipFlow — Minimalist Typing Trainer Web App | TheDevFlo";
-const DESC = "How TheDevFlo designed and shipped fingertipflow.com — a distraction-free typing trainer with words, quotes, code, custom, zen and lesson modes, live stats and offline notes.";
+const DESC = "How TheDevFlo shipped fingertipflow.com — a distraction-free typing trainer with words, quotes, code and zen modes plus live stats.";
 
 export const Route = createFileRoute("/projects/fingertipflow")({
   head: () => ({

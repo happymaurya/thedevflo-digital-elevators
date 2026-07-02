@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import HomePage from "@/components/home-page";
 
 const SITE = "https://thedevflo.com";
-const TITLE = "TheDevFlo — Web & Mobile App Development, UI/UX, SEO & Cloud Studio";
+const TITLE = "TheDevFlo — Web, Mobile & UI/UX Studio";
 const DESC = "TheDevFlo is a premium software studio building scalable web apps, mobile apps, UI/UX, SEO and cloud solutions for startups and businesses worldwide.";
 
 export const Route = createFileRoute("/")({
