@@ -222,7 +222,7 @@ function Nav() {
       <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-4 py-2.5 transition-all duration-500 sm:px-6 ${scrolled ? "bg-black/70 backdrop-blur-xl" : "bg-black/30 backdrop-blur-md"}`}>
         <Link to="/" className="flex items-center gap-2.5">
           <div className="grid size-9 place-items-center rounded-lg bg-white">
-            <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
+            <img src={tdfLogo} alt="TheDevFlo brand mark" className="size-7 object-contain" />
           </div>
           <span className="text-display text-base font-bold tracking-tight">TheDevFlo</span>
         </Link>
@@ -442,7 +442,7 @@ function Work() {
                 to={p.href}
                 className="group relative block overflow-hidden rounded-3xl border border-white/10"
               >
-                <img src={p.image} alt={p.name} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+                <img src={p.image} alt={`${p.name} ${p.tag.toLowerCase()} project preview`} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
                 <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 sm:p-7">
                   <div>
                     <div className="text-xs uppercase tracking-widest text-white/70">{p.tag}</div>
@@ -756,7 +756,7 @@ function Footer() {
           <div className="col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="grid size-9 place-items-center rounded-lg bg-white">
-                <img src={tdfLogo} alt="TheDevFlo" className="size-7 object-contain" />
+                <img src={tdfLogo} alt="TheDevFlo brand mark" className="size-7 object-contain" />
               </div>
               <span className="text-display text-base font-bold">TheDevFlo</span>
             </div>

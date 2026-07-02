@@ -73,7 +73,7 @@ function BlogPage() {
                   <span className="flex items-center gap-1.5"><Calendar className="size-3.5" />{featured.date}</span>
                   <span className="flex items-center gap-1.5"><User className="size-3.5" />{featured.author}</span>
                 </div>
-                <span className="inline-flex items-center gap-2 text-primary">Read more <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                <span className="inline-flex items-center gap-2 text-primary">Read the full article on {featured.title} <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
               </div>
             </div>
           </motion.a>
@@ -98,7 +98,7 @@ function BlogPage() {
                   <span className="flex items-center gap-1"><Calendar className="size-3" />{p.date}</span>
                   <span className="flex items-center gap-1"><User className="size-3" />{p.author}</span>
                 </span>
-                <span className="inline-flex items-center gap-1 text-primary">Read more <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                <span className="inline-flex items-center gap-1 text-primary">Read the full article on {p.title} <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
               </div>
             </motion.a>
           ))}
