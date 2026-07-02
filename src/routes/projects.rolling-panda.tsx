@@ -4,7 +4,7 @@ import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-rollingpanda.jpg";
 
-const TITLE = "The Rolling Panda Productions — Film Studio Website | TheDevFlo";
+const TITLE = "The Rolling Panda — Film Studio Site | TheDevFlo";
 const DESC = "How TheDevFlo designed and engineered therollingpanda.in — a cinematic, immersive website for a Kanpur-based film production house.";
 
 export const Route = createFileRoute("/projects/rolling-panda")({
