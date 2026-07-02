@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useInView, useMotionValue, useSpring, type Variants } from "framer-motion";
+import { motion, useScroll, useTransform, useInView, type Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import {
   Code2, Smartphone, Palette, Search, Cloud, ArrowUpRight,
@@ -63,102 +63,59 @@ function PillButton({
 // ────────────────────────────────────────────────────────────
 function FloatingLogos() {
   const isMobile = useIsMobile();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 50, damping: 20 });
-  const y = useSpring(my, { stiffness: 50, damping: 20 });
-
-  useEffect(() => {
-    if (isMobile) return;
-    const on = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      mx.set(((e.clientX - cx) / cx) * 20);
-      my.set(((e.clientY - cy) / cy) * 20);
-    };
-    window.addEventListener("mousemove", on);
-    return () => window.removeEventListener("mousemove", on);
-  }, [mx, my, isMobile]);
-
   if (isMobile) return null;
 
   const logos = [
-    { top: "8%", left: "6%", size: 90, delay: 0, dur: 9, blur: 6 },
-    { top: "22%", left: "78%", size: 130, delay: 1.2, dur: 11, blur: 8 },
-    { top: "55%", left: "3%", size: 110, delay: 0.6, dur: 10, blur: 7 },
-    { top: "72%", left: "85%", size: 80, delay: 1.8, dur: 8, blur: 5 },
-    { top: "40%", left: "50%", size: 160, delay: 0.3, dur: 13, blur: 10 },
+    { top: "8%", left: "6%", size: 90, delay: 0, dur: 9 },
+    { top: "22%", left: "78%", size: 130, delay: 1.2, dur: 11 },
+    { top: "55%", left: "3%", size: 110, delay: 0.6, dur: 10 },
+    { top: "72%", left: "85%", size: 80, delay: 1.8, dur: 8 },
   ];
 
   return (
-    <motion.div style={{ x, y }} className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
       {logos.map((l, i) => (
         <motion.div
           key={i}
-          className="absolute opacity-[0.08]"
-          style={{ top: l.top, left: l.left, filter: `blur(${l.blur}px) drop-shadow(0 0 40px var(--primary))` }}
-          animate={{ y: [0, -30, 0], rotate: [0, 10, -10, 0] }}
+          className="absolute opacity-[0.07]"
+          style={{ top: l.top, left: l.left, willChange: "transform" }}
+          animate={{ y: [0, -24, 0] }}
           transition={{ duration: l.dur, delay: l.delay, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img src={tdfLogo} alt="" width={l.size} height={l.size} className="select-none" style={{ width: l.size, height: l.size }} />
+          <img src={tdfLogo} alt="" width={l.size} height={l.size} loading="lazy" decoding="async" className="select-none" style={{ width: l.size, height: l.size }} />
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 }
+
 
 // ────────────────────────────────────────────────────────────
 // Premium background — aurora gradient + grid + spotlight
 // ────────────────────────────────────────────────────────────
 function PremiumBackground() {
   const isMobile = useIsMobile();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  useEffect(() => {
-    if (isMobile) return;
-    const on = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
-    window.addEventListener("mousemove", on);
-    return () => window.removeEventListener("mousemove", on);
-  }, [mx, my, isMobile]);
-
   return (
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
-      {/* Aurora — desktop only (heavy blur tanks mobile GPUs) */}
       {!isMobile && (
         <>
-          <div className="absolute -top-40 left-1/2 size-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[120px]"
+          <div className="absolute -top-40 left-1/2 size-[700px] -translate-x-1/2 rounded-full opacity-30 blur-[90px]"
             style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
-          <div className="absolute top-1/3 -right-40 size-[600px] rounded-full opacity-25 blur-[120px]"
+          <div className="absolute top-1/3 -right-40 size-[500px] rounded-full opacity-20 blur-[90px]"
             style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
-          <div className="absolute bottom-0 -left-40 size-[600px] rounded-full opacity-25 blur-[120px]"
-            style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
         </>
       )}
-      {/* Lightweight static tint for mobile */}
       {isMobile && (
         <div className="absolute inset-0 opacity-60"
           style={{ background: "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--violet) 30%, transparent) 0%, transparent 60%)" }} />
       )}
-      {/* Grid */}
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-      {/* Mouse spotlight (desktop only) */}
-      <MouseSpotlight mx={mx} my={my} hidden={isMobile} />
     </div>
   );
 }
 
-function MouseSpotlight({ mx, my, hidden }: { mx: any; my: any; hidden: boolean }) {
-  const x = useTransform(mx, (v: number) => v - 250);
-  const y = useTransform(my, (v: number) => v - 250);
-  if (hidden) return null;
-  return (
-    <motion.div
-      className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
-      style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x, y }}
-    />
-  );
-}
+
 
 // ────────────────────────────────────────────────────────────
 // Floating hero background text (marquee bands)
