@@ -13,8 +13,8 @@ import workCandidClicks from "@/assets/work-candidclicks.jpg";
 import workFingertipFlow from "@/assets/work-fingertipflow.jpg";
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } },
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } },
 };
 
 // ────────────────────────────────────────────────────────────
