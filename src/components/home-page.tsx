@@ -95,53 +95,27 @@ function FloatingLogos() {
 // ────────────────────────────────────────────────────────────
 function PremiumBackground() {
   const isMobile = useIsMobile();
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  useEffect(() => {
-    if (isMobile) return;
-    const on = (e: MouseEvent) => { mx.set(e.clientX); my.set(e.clientY); };
-    window.addEventListener("mousemove", on);
-    return () => window.removeEventListener("mousemove", on);
-  }, [mx, my, isMobile]);
-
   return (
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
-      {/* Aurora — desktop only (heavy blur tanks mobile GPUs) */}
       {!isMobile && (
         <>
-          <div className="absolute -top-40 left-1/2 size-[800px] -translate-x-1/2 rounded-full opacity-40 blur-[120px]"
+          <div className="absolute -top-40 left-1/2 size-[700px] -translate-x-1/2 rounded-full opacity-30 blur-[90px]"
             style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
-          <div className="absolute top-1/3 -right-40 size-[600px] rounded-full opacity-25 blur-[120px]"
+          <div className="absolute top-1/3 -right-40 size-[500px] rounded-full opacity-20 blur-[90px]"
             style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
-          <div className="absolute bottom-0 -left-40 size-[600px] rounded-full opacity-25 blur-[120px]"
-            style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
         </>
       )}
-      {/* Lightweight static tint for mobile */}
       {isMobile && (
         <div className="absolute inset-0 opacity-60"
           style={{ background: "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--violet) 30%, transparent) 0%, transparent 60%)" }} />
       )}
-      {/* Grid */}
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-      {/* Mouse spotlight (desktop only) */}
-      <MouseSpotlight mx={mx} my={my} hidden={isMobile} />
     </div>
   );
 }
 
-function MouseSpotlight({ mx, my, hidden }: { mx: any; my: any; hidden: boolean }) {
-  const x = useTransform(mx, (v: number) => v - 250);
-  const y = useTransform(my, (v: number) => v - 250);
-  if (hidden) return null;
-  return (
-    <motion.div
-      className="absolute size-[500px] rounded-full opacity-20 blur-3xl"
-      style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)", x, y }}
-    />
-  );
-}
+
 
 // ────────────────────────────────────────────────────────────
 // Floating hero background text (marquee bands)
