@@ -244,14 +244,16 @@ function Hero() {
 
       <div className="mx-auto grid max-w-6xl gap-8 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
         <motion.h1
-          initial={isMobile ? { opacity: 0, y: 20 } : { opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={isMobile ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as any }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }}
+          style={{ WebkitFontSmoothing: "antialiased", textRendering: "optimizeLegibility" }}
           className="text-display text-[2.6rem] font-bold leading-[1] tracking-tighter sm:text-7xl md:text-[5.5rem]"
         >
           Engineering <span className="text-primary">Velocity.</span><br />
           Designing <span className="text-primary">Excellence.</span>
         </motion.h1>
+
 
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
