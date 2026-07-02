@@ -21,7 +21,7 @@ export const Route = createFileRoute("/projects/candid-clicks")({
       { name: "twitter:description", content: DESC },
       { name: "twitter:image", content: cover },
     ],
-    links: [{ rel: "canonical", href: "/projects/candid-clicks" }],
+    links: [{ rel: "canonical", href: "https://thedevflo.com/projects/candid-clicks" }],
   }),
   component: CandidClicksPage,
 });
