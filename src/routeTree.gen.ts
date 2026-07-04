@@ -10,15 +10,31 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
+import { Route as ServicesUiUxDesignRouteImport } from './routes/services.ui-ux-design'
+import { Route as ServicesSeoRouteImport } from './routes/services.seo'
+import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
+import { Route as ServicesCloudRouteImport } from './routes/services.cloud'
 import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
 import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
 import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
+import { Route as BlogNextJsSaasMvpRouteImport } from './routes/blog.next-js-saas-mvp'
+import { Route as BlogMernVsNextjs2026RouteImport } from './routes/blog.mern-vs-nextjs-2026'
+import { Route as BlogHireSoftwareAgencyIndiaRouteImport } from './routes/blog.hire-software-agency-india'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -30,6 +46,41 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BlogRoute,
+} as any)
+const ServicesWebDevelopmentRoute = ServicesWebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesUiUxDesignRoute = ServicesUiUxDesignRouteImport.update({
+  id: '/ui-ux-design',
+  path: '/ui-ux-design',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSeoRoute = ServicesSeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
+  id: '/mobile-apps',
+  path: '/mobile-apps',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCloudRoute = ServicesCloudRouteImport.update({
+  id: '/cloud',
+  path: '/cloud',
+  getParentRoute: () => ServicesRoute,
 } as any)
 const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
   id: '/projects/rolling-panda',
@@ -46,62 +97,141 @@ const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
   path: '/projects/candid-clicks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogNextJsSaasMvpRoute = BlogNextJsSaasMvpRouteImport.update({
+  id: '/next-js-saas-mvp',
+  path: '/next-js-saas-mvp',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogMernVsNextjs2026Route = BlogMernVsNextjs2026RouteImport.update({
+  id: '/mern-vs-nextjs-2026',
+  path: '/mern-vs-nextjs-2026',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogHireSoftwareAgencyIndiaRoute =
+  BlogHireSoftwareAgencyIndiaRouteImport.update({
+    id: '/hire-software-agency-india',
+    path: '/hire-software-agency-india',
+    getParentRoute: () => BlogRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
+  '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
+  '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/cloud': typeof ServicesCloudRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
+  '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
+  '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/cloud': typeof ServicesCloudRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog': typeof BlogIndexRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
+  '/blog': typeof BlogRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
+  '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
+  '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/cloud': typeof ServicesCloudRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/seo': typeof ServicesSeoRoute
+  '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
+  '/services/web-development': typeof ServicesWebDevelopmentRoute
+  '/blog/': typeof BlogIndexRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/blog'
+    | '/services'
     | '/sitemap.xml'
+    | '/blog/hire-software-agency-india'
+    | '/blog/mern-vs-nextjs-2026'
+    | '/blog/next-js-saas-mvp'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/cloud'
+    | '/services/mobile-apps'
+    | '/services/seo'
+    | '/services/ui-ux-design'
+    | '/services/web-development'
+    | '/blog/'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
     | '/sitemap.xml'
+    | '/blog/hire-software-agency-india'
+    | '/blog/mern-vs-nextjs-2026'
+    | '/blog/next-js-saas-mvp'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/cloud'
+    | '/services/mobile-apps'
+    | '/services/seo'
+    | '/services/ui-ux-design'
+    | '/services/web-development'
+    | '/blog'
+    | '/services'
   id:
     | '__root__'
     | '/'
     | '/blog'
+    | '/services'
     | '/sitemap.xml'
+    | '/blog/hire-software-agency-india'
+    | '/blog/mern-vs-nextjs-2026'
+    | '/blog/next-js-saas-mvp'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/cloud'
+    | '/services/mobile-apps'
+    | '/services/seo'
+    | '/services/ui-ux-design'
+    | '/services/web-development'
+    | '/blog/'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
+  BlogRoute: typeof BlogRouteWithChildren
+  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProjectsCandidClicksRoute: typeof ProjectsCandidClicksRoute
   ProjectsFingertipflowRoute: typeof ProjectsFingertipflowRoute
@@ -117,6 +247,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
@@ -130,6 +267,55 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/services/web-development': {
+      id: '/services/web-development'
+      path: '/web-development'
+      fullPath: '/services/web-development'
+      preLoaderRoute: typeof ServicesWebDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ui-ux-design': {
+      id: '/services/ui-ux-design'
+      path: '/ui-ux-design'
+      fullPath: '/services/ui-ux-design'
+      preLoaderRoute: typeof ServicesUiUxDesignRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/seo': {
+      id: '/services/seo'
+      path: '/seo'
+      fullPath: '/services/seo'
+      preLoaderRoute: typeof ServicesSeoRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/mobile-apps': {
+      id: '/services/mobile-apps'
+      path: '/mobile-apps'
+      fullPath: '/services/mobile-apps'
+      preLoaderRoute: typeof ServicesMobileAppsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cloud': {
+      id: '/services/cloud'
+      path: '/cloud'
+      fullPath: '/services/cloud'
+      preLoaderRoute: typeof ServicesCloudRouteImport
+      parentRoute: typeof ServicesRoute
     }
     '/projects/rolling-panda': {
       id: '/projects/rolling-panda'
@@ -152,12 +338,72 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsCandidClicksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/next-js-saas-mvp': {
+      id: '/blog/next-js-saas-mvp'
+      path: '/next-js-saas-mvp'
+      fullPath: '/blog/next-js-saas-mvp'
+      preLoaderRoute: typeof BlogNextJsSaasMvpRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/mern-vs-nextjs-2026': {
+      id: '/blog/mern-vs-nextjs-2026'
+      path: '/mern-vs-nextjs-2026'
+      fullPath: '/blog/mern-vs-nextjs-2026'
+      preLoaderRoute: typeof BlogMernVsNextjs2026RouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/blog/hire-software-agency-india': {
+      id: '/blog/hire-software-agency-india'
+      path: '/hire-software-agency-india'
+      fullPath: '/blog/hire-software-agency-india'
+      preLoaderRoute: typeof BlogHireSoftwareAgencyIndiaRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogHireSoftwareAgencyIndiaRoute: typeof BlogHireSoftwareAgencyIndiaRoute
+  BlogMernVsNextjs2026Route: typeof BlogMernVsNextjs2026Route
+  BlogNextJsSaasMvpRoute: typeof BlogNextJsSaasMvpRoute
+  BlogIndexRoute: typeof BlogIndexRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogHireSoftwareAgencyIndiaRoute: BlogHireSoftwareAgencyIndiaRoute,
+  BlogMernVsNextjs2026Route: BlogMernVsNextjs2026Route,
+  BlogNextJsSaasMvpRoute: BlogNextJsSaasMvpRoute,
+  BlogIndexRoute: BlogIndexRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
+interface ServicesRouteChildren {
+  ServicesCloudRoute: typeof ServicesCloudRoute
+  ServicesMobileAppsRoute: typeof ServicesMobileAppsRoute
+  ServicesSeoRoute: typeof ServicesSeoRoute
+  ServicesUiUxDesignRoute: typeof ServicesUiUxDesignRoute
+  ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesCloudRoute: ServicesCloudRoute,
+  ServicesMobileAppsRoute: ServicesMobileAppsRoute,
+  ServicesSeoRoute: ServicesSeoRoute,
+  ServicesUiUxDesignRoute: ServicesUiUxDesignRoute,
+  ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
+  BlogRoute: BlogRouteWithChildren,
+  ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProjectsCandidClicksRoute: ProjectsCandidClicksRoute,
   ProjectsFingertipflowRoute: ProjectsFingertipflowRoute,
