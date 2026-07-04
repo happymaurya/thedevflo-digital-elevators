@@ -356,11 +356,11 @@ function WhoWeAre() {
 
 // ────────────────────────────────────────────────────────────
 const services = [
-  { n: "01", icon: Code2, title: "Web Engineering", desc: "Fast, SEO-optimized, edge-native web applications built with Next.js, React, and robust Node.js backends.", tags: ["Next.js", "Node", "React"] },
-  { n: "02", icon: Smartphone, title: "Mobile Development", desc: "High-performance, native-feeling iOS and Android apps engineered from a single, fast-to-ship codebase using Flutter and React Native.", tags: ["Flutter", "React Native"] },
-  { n: "03", icon: Palette, title: "UI/UX Design Systems", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
-  { n: "04", icon: Search, title: "SEO Optimization", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
-  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
+  { n: "01", icon: Code2, title: "Web Engineering", href: "/services/web-development", desc: "Fast, SEO-optimized, edge-native web applications built with Next.js, React, and robust Node.js backends.", tags: ["Next.js", "Node", "React"] },
+  { n: "02", icon: Smartphone, title: "Mobile Development", href: "/services/mobile-apps", desc: "High-performance, native-feeling iOS and Android apps engineered from a single, fast-to-ship codebase using Flutter and React Native.", tags: ["Flutter", "React Native"] },
+  { n: "03", icon: Palette, title: "UI/UX Design Systems", href: "/services/ui-ux-design", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
+  { n: "04", icon: Search, title: "SEO Optimization", href: "/services/seo", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
+  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", href: "/services/cloud", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
 ];
 
 function Services() {
@@ -379,7 +379,7 @@ function Services() {
             const Icon = s.icon;
             return (
               <motion.a
-                key={s.title} href="#"
+                key={s.title} href={s.href}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -636,9 +636,9 @@ function Tech() {
 // Blog teaser
 // ────────────────────────────────────────────────────────────
 export const blogPosts = [
-  { slug: "web-development-trends-2026", title: "Top 10 Web Development Trends in 2026", date: "June 2026", author: "TheDevFlo Team", tag: "Trends", excerpt: "AI-native UIs, edge runtimes, and the rise of typed full-stack frameworks — what to bet on in 2026." },
-  { slug: "why-business-needs-website-2026", title: "Why Your Business Needs a Website in 2026", date: "June 2026", author: "TheDevFlo Team", tag: "Business", excerpt: "Even with social-first growth, a fast, owned website is still the highest-leverage asset for any business." },
-  { slug: "mern-vs-nextjs", title: "MERN Stack vs Next.js: Which One Should You Choose?", date: "May 2026", author: "TheDevFlo Team", tag: "Engineering", excerpt: "A no-nonsense comparison of MERN and Next.js across speed, SEO, hosting, and team scalability." },
+  { slug: "next-js-saas-mvp", title: "Why Next.js Is Best for Your SaaS MVP in 2026", date: "June 2026", author: "TheDevFlo Team", tag: "SaaS", excerpt: "A practical founder guide to choosing Next.js for a fast, SEO-friendly, revenue-ready SaaS MVP." },
+  { slug: "mern-vs-nextjs-2026", title: "MERN vs Next.js in 2026: Which Stack Should You Choose?", date: "June 2026", author: "TheDevFlo Team", tag: "Engineering", excerpt: "A no-nonsense decision framework for startups choosing between MERN and Next.js." },
+  { slug: "hire-software-agency-india", title: "How to Hire a Software Development Agency in India", date: "June 2026", author: "TheDevFlo Team", tag: "Founders", excerpt: "A checklist for evaluating velocity, design quality, communication and technical ownership before hiring an agency." },
 ];
 
 function BlogTeaser() {
@@ -659,7 +659,7 @@ function BlogTeaser() {
         <div className="grid gap-5 md:grid-cols-3">
           {blogPosts.map((p, i) => (
             <motion.a
-              key={p.slug} href={`/blog#${p.slug}`}
+              key={p.slug} href={`/blog/${p.slug}`}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}
               className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-primary/30"
@@ -795,7 +795,7 @@ function Footer() {
           <div>© {new Date().getFullYear()} TheDevFlo. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <a href="mailto:hello@thedevflo.com" className="hover:text-primary">hello@thedevflo.com</a>
-            <a href="#" className="hover:text-primary">thedevflo.com</a>
+            <a href="https://thedevflo.com" className="hover:text-primary">thedevflo.com</a>
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ export const Route = createFileRoute("/projects/candid-clicks")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://thedevflo.com/projects/candid-clicks" },
       { property: "og:image", content: cover },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },

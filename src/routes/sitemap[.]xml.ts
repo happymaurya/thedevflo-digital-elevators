@@ -1,8 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-// TODO: replace with project URL once a custom domain is set.
-const BASE_URL = "";
+const BASE_URL = "https://thedevflo.com";
 
 interface SitemapEntry {
   path: string;
@@ -16,7 +15,19 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/services", changefreq: "monthly", priority: "0.9" },
+          { path: "/services/web-development", changefreq: "monthly", priority: "0.9" },
+          { path: "/services/mobile-apps", changefreq: "monthly", priority: "0.9" },
+          { path: "/services/ui-ux-design", changefreq: "monthly", priority: "0.9" },
+          { path: "/services/seo", changefreq: "monthly", priority: "0.9" },
+          { path: "/services/cloud", changefreq: "monthly", priority: "0.9" },
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
+          { path: "/blog/next-js-saas-mvp", changefreq: "monthly", priority: "0.7" },
+          { path: "/blog/mern-vs-nextjs-2026", changefreq: "monthly", priority: "0.7" },
+          { path: "/blog/hire-software-agency-india", changefreq: "monthly", priority: "0.7" },
+          { path: "/projects/fingertipflow", changefreq: "monthly", priority: "0.6" },
+          { path: "/projects/rolling-panda", changefreq: "monthly", priority: "0.6" },
+          { path: "/projects/candid-clicks", changefreq: "monthly", priority: "0.6" },
         ];
 
         const urls = entries.map((e) =>

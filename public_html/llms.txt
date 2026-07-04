@@ -1,11 +1,20 @@
 # TheDevFlo
 
-> TheDevFlo is a premium software studio building scalable web apps, mobile apps, UI/UX, SEO and cloud solutions for startups and businesses worldwide.
+> TheDevFlo is a software development studio in India, focused on Delhi NCR and serving clients nationwide and worldwide with web apps, mobile apps, UI/UX, SEO and cloud engineering.
 
 ## Pages
 
 - [Home](/): Studio overview, services, process and contact.
+- [Services](/services): Software development services across India.
+- [Web Development](/services/web-development): MERN, Next.js and Node.js web application development.
+- [Mobile Apps](/services/mobile-apps): React Native and Flutter app development.
+- [UI/UX Design](/services/ui-ux-design): Figma design systems and product UX.
+- [SEO & Growth](/services/seo): Technical SEO and growth landing pages.
+- [Cloud & DevOps](/services/cloud): Cloud architecture, CI/CD and observability.
 - [Blog](/blog): Articles on engineering, design and product craft.
+- [Why Next.js is best for SaaS MVPs](/blog/next-js-saas-mvp): SaaS MVP framework guide.
+- [MERN vs Next.js in 2026](/blog/mern-vs-nextjs-2026): Startup stack decision guide.
+- [Hire a software agency in India](/blog/hire-software-agency-india): Founder checklist for choosing an agency.
 
 ## Projects
 

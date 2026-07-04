@@ -58,7 +58,7 @@ function BlogPage() {
       <section className="mt-16 px-4">
         <div className="mx-auto max-w-6xl">
           <motion.a
-            id={featured.slug} href="#"
+            id={featured.slug} href={`/blog/${featured.slug}`}
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
             className="group block overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 sm:p-12"
           >
@@ -85,7 +85,7 @@ function BlogPage() {
         <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
           {rest.map((p, i) => (
             <motion.a
-              key={p.slug} id={p.slug} href="#"
+              key={p.slug} id={p.slug} href={`/blog/${p.slug}`}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}
               className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-7 transition-colors hover:border-primary/30"
