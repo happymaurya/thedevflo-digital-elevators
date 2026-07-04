@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Calendar, User, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { Nav, Footer, blogPosts } from "@/components/home-page";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "TheDevFlo Blog — Web Dev, UI/UX, SEO & Tech Insights" },

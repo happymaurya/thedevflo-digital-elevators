@@ -10,8 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
 import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
 import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
@@ -21,14 +21,14 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
@@ -49,63 +49,63 @@ const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/blog': typeof BlogRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/blog'
   id:
     | '__root__'
     | '/'
-    | '/blog'
     | '/sitemap.xml'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BlogRoute: typeof BlogRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProjectsCandidClicksRoute: typeof ProjectsCandidClicksRoute
   ProjectsFingertipflowRoute: typeof ProjectsFingertipflowRoute
   ProjectsRollingPandaRoute: typeof ProjectsRollingPandaRoute
+  BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -117,18 +117,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/rolling-panda': {
@@ -157,11 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BlogRoute: BlogRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProjectsCandidClicksRoute: ProjectsCandidClicksRoute,
   ProjectsFingertipflowRoute: ProjectsFingertipflowRoute,
   ProjectsRollingPandaRoute: ProjectsRollingPandaRoute,
+  BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
