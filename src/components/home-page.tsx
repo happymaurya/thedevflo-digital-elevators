@@ -795,7 +795,7 @@ function Footer() {
           <div>© {new Date().getFullYear()} TheDevFlo. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <a href="mailto:hello@thedevflo.com" className="hover:text-primary">hello@thedevflo.com</a>
-            <a href="#" className="hover:text-primary">thedevflo.com</a>
+            <a href="https://thedevflo.com" className="hover:text-primary">thedevflo.com</a>
           </div>
         </div>
       </div>
