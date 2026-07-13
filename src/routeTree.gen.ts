@@ -23,6 +23,7 @@ import { Route as ServicesCloudRouteImport } from './routes/services.cloud'
 import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
 import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
 import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
+import { Route as BlogSaasMvpCostGuideRouteImport } from './routes/blog.saas-mvp-cost-guide'
 import { Route as BlogNextJsSaasMvpRouteImport } from './routes/blog.next-js-saas-mvp'
 import { Route as BlogMernVsNextjs2026RouteImport } from './routes/blog.mern-vs-nextjs-2026'
 import { Route as BlogHireSoftwareAgencyIndiaRouteImport } from './routes/blog.hire-software-agency-india'
@@ -97,6 +98,11 @@ const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
   path: '/projects/candid-clicks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSaasMvpCostGuideRoute = BlogSaasMvpCostGuideRouteImport.update({
+  id: '/saas-mvp-cost-guide',
+  path: '/saas-mvp-cost-guide',
+  getParentRoute: () => BlogRoute,
+} as any)
 const BlogNextJsSaasMvpRoute = BlogNextJsSaasMvpRouteImport.update({
   id: '/next-js-saas-mvp',
   path: '/next-js-saas-mvp',
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
+  '/blog/saas-mvp-cost-guide': typeof BlogSaasMvpCostGuideRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
+  '/blog/saas-mvp-cost-guide': typeof BlogSaasMvpCostGuideRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
+  '/blog/saas-mvp-cost-guide': typeof BlogSaasMvpCostGuideRoute
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
@@ -180,6 +189,7 @@ export interface FileRouteTypes {
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
+    | '/blog/saas-mvp-cost-guide'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
+    | '/blog/saas-mvp-cost-guide'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
@@ -216,6 +227,7 @@ export interface FileRouteTypes {
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
+    | '/blog/saas-mvp-cost-guide'
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
@@ -338,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsCandidClicksRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/saas-mvp-cost-guide': {
+      id: '/blog/saas-mvp-cost-guide'
+      path: '/saas-mvp-cost-guide'
+      fullPath: '/blog/saas-mvp-cost-guide'
+      preLoaderRoute: typeof BlogSaasMvpCostGuideRouteImport
+      parentRoute: typeof BlogRoute
+    }
     '/blog/next-js-saas-mvp': {
       id: '/blog/next-js-saas-mvp'
       path: '/next-js-saas-mvp'
@@ -366,6 +385,7 @@ interface BlogRouteChildren {
   BlogHireSoftwareAgencyIndiaRoute: typeof BlogHireSoftwareAgencyIndiaRoute
   BlogMernVsNextjs2026Route: typeof BlogMernVsNextjs2026Route
   BlogNextJsSaasMvpRoute: typeof BlogNextJsSaasMvpRoute
+  BlogSaasMvpCostGuideRoute: typeof BlogSaasMvpCostGuideRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -373,6 +393,7 @@ const BlogRouteChildren: BlogRouteChildren = {
   BlogHireSoftwareAgencyIndiaRoute: BlogHireSoftwareAgencyIndiaRoute,
   BlogMernVsNextjs2026Route: BlogMernVsNextjs2026Route,
   BlogNextJsSaasMvpRoute: BlogNextJsSaasMvpRoute,
+  BlogSaasMvpCostGuideRoute: BlogSaasMvpCostGuideRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 
