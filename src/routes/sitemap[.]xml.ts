@@ -22,6 +22,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/services/seo", changefreq: "monthly", priority: "0.9" },
           { path: "/services/cloud", changefreq: "monthly", priority: "0.9" },
           { path: "/blog", changefreq: "weekly", priority: "0.8" },
+          { path: "/blog/saas-mvp-cost-guide", changefreq: "monthly", priority: "0.8" },
           { path: "/blog/next-js-saas-mvp", changefreq: "monthly", priority: "0.7" },
           { path: "/blog/mern-vs-nextjs-2026", changefreq: "monthly", priority: "0.7" },
           { path: "/blog/hire-software-agency-india", changefreq: "monthly", priority: "0.7" },
