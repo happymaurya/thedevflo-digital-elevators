@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /assets/chunks/
 
 Sitemap: https://thedevflo.com/sitemap.xml
