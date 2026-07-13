@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import HomePage from "@/components/home-page";
 
 const SITE = "https://thedevflo.com";
-const TITLE = "TheDevFlo — Software Development Agency in India | Web, Mobile, UI/UX, SEO & Cloud";
-const DESC = "TheDevFlo is a software development studio in India (Delhi NCR based) building MERN, Next.js, React Native and Flutter apps, UI/UX design systems, SEO and cloud solutions for startups and businesses nationwide and worldwide.";
+const TITLE = "TheDevFlo — Software Development Agency in India";
+const DESC = "Delhi NCR software agency building web apps, mobile apps, UI/UX, SEO and cloud systems for startups across India and worldwide.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

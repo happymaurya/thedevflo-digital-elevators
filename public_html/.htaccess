@@ -2,10 +2,15 @@
 
 RewriteEngine On
 
-# Force HTTPS and the non-www canonical domain for Google indexing
-RewriteCond %{HTTPS} !=on [OR]
+# Force the non-www canonical domain for Google indexing.
+# Keep this separate from HTTPS so Hostinger/CDN proxy headers cannot skip it.
 RewriteCond %{HTTP_HOST} ^www\.thedevflo\.com$ [NC]
-RewriteRule ^ https://thedevflo.com%{REQUEST_URI} [L,R=301]
+RewriteRule ^ https://thedevflo.com%{REQUEST_URI} [L,R=301,NE]
+
+# Force HTTPS without creating proxy redirect loops.
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://thedevflo.com%{REQUEST_URI} [L,R=301,NE]
 
 # SPA fallback — any non-file / non-folder request loads index.html
 RewriteCond %{REQUEST_FILENAME} !-f
