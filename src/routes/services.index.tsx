@@ -3,8 +3,8 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 
 const SITE = "https://thedevflo.com";
-const TITLE = "Software Development Services in India — Web, Mobile, UI/UX, SEO, Cloud | TheDevFlo";
-const DESC = "TheDevFlo offers full-stack software development services across India — web apps, mobile apps, UI/UX design systems, SEO and cloud engineering. Delhi NCR based, working nationwide and worldwide.";
+const TITLE = "Software Development Services in India | TheDevFlo";
+const DESC = "TheDevFlo offers software development services across India: web apps, mobile apps, UI/UX design, SEO and cloud engineering from a Delhi NCR based team.";
 
 const services = [
   { slug: "web-development", title: "Web Application Development", desc: "MERN stack, Next.js and Node.js engineering for SaaS and enterprise." },
