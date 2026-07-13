@@ -71,7 +71,7 @@ function ServicesIndex() {
               <h2 className="text-display text-2xl sm:text-3xl">{s.title}</h2>
               <p className="mt-3 flex-1 text-sm text-muted-foreground">{s.desc}</p>
               <span className="mt-6 inline-flex items-center gap-1 text-sm text-primary">
-                Learn more <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                Explore {s.title} details <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </Link>
           ))}
