@@ -5,8 +5,8 @@ import { servicePageHead } from "@/lib/seo-head";
 export const Route = createFileRoute("/services/mobile-apps")({
   head: servicePageHead({
     path: "/services/mobile-apps",
-    title: "React Native & Flutter App Development in India | TheDevFlo",
-    description: "Custom React Native and Flutter mobile app development for iOS and Android. Delhi NCR based mobile team building cross-platform apps for startups, SaaS and consumer brands across India.",
+    title: "Mobile App Development Company in India | TheDevFlo",
+    description: "Custom React Native and Flutter mobile app development for iOS and Android. Delhi NCR based mobile team building cross-platform apps for startups and consumer brands across India.",
     keywords: "React Native app developers India, Flutter app development, custom mobile app developers Delhi, cross platform app development India, hire mobile app developers, iOS Android developers India",
     serviceName: "Mobile App Development",
     serviceType: "Cross-Platform Mobile App Development",

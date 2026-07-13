@@ -6,7 +6,7 @@ export const Route = createFileRoute("/blog/hire-software-agency-india")({
   head: articleHead({
     path: "/blog/hire-software-agency-india",
     title: "How to Hire a Software Development Agency in India (2026 Guide)",
-    description: "A practical 2026 guide to hiring a software development agency in India — how to shortlist, what to ask, red flags to avoid, and how pricing actually works for MVPs and product builds.",
+    description: "A founder's guide to hiring a software development agency in India: evaluate velocity, UX quality, technical depth, communication and delivery process.",
     keywords: "hire software development agency India, hire web developers India, hire software agency, MVP development agency India, Delhi NCR software agencies, how to hire dev agency",
     datePublished: "2026-06-28",
   }),
