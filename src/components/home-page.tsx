@@ -636,6 +636,7 @@ function Tech() {
 // Blog teaser
 // ────────────────────────────────────────────────────────────
 export const blogPosts = [
+  { slug: "saas-mvp-cost-guide", title: "How Much Does It Cost to Build a SaaS MVP in 2026?", date: "July 2026", author: "TheDevFlo Team", tag: "SaaS", excerpt: "India vs global cost breakdown for engineering, design and infra — with a live MVP cost calculator." },
   { slug: "next-js-saas-mvp", title: "Why Next.js Is Best for Your SaaS MVP in 2026", date: "June 2026", author: "TheDevFlo Team", tag: "SaaS", excerpt: "A practical founder guide to choosing Next.js for a fast, SEO-friendly, revenue-ready SaaS MVP." },
   { slug: "mern-vs-nextjs-2026", title: "MERN vs Next.js in 2026: Which Stack Should You Choose?", date: "June 2026", author: "TheDevFlo Team", tag: "Engineering", excerpt: "A no-nonsense decision framework for startups choosing between MERN and Next.js." },
   { slug: "hire-software-agency-india", title: "How to Hire a Software Development Agency in India", date: "June 2026", author: "TheDevFlo Team", tag: "Founders", excerpt: "A checklist for evaluating velocity, design quality, communication and technical ownership before hiring an agency." },
