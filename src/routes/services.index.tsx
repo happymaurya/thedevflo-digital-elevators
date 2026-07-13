@@ -3,8 +3,9 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 
 const SITE = "https://thedevflo.com";
-const TITLE = "Software Development Services in India | TheDevFlo";
-const DESC = "TheDevFlo offers software development services across India: web apps, mobile apps, UI/UX design, SEO and cloud engineering from a Delhi NCR based team.";
+const TITLE = "Software Development Services India | TheDevFlo";
+const OG_TITLE = "Software Services in India | TheDevFlo";
+const DESC = "Web, mobile, UI/UX, SEO and cloud engineering services delivered across India and worldwide by TheDevFlo.";
 
 const services = [
   { slug: "web-development", title: "Web Application Development", desc: "MERN stack, Next.js and Node.js engineering for SaaS and enterprise." },
@@ -21,10 +22,17 @@ export const Route = createFileRoute("/services/")({
       { name: "description", content: DESC },
       { name: "keywords", content: "software development services India, web development agency Delhi, mobile app developers India, UI UX design studio, SEO agency India, cloud consulting Delhi NCR" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
-      { property: "og:title", content: TITLE },
+      { property: "og:title", content: OG_TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/services` },
+      { property: "og:image", content: `${SITE}/og/services.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: OG_TITLE },
+      { name: "twitter:description", content: DESC },
+      { name: "twitter:image", content: `${SITE}/og/services.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE}/services` }],
   }),
