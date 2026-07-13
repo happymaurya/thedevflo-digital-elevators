@@ -5,8 +5,8 @@ import { servicePageHead } from "@/lib/seo-head";
 export const Route = createFileRoute("/services/web-development")({
   head: servicePageHead({
     path: "/services/web-development",
-    title: "MERN & Next.js Web Application Development in India | TheDevFlo",
-    description: "Custom web application development in India using MERN stack, Next.js and Node.js. Delhi NCR based engineering team building performance-optimised, scalable web platforms for startups and enterprise.",
+    title: "MERN & Next.js Web Development in India | TheDevFlo",
+    description: "Custom web application development in India using MERN stack, Next.js and Node.js. Delhi NCR based engineering team building scalable web platforms for startups and enterprise.",
     keywords: "MERN stack web application development, Next.js and Node.js developers India, custom web development Delhi, performance-optimized Next.js developers, scalable web apps India, hire web developers India",
     serviceName: "Web Application Development",
     serviceType: "Custom Web Development",

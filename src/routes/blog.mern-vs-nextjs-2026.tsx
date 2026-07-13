@@ -6,7 +6,7 @@ export const Route = createFileRoute("/blog/mern-vs-nextjs-2026")({
   head: articleHead({
     path: "/blog/mern-vs-nextjs-2026",
     title: "MERN Stack vs Next.js in 2026 — Which One to Pick and When",
-    description: "MERN stack vs Next.js in 2026: a practical comparison for founders and CTOs choosing a stack for their web application. Performance, hiring, SEO, and long-term cost — with a clear decision framework.",
+    description: "MERN vs Next.js in 2026: a practical decision framework for startups choosing a modern web application stack.",
     keywords: "MERN stack vs Next.js, MERN stack web application development, Next.js vs Node.js, best stack for web app 2026, hire MERN developers India",
     datePublished: "2026-06-22",
   }),
