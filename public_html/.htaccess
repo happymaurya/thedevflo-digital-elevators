@@ -3,7 +3,6 @@
 RewriteEngine On
 
 # Force the non-www canonical domain for Google indexing.
-# Keep this separate from HTTPS so Hostinger/CDN proxy headers cannot skip it.
 RewriteCond %{HTTP_HOST} ^www\.thedevflo\.com$ [NC]
 RewriteRule ^ https://thedevflo.com%{REQUEST_URI} [L,R=301,NE]
 
