@@ -43,7 +43,7 @@ function PillButton({
 }: { children: React.ReactNode; variant?: "primary" | "ghost" | "white" | "violet"; href?: string; to?: string }) {
   const base = "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300";
   const styles = {
-    primary: "bg-primary text-primary-foreground hover:scale-[1.03]",
+    primary: "bg-button text-primary-foreground hover:bg-button-hover hover:scale-[1.03]",
     white: "bg-inverse text-inverse-foreground hover:scale-[1.03]",
     ghost: "border border-border bg-surface-elevated/40 text-foreground hover:bg-surface-elevated",
     violet: "bg-accent-end text-foreground hover:scale-[1.03]",
@@ -230,7 +230,7 @@ function Nav() {
           )}
         </nav>
         <a href="#cta"
-          className="hidden rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.03] sm:inline-flex">
+          className="hidden rounded-full bg-button px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-button-hover hover:scale-[1.03] sm:inline-flex">
           Start project →
         </a>
       </div>

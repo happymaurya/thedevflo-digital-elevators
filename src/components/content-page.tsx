@@ -71,7 +71,7 @@ export function ContentPage({
             <h3 className="text-display text-2xl">Ready to build?</h3>
             <p className="mt-2 text-sm text-muted-foreground">Email hello@thedevflo.com and we'll reply within one business day.</p>
           </div>
-          <a href={cta.href} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
+          <a href={cta.href} className="inline-flex items-center gap-2 rounded-full bg-button px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-button-hover">
             {cta.label} <ArrowUpRight className="size-4" />
           </a>
         </div>
