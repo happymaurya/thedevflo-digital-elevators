@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-candidclicks.jpg";
+import { TextEffect } from "@/components/text-effect";
 
 const TITLE = "Candid Clicks — Wedding Photography Studio Website | TheDevFlo";
 const DESC = "How TheDevFlo built candidclicks.in — a cinematic website for one of Gorakhpur's leading wedding photography studios, capturing bookings across UP.";
@@ -66,9 +67,9 @@ function CandidClicksPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Photography
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               Candid Clicks — a studio site as beautiful as their <span className="text-primary">frames.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               Candid Clicks is one of Gorakhpur's most trusted wedding photography studios,
               serving Lucknow, Kanpur and beyond since 2014. TheDevFlo shaped a website that

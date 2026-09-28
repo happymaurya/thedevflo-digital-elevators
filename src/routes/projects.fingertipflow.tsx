@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-fingertipflow.jpg";
+import { TextEffect } from "@/components/text-effect";
 
 const TITLE = "FingertipFlow — Minimalist Typing Trainer Web App | TheDevFlo";
 const DESC = "How TheDevFlo shipped fingertipflow.com — a distraction-free typing trainer with words, quotes, code and zen modes plus live stats.";
@@ -62,9 +63,9 @@ function FingertipFlowPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Web app
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               FingertipFlow — a typing trainer that stays out of your <span className="text-primary">way.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               FingertipFlow is a minimalist, distraction-free typing trainer built for developers,
               writers and speed-typing enthusiasts. TheDevFlo designed the interface, engineered

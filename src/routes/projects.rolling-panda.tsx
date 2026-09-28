@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-rollingpanda.jpg";
+import { TextEffect } from "@/components/text-effect";
 
 const TITLE = "The Rolling Panda — Film Studio Site | TheDevFlo";
 const DESC = "How TheDevFlo designed and engineered therollingpanda.in — a cinematic, immersive website for a Kanpur-based film production house.";
@@ -58,9 +59,9 @@ function RollingPandaPage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Film & Media
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               The Rolling Panda — a website as bold as their <span className="text-primary">films.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               The Rolling Panda Productions is a Kanpur-based film house building stories with
               purpose, personality and impact. We designed and built their new digital home —
