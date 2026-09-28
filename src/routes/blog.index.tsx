@@ -13,6 +13,7 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:description", content: "Web dev trends, startup insights, UI/UX strategies, SEO tips, and tech news." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thedevflo.com/blog" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "TheDevFlo Blog" },
       { name: "twitter:description", content: "Web dev, UI/UX, SEO and startup insights from TheDevFlo." },
     ],

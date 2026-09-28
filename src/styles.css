@@ -106,6 +106,10 @@
   --gradient-community: linear-gradient(135deg, color-mix(in oklab, var(--accent-end) 25%, var(--surface)), var(--surface));
   --gradient-image-overlay: linear-gradient(to top, color-mix(in oklab, var(--background) 85%, transparent), color-mix(in oklab, var(--background) 30%, transparent), transparent);
   --gradient-grid: linear-gradient(to right, color-mix(in oklab, var(--foreground) 100%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 100%, transparent) 1px, transparent 1px);
+  --gradient-aurora-accent: radial-gradient(circle, var(--accent-end) 0%, transparent 60%);
+  --gradient-aurora-primary: radial-gradient(circle, var(--primary) 0%, transparent 60%);
+  --gradient-aurora-mobile: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent-end) 30%, transparent) 0%, transparent 60%);
+  --gradient-spotlight: radial-gradient(circle, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 60%);
   --glow-lg: 0 0 80px -10px color-mix(in oklab, var(--primary) 50%, transparent);
   --glow-sm: 0 0 30px -5px color-mix(in oklab, var(--primary) 40%, transparent);
   --text-shadow-soft: 0 4px 30px color-mix(in oklab, var(--background) 25%, transparent);
@@ -150,7 +154,19 @@
 @utility bg-community-gradient { background: var(--gradient-community); }
 @utility bg-image-overlay { background: var(--gradient-image-overlay); }
 @utility bg-site-grid { background-image: var(--gradient-grid); background-size: 60px 60px; }
+@utility bg-aurora-accent { background: var(--gradient-aurora-accent); }
+@utility bg-aurora-primary { background: var(--gradient-aurora-primary); }
+@utility bg-aurora-mobile { background: var(--gradient-aurora-mobile); }
+@utility bg-spotlight { background: var(--gradient-spotlight); }
 @utility text-shadow-soft { text-shadow: var(--text-shadow-soft); }
+
+@utility mask-fade-wide {
+  mask-image: linear-gradient(to right, transparent, var(--background) 10%, var(--background) 90%, transparent);
+}
+
+@utility mask-fade-edge {
+  mask-image: linear-gradient(to right, transparent, var(--background) 5%, var(--background) 95%, transparent);
+}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

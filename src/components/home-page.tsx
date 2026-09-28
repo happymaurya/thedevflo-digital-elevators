@@ -99,15 +99,12 @@ function PremiumBackground() {
     <div className="pointer-events-none fixed inset-0 -z-20 overflow-hidden bg-background">
       {!isMobile && (
         <>
-          <div className="absolute -top-40 left-1/2 size-[700px] -translate-x-1/2 rounded-full opacity-30 blur-[90px]"
-            style={{ background: "radial-gradient(circle, var(--violet) 0%, transparent 60%)" }} />
-          <div className="absolute top-1/3 -right-40 size-[500px] rounded-full opacity-20 blur-[90px]"
-            style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 60%)" }} />
+          <div className="bg-aurora-accent absolute -top-40 left-1/2 size-[700px] -translate-x-1/2 rounded-full opacity-30 blur-[90px]" />
+          <div className="bg-aurora-primary absolute top-1/3 -right-40 size-[500px] rounded-full opacity-20 blur-[90px]" />
         </>
       )}
       {isMobile && (
-        <div className="absolute inset-0 opacity-60"
-          style={{ background: "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--violet) 30%, transparent) 0%, transparent 60%)" }} />
+        <div className="bg-aurora-mobile absolute inset-0 opacity-60" />
       )}
       <div className="bg-site-grid absolute inset-0 opacity-[0.04]" />
     </div>
@@ -150,11 +147,7 @@ function CursorSpotlight() {
     <div
       ref={ref}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 -z-10 size-[600px] rounded-full opacity-0 transition-opacity duration-500 will-change-transform"
-      style={{
-        background: "radial-gradient(circle, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 60%)",
-        filter: "blur(40px)",
-      }}
+      className="bg-spotlight pointer-events-none fixed left-0 top-0 -z-10 size-[600px] rounded-full opacity-0 blur-[40px] transition-opacity duration-500 will-change-transform"
     />
   );
 }
@@ -334,7 +327,7 @@ function WhoWeAre() {
 
         <div className="mt-14">
           <p className="mb-6 text-sm text-muted-foreground">Trusted by teams building for:</p>
-          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="mask-fade-wide relative overflow-hidden">
             <div className="flex w-max animate-marquee gap-14">
               {row.map((b, i) => (
                 <span key={i} className="text-display whitespace-nowrap text-3xl font-bold text-foreground/60 sm:text-4xl">{b}</span>
@@ -569,7 +562,7 @@ function Testimonials() {
             Words from <span className="text-primary">founders.</span>
           </TextEffect>
         </motion.div>
-        <div className="relative -mx-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] sm:-mx-10">
+        <div className="mask-fade-edge relative -mx-6 overflow-hidden sm:-mx-10">
           <div className="flex w-max animate-marquee gap-5 px-6" style={{ animationDuration: "60s" }}>
             {row.map((r, i) => (
               <div key={i} className="w-[320px] shrink-0 rounded-2xl border border-border bg-surface-elevated/30 p-6 sm:w-[400px]">

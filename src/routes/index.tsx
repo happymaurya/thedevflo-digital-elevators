@@ -20,10 +20,9 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
-      { property: "og:image", content: `${SITE}/favicon.svg` },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: `${SITE}/favicon.svg` },
     ],
     links: [
       { rel: "canonical", href: `${SITE}/` },
