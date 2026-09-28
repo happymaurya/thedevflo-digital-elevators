@@ -55,7 +55,7 @@ function RollingPandaPage() {
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Film & Media
             </div>
             <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
@@ -74,7 +74,7 @@ function RollingPandaPage() {
       </section>
 
       <section className="mt-12 px-4">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border">
           <img src={cover} alt="The Rolling Panda Productions website hero" className="w-full object-cover" />
         </div>
       </section>
@@ -82,7 +82,7 @@ function RollingPandaPage() {
       <section className="mt-16 px-4">
         <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.v} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div key={s.v} className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-display text-4xl text-primary">{s.k}</div>
               <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
             </div>
@@ -113,22 +113,22 @@ function RollingPandaPage() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Client</div>
               <div className="text-display mt-1 text-2xl">The Rolling Panda Productions</div>
               <div className="mt-1 text-sm text-muted-foreground">Kanpur · India · Est. 2018</div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Services</div>
               <div className="mt-2 text-sm text-muted-foreground">
                 Brand · UI/UX · Web development · Motion · SEO
               </div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Tech stack</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
+                  <span key={t} className="rounded-full border border-border bg-surface-elevated/40 px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
                 ))}
               </div>
             </div>
@@ -140,7 +140,7 @@ function RollingPandaPage() {
       </section>
 
       <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-white/[0.02] p-10 text-center">
+        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
           <p className="text-display text-2xl sm:text-3xl">
             "The site finally matches the energy of our films — cinematic, bold, unforgettable."
           </p>

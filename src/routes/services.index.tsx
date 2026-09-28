@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
+import { TextEffect } from "@/components/text-effect";
 
 const SITE = "https://thedevflo.com";
 const TITLE = "Software Development Services India | TheDevFlo";
@@ -48,12 +49,12 @@ function ServicesIndex() {
           <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary">
             <ArrowLeft className="size-3.5" /> Back home
           </Link>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
             <span className="size-1.5 rounded-full bg-primary" /> Services
           </div>
-          <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+          <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
             Software services built <span className="text-primary">across India.</span>
-          </h1>
+          </TextEffect>
           <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
             A Delhi NCR based software studio serving startups and businesses nationwide — from MVP builds to production platforms.
           </p>
@@ -66,7 +67,7 @@ function ServicesIndex() {
             <Link
               key={s.slug}
               to={`/services/${s.slug}` as "/services/web-development"}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-7 transition-colors hover:border-primary/30"
+              className="group flex flex-col rounded-3xl border border-border bg-surface-elevated/30 p-7 transition-colors hover:border-primary/30"
             >
               <h2 className="text-display text-2xl sm:text-3xl">{s.title}</h2>
               <p className="mt-3 flex-1 text-sm text-muted-foreground">{s.desc}</p>
