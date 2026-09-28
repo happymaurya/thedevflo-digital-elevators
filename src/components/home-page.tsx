@@ -204,7 +204,6 @@ function Nav() {
     { label: "Services", href: "/#services" },
     { label: "Work", href: "/#work" },
     { label: "Blog", to: "/blog" },
-    { label: "About", href: "/#why" },
   ];
   return (
     <motion.header
@@ -488,59 +487,6 @@ function Process() {
 }
 
 // ────────────────────────────────────────────────────────────
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    if (!inView) return;
-    const start = performance.now();
-    const dur = 1500;
-    let raf = 0;
-    const tick = (t: number) => {
-      const p = Math.min(1, (t - start) / dur);
-      setN(Math.floor(to * (1 - Math.pow(1 - p, 3))));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, to]);
-  return <span ref={ref}>{n}{suffix}</span>;
-}
-
-function Why() {
-  const stats = [
-    { value: 50, suffix: "+", label: "Projects delivered" },
-    { value: 20, suffix: "+", label: "Happy clients" },
-    { value: 99, suffix: "%", label: "Satisfaction rate" },
-    { value: 100, suffix: "%", label: "On-time delivery" },
-  ];
-  return (
-    <section id="why" className="mt-24 px-4">
-      <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14 max-w-2xl">
-          <SectionTag>Why TheDevFlo</SectionTag>
-          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
-            Built different.<br /><span className="text-primary">Shipped faster.</span>
-          </TextEffect>
-        </motion.div>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {stats.map((s, i) => (
-            <motion.div key={s.label}
-              initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="rounded-2xl border border-border bg-surface-elevated/30 p-6">
-              <div className="text-display text-4xl text-primary sm:text-5xl md:text-6xl">
-                <Counter to={s.value} suffix={s.suffix} />
-              </div>
-              <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ────────────────────────────────────────────────────────────
 const reviews = [
