@@ -682,7 +682,7 @@ function CTA() {
 // ────────────────────────────────────────────────────────────
 function Footer() {
   const cols = [
-    { title: "Company", links: [{ label: "About", href: "/#why" }, { label: "Services", href: "/#services" }, { label: "Projects", href: "/#work" }] },
+    { title: "Company", links: [{ label: "Services", href: "/#services" }, { label: "Projects", href: "/#work" }] },
     { title: "Resources", links: [{ label: "Blog", href: "/blog" }, { label: "Community", href: "/#community" }, { label: "Contact", href: "mailto:hello@thedevflo.com" }] },
   ];
   return (
@@ -750,7 +750,6 @@ export default function HomePage() {
       <Services />
       <Work />
       <Process />
-      <Why />
       <Testimonials />
       <Tech />
       <BlogTeaser />
