@@ -58,7 +58,7 @@ export function MvpCostCalculator() {
                 className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                   scope === k
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-white/10 bg-white/[0.03] text-muted-foreground hover:border-primary/40"
+                    : "border-border bg-surface-elevated/40 text-muted-foreground hover:border-primary/40"
                 }`}
               >
                 {SCOPE_WEEKS[k].label}
@@ -77,7 +77,7 @@ export function MvpCostCalculator() {
                 className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
                   region === k
                     ? "border-primary bg-primary text-primary-foreground"
-                    : "border-white/10 bg-white/[0.03] text-muted-foreground hover:border-primary/40"
+                    : "border-border bg-surface-elevated/40 text-muted-foreground hover:border-primary/40"
                 }`}
               >
                 {RATES[k].label}
@@ -87,7 +87,7 @@ export function MvpCostCalculator() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-white/10 bg-black/20 p-5">
+      <div className="mt-6 rounded-2xl border border-border bg-background/20 p-5">
         <div className="flex flex-wrap items-baseline justify-between gap-3">
           <div>
             <div className="text-xs uppercase tracking-wider text-muted-foreground">Estimated total</div>
@@ -96,10 +96,10 @@ export function MvpCostCalculator() {
           </div>
         </div>
         <dl className="mt-5 grid gap-3 text-sm sm:grid-cols-2">
-          <div className="flex justify-between border-b border-white/5 pb-2"><dt className="text-muted-foreground">Engineering</dt><dd className="font-medium">{fmt(estimate.engineering)}</dd></div>
-          <div className="flex justify-between border-b border-white/5 pb-2"><dt className="text-muted-foreground">UI/UX design</dt><dd className="font-medium">{fmt(estimate.design)}</dd></div>
-          <div className="flex justify-between border-b border-white/5 pb-2"><dt className="text-muted-foreground">PM + QA (10%)</dt><dd className="font-medium">{fmt(estimate.pm)}</dd></div>
-          <div className="flex justify-between border-b border-white/5 pb-2"><dt className="text-muted-foreground">Infra (first 3 mo)</dt><dd className="font-medium">{fmt(estimate.infra)}</dd></div>
+          <div className="flex justify-between border-b border-border/50 pb-2"><dt className="text-muted-foreground">Engineering</dt><dd className="font-medium">{fmt(estimate.engineering)}</dd></div>
+          <div className="flex justify-between border-b border-border/50 pb-2"><dt className="text-muted-foreground">UI/UX design</dt><dd className="font-medium">{fmt(estimate.design)}</dd></div>
+          <div className="flex justify-between border-b border-border/50 pb-2"><dt className="text-muted-foreground">PM + QA (10%)</dt><dd className="font-medium">{fmt(estimate.pm)}</dd></div>
+          <div className="flex justify-between border-b border-border/50 pb-2"><dt className="text-muted-foreground">Infra (first 3 mo)</dt><dd className="font-medium">{fmt(estimate.infra)}</dd></div>
         </dl>
       </div>
     </div>

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowUpRight, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import type { ReactNode } from "react";
+import { TextEffect } from "@/components/text-effect";
 
 export interface ContentPageProps {
   eyebrow: string;
@@ -32,12 +33,12 @@ export function ContentPage({
           <Link to={backHref} className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary">
             <ArrowLeft className="size-3.5" /> {backLabel}
           </Link>
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
             <span className="size-1.5 rounded-full bg-primary" /> {eyebrow}
           </div>
-          <h1 className="text-display mt-5 text-4xl font-bold sm:text-5xl md:text-6xl">
+          <TextEffect as="h1" className="text-display mt-5 text-4xl font-bold sm:text-5xl md:text-6xl">
             {title}
-          </h1>
+          </TextEffect>
           <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">{intro}</p>
 
           {bullets && bullets.length > 0 && (
@@ -56,8 +57,8 @@ export function ContentPage({
       <section className="mt-16 px-4">
         <div className="mx-auto grid max-w-4xl gap-10">
           {sections.map((s) => (
-            <article key={s.heading} className="rounded-3xl border border-white/10 bg-white/[0.02] p-7 sm:p-10">
-              <h2 className="text-display text-2xl sm:text-3xl">{s.heading}</h2>
+            <article key={s.heading} className="rounded-3xl border border-border bg-surface-elevated/30 p-7 sm:p-10">
+              <TextEffect as="h2" className="text-display text-2xl sm:text-3xl">{s.heading}</TextEffect>
               <div className="mt-4 space-y-4 text-base leading-relaxed text-muted-foreground">{s.body}</div>
             </article>
           ))}
@@ -70,7 +71,7 @@ export function ContentPage({
             <h3 className="text-display text-2xl">Ready to build?</h3>
             <p className="mt-2 text-sm text-muted-foreground">Email hello@thedevflo.com and we'll reply within one business day.</p>
           </div>
-          <a href={cta.href} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5">
+          <a href={cta.href} className="inline-flex items-center gap-2 rounded-full bg-button px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-button-hover">
             {cta.label} <ArrowUpRight className="size-4" />
           </a>
         </div>

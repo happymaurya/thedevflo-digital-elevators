@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-fingertipflow.jpg";
+import { TextEffect } from "@/components/text-effect";
 
 const TITLE = "FingertipFlow — Minimalist Typing Trainer Web App | TheDevFlo";
 const DESC = "How TheDevFlo shipped fingertipflow.com — a distraction-free typing trainer with words, quotes, code and zen modes plus live stats.";
@@ -59,12 +60,12 @@ function FingertipFlowPage() {
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Web app
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               FingertipFlow — a typing trainer that stays out of your <span className="text-primary">way.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               FingertipFlow is a minimalist, distraction-free typing trainer built for developers,
               writers and speed-typing enthusiasts. TheDevFlo designed the interface, engineered
@@ -78,7 +79,7 @@ function FingertipFlowPage() {
       </section>
 
       <section className="mt-12 px-4">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border">
           <img src={cover} alt="FingertipFlow minimalist typing trainer hero" className="w-full object-cover" loading="eager" />
         </div>
       </section>
@@ -86,7 +87,7 @@ function FingertipFlowPage() {
       <section className="mt-16 px-4">
         <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.v} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div key={s.v} className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-display text-4xl text-primary">{s.k}</div>
               <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
             </div>
@@ -108,7 +109,7 @@ function FingertipFlowPage() {
             <h2 className="text-display mt-12 text-3xl sm:text-4xl">Practice modes</h2>
             <div className="mt-5 flex flex-wrap gap-2">
               {modes.map((s) => (
-                <span key={s} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-muted-foreground">{s}</span>
+                <span key={s} className="rounded-full border border-border bg-surface-elevated/40 px-3 py-1.5 text-xs text-muted-foreground">{s}</span>
               ))}
             </div>
 
@@ -126,22 +127,22 @@ function FingertipFlowPage() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Client</div>
               <div className="text-display mt-1 text-2xl">FingertipFlow</div>
               <div className="mt-1 text-sm text-muted-foreground">Product by TheDevFlo · fingertipflow.com</div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Services</div>
               <div className="mt-2 text-sm text-muted-foreground">
                 Product design · Web engineering · Interaction design · Performance · SEO
               </div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Stack</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
+                  <span key={t} className="rounded-full border border-border bg-surface-elevated/40 px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
                 ))}
               </div>
             </div>
@@ -153,7 +154,7 @@ function FingertipFlowPage() {
       </section>
 
       <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-white/[0.02] p-10 text-center">
+        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
           <p className="text-display text-2xl sm:text-3xl">
             "TheDevFlo turned a rough idea into a shipped product in weeks — FingertipFlow feels effortless to use."
           </p>

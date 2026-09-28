@@ -20,16 +20,15 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE}/` },
-      { property: "og:image", content: `${SITE}/favicon.svg` },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: `${SITE}/favicon.svg` },
     ],
     links: [
       { rel: "canonical", href: `${SITE}/` },
-      { rel: "alternate", hreflang: "en", href: `${SITE}/` },
-      { rel: "alternate", hreflang: "en-IN", href: `${SITE}/` },
-      { rel: "alternate", hreflang: "x-default", href: `${SITE}/` },
+      { rel: "alternate", hrefLang: "en", href: `${SITE}/` },
+      { rel: "alternate", hrefLang: "en-IN", href: `${SITE}/` },
+      { rel: "alternate", hrefLang: "x-default", href: `${SITE}/` },
     ],
     scripts: [
       {

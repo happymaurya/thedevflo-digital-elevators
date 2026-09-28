@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Calendar, User, ArrowUpRight, ArrowLeft } from "lucide-react";
 import { Nav, Footer, blogPosts } from "@/components/home-page";
+import { TextEffect } from "@/components/text-effect";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -12,6 +13,7 @@ export const Route = createFileRoute("/blog/")({
       { property: "og:description", content: "Web dev trends, startup insights, UI/UX strategies, SEO tips, and tech news." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thedevflo.com/blog" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "TheDevFlo Blog" },
       { name: "twitter:description", content: "Web dev, UI/UX, SEO and startup insights from TheDevFlo." },
     ],
@@ -41,12 +43,12 @@ function BlogPage() {
             <ArrowLeft className="size-3.5" /> Back home
           </Link>
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> TheDevFlo Blog
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               Insights, tutorials & <span className="text-primary">tech news.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               Stay updated with the latest web development trends, startup insights, UI/UX strategies, SEO tips, and technology news from TheDevFlo.
             </p>
@@ -60,7 +62,7 @@ function BlogPage() {
           <motion.a
             id={featured.slug} href={`/blog/${featured.slug}`}
             initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-            className="group block overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 sm:p-12"
+            className="group block overflow-hidden rounded-[2rem] border border-border bg-surface-elevated/30 p-8 sm:p-12"
           >
             <div className="grid gap-10 sm:grid-cols-[1.4fr_1fr] sm:items-end">
               <div>
@@ -88,7 +90,7 @@ function BlogPage() {
               key={p.slug} id={p.slug} href={`/blog/${p.slug}`}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-7 transition-colors hover:border-primary/30"
+              className="group flex flex-col rounded-3xl border border-border bg-surface-elevated/30 p-7 transition-colors hover:border-primary/30"
             >
               <span className="self-start rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-medium text-primary">{p.tag}</span>
               <h3 className="text-display mt-5 text-2xl sm:text-3xl">{p.title}</h3>

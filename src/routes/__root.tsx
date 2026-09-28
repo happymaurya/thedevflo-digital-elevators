@@ -24,7 +24,7 @@ function NotFoundComponent() {
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-button px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-button-hover"
           >
             Go home
           </Link>
@@ -56,7 +56,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-button px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-button-hover"
           >
             Try again
           </button>
@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { name: "theme-color", content: "#000000" },
+      { name: "theme-color", content: "oklch(0 0 0)" },
       { name: "format-detection", content: "telephone=no" },
       { name: "author", content: "TheDevFlo" },
       { property: "og:site_name", content: "TheDevFlo" },

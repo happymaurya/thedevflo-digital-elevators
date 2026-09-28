@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Check } from "lucide-react";
 import { Nav, Footer } from "@/components/home-page";
 import cover from "@/assets/work-candidclicks.jpg";
+import { TextEffect } from "@/components/text-effect";
 
 const TITLE = "Candid Clicks — Wedding Photography Studio Website | TheDevFlo";
 const DESC = "How TheDevFlo built candidclicks.in — a cinematic website for one of Gorakhpur's leading wedding photography studios, capturing bookings across UP.";
@@ -63,12 +64,12 @@ function CandidClicksPage() {
           </Link>
 
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="mt-6 max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-primary" /> Case study · Photography
             </div>
-            <h1 className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
+            <TextEffect as="h1" className="text-display mt-5 text-5xl font-bold sm:text-6xl md:text-7xl">
               Candid Clicks — a studio site as beautiful as their <span className="text-primary">frames.</span>
-            </h1>
+            </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
               Candid Clicks is one of Gorakhpur's most trusted wedding photography studios,
               serving Lucknow, Kanpur and beyond since 2014. TheDevFlo shaped a website that
@@ -82,7 +83,7 @@ function CandidClicksPage() {
       </section>
 
       <section className="mt-12 px-4">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-white/10">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border">
           <img src={cover} alt="Candid Clicks wedding photography hero" className="w-full object-cover" />
         </div>
       </section>
@@ -90,7 +91,7 @@ function CandidClicksPage() {
       <section className="mt-16 px-4">
         <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.v} className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div key={s.v} className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-display text-4xl text-primary">{s.k}</div>
               <div className="mt-1 text-sm text-muted-foreground">{s.v}</div>
             </div>
@@ -111,7 +112,7 @@ function CandidClicksPage() {
             <h2 className="text-display mt-12 text-3xl sm:text-4xl">Specialities</h2>
             <div className="mt-5 flex flex-wrap gap-2">
               {services.map((s) => (
-                <span key={s} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-muted-foreground">{s}</span>
+                <span key={s} className="rounded-full border border-border bg-surface-elevated/40 px-3 py-1.5 text-xs text-muted-foreground">{s}</span>
               ))}
             </div>
 
@@ -129,22 +130,22 @@ function CandidClicksPage() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Client</div>
               <div className="text-display mt-1 text-2xl">Candid Clicks</div>
               <div className="mt-1 text-sm text-muted-foreground">Saurabh Raj Verma · Gorakhpur, UP · Est. 2014</div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Services</div>
               <div className="mt-2 text-sm text-muted-foreground">
                 Web design · Development · Local SEO · CMS setup · Performance
               </div>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-6">
+            <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Stack</div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {stack.map((t) => (
-                  <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
+                  <span key={t} className="rounded-full border border-border bg-surface-elevated/40 px-2.5 py-1 text-xs text-muted-foreground">{t}</span>
                 ))}
               </div>
             </div>
@@ -156,7 +157,7 @@ function CandidClicksPage() {
       </section>
 
       <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-white/10 bg-white/[0.02] p-10 text-center">
+        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
           <p className="text-display text-2xl sm:text-3xl">
             "TheDevFlo rebuilt our studio site into a cinematic showcase — bookings from Gorakhpur & Lucknow doubled in weeks."
           </p>

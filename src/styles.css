@@ -24,6 +24,12 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-glow: var(--primary-glow);
+  --color-accent-end: var(--accent-end);
+  --color-button: var(--button);
+  --color-button-hover: var(--button-hover);
+  --color-inverse: var(--inverse);
+  --color-inverse-foreground: var(--inverse-foreground);
+  --color-overlay: var(--overlay);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -39,8 +45,8 @@
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
 
-  --shadow-glow: 0 0 80px -10px color-mix(in oklab, var(--primary) 50%, transparent);
-  --shadow-glow-sm: 0 0 30px -5px color-mix(in oklab, var(--primary) 40%, transparent);
+  --shadow-glow: var(--glow-lg);
+  --shadow-glow-sm: var(--glow-sm);
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
@@ -61,7 +67,9 @@
 }
 
 :root {
+  color-scheme: dark;
   --radius: 1rem;
+  /* TheDevFlo palette: all site color roles are defined here. */
   --background: oklch(0 0 0);
   --foreground: oklch(0.98 0 0);
   --surface: oklch(0.08 0 0);
@@ -74,6 +82,12 @@
   --primary-foreground: oklch(0.1 0 0);
   --primary-glow: oklch(0.92 0.18 160);
   --violet: oklch(0.65 0.25 290);
+  --accent-end: var(--violet);
+  --button: var(--primary);
+  --button-hover: var(--primary-glow);
+  --inverse: var(--foreground);
+  --inverse-foreground: var(--background);
+  --overlay: oklch(0 0 0 / 0.82);
   --secondary: oklch(0.15 0 0);
   --secondary-foreground: oklch(0.98 0 0);
   --muted: oklch(0.12 0 0);
@@ -85,6 +99,20 @@
   --border: oklch(1 0 0 / 0.1);
   --input: oklch(0.18 0 0);
   --ring: oklch(0.88 0.21 155);
+  --gradient-brand: linear-gradient(135deg, var(--primary), var(--accent-end));
+  --gradient-violet: linear-gradient(135deg, var(--accent-end), color-mix(in oklab, var(--accent-end) 55%, var(--background)));
+  --gradient-primary: linear-gradient(160deg, color-mix(in oklab, var(--primary) 95%, var(--foreground) 5%), color-mix(in oklab, var(--primary) 55%, var(--background)));
+  --gradient-surface: linear-gradient(145deg, var(--surface-elevated), var(--surface));
+  --gradient-community: linear-gradient(135deg, color-mix(in oklab, var(--accent-end) 25%, var(--surface)), var(--surface));
+  --gradient-image-overlay: linear-gradient(to top, color-mix(in oklab, var(--background) 85%, transparent), color-mix(in oklab, var(--background) 30%, transparent), transparent);
+  --gradient-grid: linear-gradient(to right, color-mix(in oklab, var(--foreground) 100%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklab, var(--foreground) 100%, transparent) 1px, transparent 1px);
+  --gradient-aurora-accent: radial-gradient(circle, var(--accent-end) 0%, transparent 60%);
+  --gradient-aurora-primary: radial-gradient(circle, var(--primary) 0%, transparent 60%);
+  --gradient-aurora-mobile: radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--accent-end) 30%, transparent) 0%, transparent 60%);
+  --gradient-spotlight: radial-gradient(circle, color-mix(in oklab, var(--primary) 22%, transparent) 0%, transparent 60%);
+  --glow-lg: 0 0 80px -10px color-mix(in oklab, var(--primary) 50%, transparent);
+  --glow-sm: 0 0 30px -5px color-mix(in oklab, var(--primary) 40%, transparent);
+  --text-shadow-soft: 0 4px 30px color-mix(in oklab, var(--background) 25%, transparent);
 }
 
 @layer base {
@@ -110,11 +138,41 @@
 @utility glass {
   background: color-mix(in oklab, var(--surface) 70%, transparent);
   backdrop-filter: blur(20px) saturate(140%);
-  border: 1px solid color-mix(in oklab, white 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
 }
 
 @utility section-frame {
   border-radius: 2rem;
-  border: 1px solid color-mix(in oklab, white 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
   background: var(--surface);
+}
+
+@utility bg-brand-gradient { background: var(--gradient-brand); }
+@utility bg-violet-gradient { background: var(--gradient-violet); }
+@utility bg-primary-gradient { background: var(--gradient-primary); }
+@utility bg-surface-gradient { background: var(--gradient-surface); }
+@utility bg-community-gradient { background: var(--gradient-community); }
+@utility bg-image-overlay { background: var(--gradient-image-overlay); }
+@utility bg-site-grid { background-image: var(--gradient-grid); background-size: 60px 60px; }
+@utility bg-aurora-accent { background: var(--gradient-aurora-accent); }
+@utility bg-aurora-primary { background: var(--gradient-aurora-primary); }
+@utility bg-aurora-mobile { background: var(--gradient-aurora-mobile); }
+@utility bg-spotlight { background: var(--gradient-spotlight); }
+@utility text-shadow-soft { text-shadow: var(--text-shadow-soft); }
+
+@utility mask-fade-wide {
+  mask-image: linear-gradient(to right, transparent, var(--background) 10%, var(--background) 90%, transparent);
+}
+
+@utility mask-fade-edge {
+  mask-image: linear-gradient(to right, transparent, var(--background) 5%, var(--background) 95%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
