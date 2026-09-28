@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useInView, type Variants } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import {
   Code2, Smartphone, Palette, Search, Cloud, ArrowUpRight,
