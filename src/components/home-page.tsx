@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { TextEffect } from "@/components/text-effect";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workRollingPanda from "@/assets/work-rollingpanda.jpg";
 import workCandidClicks from "@/assets/work-candidclicks.jpg";
@@ -31,7 +32,7 @@ export const socialLinks = [
 // ────────────────────────────────────────────────────────────
 function SectionTag({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted-foreground">
+    <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">
       <span className="size-1.5 rounded-full bg-primary" /> {children}
     </div>
   );
@@ -43,19 +44,18 @@ function PillButton({
   const base = "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-all duration-300";
   const styles = {
     primary: "bg-primary text-primary-foreground hover:scale-[1.03]",
-    white: "bg-white text-black hover:scale-[1.03]",
-    ghost: "border border-white/15 bg-white/[0.03] text-foreground hover:bg-white/10",
-    violet: "text-white hover:scale-[1.03]",
+    white: "bg-inverse text-inverse-foreground hover:scale-[1.03]",
+    ghost: "border border-border bg-surface-elevated/40 text-foreground hover:bg-surface-elevated",
+    violet: "bg-accent-end text-foreground hover:scale-[1.03]",
   }[variant];
-  const style = variant === "violet" ? { background: "var(--violet)" } : undefined;
   const inner = (
     <>
       {children}
       <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
     </>
   );
-  if (to) return <Link to={to} className={`${base} ${styles}`} style={style}>{inner}</Link>;
-  return <a href={href ?? "#"} className={`${base} ${styles}`} style={style}>{inner}</a>;
+  if (to) return <Link to={to} className={`${base} ${styles}`}>{inner}</Link>;
+  return <a href={href ?? "#"} className={`${base} ${styles}`}>{inner}</a>;
 }
 
 // ────────────────────────────────────────────────────────────
@@ -109,8 +109,7 @@ function PremiumBackground() {
         <div className="absolute inset-0 opacity-60"
           style={{ background: "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--violet) 30%, transparent) 0%, transparent 60%)" }} />
       )}
-      <div className="absolute inset-0 opacity-[0.04]"
-        style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
+      <div className="bg-site-grid absolute inset-0 opacity-[0.04]" />
     </div>
   );
 }
@@ -221,9 +220,9 @@ function Nav() {
       transition={{ duration: 0.8 }}
       className="fixed inset-x-0 top-0 z-50 px-4 pt-4"
     >
-      <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-white/10 px-4 py-2.5 transition-all duration-500 sm:px-6 ${scrolled ? "bg-black/70 backdrop-blur-xl" : "bg-black/30 backdrop-blur-md"}`}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-500 sm:px-6 ${scrolled ? "bg-background/70 backdrop-blur-xl" : "bg-background/30 backdrop-blur-md"}`}>
         <Link to="/" className="flex items-center gap-2.5">
-          <div className="grid size-9 place-items-center rounded-lg bg-white">
+          <div className="grid size-9 place-items-center rounded-lg bg-inverse">
             <img src={tdfLogo} alt="TheDevFlo brand mark" className="size-7 object-contain" />
           </div>
           <span className="text-display text-base font-bold tracking-tight">TheDevFlo</span>
@@ -231,9 +230,9 @@ function Nav() {
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) =>
             l.to ? (
-              <Link key={l.label} to={l.to} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</Link>
+              <Link key={l.label} to={l.to} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-surface-elevated hover:text-foreground">{l.label}</Link>
             ) : (
-              <a key={l.label} href={l.href} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground">{l.label}</a>
+              <a key={l.label} href={l.href} className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-surface-elevated hover:text-foreground">{l.label}</a>
             )
           )}
         </nav>
@@ -260,25 +259,22 @@ function Hero() {
 
       <motion.div style={isMobile ? undefined : { y }} className="mx-auto mb-12 grid max-w-3xl grid-cols-3 gap-3 sm:gap-5">
         {[
-          { letter: "T", bg: "linear-gradient(135deg, var(--violet), color-mix(in oklab, var(--violet) 55%, black))", color: "white" },
-          { letter: "D", bg: "linear-gradient(160deg, color-mix(in oklab, var(--primary) 95%, white 5%), color-mix(in oklab, var(--primary) 55%, black))", color: "var(--primary-foreground)" },
-          { letter: "F", bg: "linear-gradient(145deg, oklch(0.18 0 0), oklch(0.08 0 0))", color: "var(--primary)" },
+          { letter: "T", className: "bg-violet-gradient text-foreground" },
+          { letter: "D", className: "bg-primary-gradient text-primary-foreground" },
+          { letter: "F", className: "bg-surface-gradient text-primary" },
         ].map((c, i) => (
           <motion.div
             key={c.letter}
             initial={{ opacity: 0, y: -40 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as any }}
-            className="relative grid aspect-square place-items-center overflow-hidden rounded-2xl border border-white/10 sm:rounded-[1.75rem]"
-            style={{ background: c.bg }}
+            className={`relative grid aspect-square place-items-center overflow-hidden rounded-2xl border border-border sm:rounded-[1.75rem] ${c.className}`}
           >
             <span
-              className="text-display select-none"
+              className="text-display text-shadow-soft select-none"
               style={{
-                color: c.color,
                 fontSize: "clamp(3.5rem, 10vw, 7rem)",
                 fontWeight: 700,
                 lineHeight: 1,
-                textShadow: "0 4px 30px rgba(0,0,0,0.25)",
               }}
             >
               {c.letter}
@@ -288,16 +284,13 @@ function Hero() {
       </motion.div>
 
       <div className="mx-auto grid max-w-6xl gap-8 pb-24 sm:grid-cols-[1.4fr_1fr] sm:gap-12">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as any }}
-          style={{ WebkitFontSmoothing: "antialiased", textRendering: "optimizeLegibility" }}
+        <TextEffect
+          as="h1"
           className="text-display text-[2.6rem] font-bold leading-[1] tracking-tighter sm:text-7xl md:text-[5.5rem]"
         >
           Engineering <span className="text-primary">Velocity.</span><br />
           Designing <span className="text-primary">Excellence.</span>
-        </motion.h1>
+        </TextEffect>
 
 
         <motion.div
@@ -326,15 +319,15 @@ function WhoWeAre() {
     <section className="px-4">
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
         <div className="grid gap-10 sm:grid-cols-[1fr_2fr]">
-          <h2 className="text-display text-5xl sm:text-6xl md:text-7xl">Who<br />we are</h2>
+          <TextEffect as="h2" className="text-display text-5xl sm:text-6xl md:text-7xl">Who<br />we are</TextEffect>
           <div className="flex flex-col justify-end gap-6">
             <p className="max-w-xl text-lg text-foreground/90 sm:text-xl">
               We help ambitious teams grow their products, get to market, and connect with users — through engineering, design, and SEO that compound.
             </p>
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">Engineering</span>
-              <span className="rounded-full px-4 py-1.5 text-sm font-medium text-white" style={{ background: "var(--violet)" }}>Design</span>
-              <span className="rounded-full border border-white/15 px-4 py-1.5 text-sm text-foreground">Cloud</span>
+              <span className="rounded-full bg-accent-end px-4 py-1.5 text-sm font-medium text-foreground">Design</span>
+              <span className="rounded-full border border-border px-4 py-1.5 text-sm text-foreground">Cloud</span>
             </div>
           </div>
         </div>
@@ -344,7 +337,7 @@ function WhoWeAre() {
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
             <div className="flex w-max animate-marquee gap-14">
               {row.map((b, i) => (
-                <span key={i} className="text-display whitespace-nowrap text-3xl font-bold text-white/60 sm:text-4xl">{b}</span>
+                <span key={i} className="text-display whitespace-nowrap text-3xl font-bold text-foreground/60 sm:text-4xl">{b}</span>
               ))}
             </div>
           </div>
@@ -369,12 +362,12 @@ function Services() {
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="mb-16 max-w-3xl">
           <SectionTag>What we do</SectionTag>
-          <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
             TheDevFlo gets you <span className="text-primary">access to</span>
-          </h2>
+          </TextEffect>
         </motion.div>
 
-        <div className="divide-y divide-white/10 border-y border-white/10">
+        <div className="divide-y divide-border border-y border-border">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -384,7 +377,7 @@ function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.06 }}
-                className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 py-8 transition-colors hover:bg-white/[0.02] sm:py-10"
+                className="group grid grid-cols-[auto_1fr_auto] items-center gap-6 py-8 transition-colors hover:bg-surface-elevated/30 sm:py-10"
               >
                 <span className="text-display text-2xl text-primary sm:text-3xl">{s.n}</span>
                 <div className="min-w-0">
@@ -395,7 +388,7 @@ function Services() {
                   <p className="mt-2 max-w-2xl text-sm text-muted-foreground sm:text-base">{s.desc}</p>
                   <div className="mt-3 flex flex-wrap gap-1.5">
                     {s.tags.map((t) => (
-                      <span key={t} className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-0.5 text-xs text-muted-foreground">{t}</span>
+                      <span key={t} className="rounded-full border border-border bg-surface-elevated/40 px-2.5 py-0.5 text-xs text-muted-foreground">{t}</span>
                     ))}
                   </div>
                 </div>
@@ -424,9 +417,9 @@ function Work() {
           className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div>
             <SectionTag>Featured work</SectionTag>
-            <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+            <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
               Selected <span className="text-primary">projects.</span>
-            </h2>
+            </TextEffect>
           </div>
           <p className="max-w-md text-sm text-muted-foreground">
             A handful of products we've shipped — from zero-to-launch and beyond.
@@ -444,15 +437,15 @@ function Work() {
             >
               <Link
                 to={p.href}
-                className="group relative block overflow-hidden rounded-3xl border border-white/10"
+                className="group relative block overflow-hidden rounded-3xl border border-border"
               >
                 <img src={p.image} alt={`${p.name} ${p.tag.toLowerCase()} project preview`} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 sm:p-7">
+                <div className="bg-image-overlay absolute inset-x-0 bottom-0 flex items-end justify-between p-6 sm:p-7">
                   <div>
-                    <div className="text-xs uppercase tracking-widest text-white/70">{p.tag}</div>
-                    <h3 className="text-display mt-1 text-3xl text-white sm:text-4xl">{p.name}</h3>
+                    <div className="text-xs uppercase tracking-widest text-foreground/70">{p.tag}</div>
+                    <h3 className="text-display mt-1 text-3xl text-foreground sm:text-4xl">{p.name}</h3>
                   </div>
-                  <div className="grid size-11 place-items-center rounded-full bg-white text-black transition-transform group-hover:rotate-45">
+                  <div className="grid size-11 place-items-center rounded-full bg-inverse text-inverse-foreground transition-transform group-hover:rotate-45">
                     <ArrowUpRight className="size-5" />
                   </div>
                 </div>
@@ -480,16 +473,16 @@ function Process() {
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14 max-w-3xl">
           <SectionTag>How we work</SectionTag>
-          <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
             A process built for <span className="text-primary">velocity.</span>
-          </h2>
+          </TextEffect>
         </motion.div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((s, i) => (
             <motion.div key={s.n}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+              className="rounded-2xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-display text-3xl text-primary">{s.n}</div>
               <h3 className="text-display mt-6 text-xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
@@ -534,16 +527,16 @@ function Why() {
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-14 max-w-2xl">
           <SectionTag>Why TheDevFlo</SectionTag>
-          <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
             Built different.<br /><span className="text-primary">Shipped faster.</span>
-          </h2>
+          </TextEffect>
         </motion.div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {stats.map((s, i) => (
             <motion.div key={s.label}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+              className="rounded-2xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-display text-4xl text-primary sm:text-5xl md:text-6xl">
                 <Counter to={s.value} suffix={s.suffix} />
               </div>
@@ -572,14 +565,14 @@ function Testimonials() {
       <div className="section-frame mx-auto max-w-6xl overflow-hidden px-6 py-14 sm:px-10 sm:py-20">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-12">
           <SectionTag>Testimonials</SectionTag>
-          <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
             Words from <span className="text-primary">founders.</span>
-          </h2>
+          </TextEffect>
         </motion.div>
         <div className="relative -mx-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)] sm:-mx-10">
           <div className="flex w-max animate-marquee gap-5 px-6" style={{ animationDuration: "60s" }}>
             {row.map((r, i) => (
-              <div key={i} className="w-[320px] shrink-0 rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:w-[400px]">
+              <div key={i} className="w-[320px] shrink-0 rounded-2xl border border-border bg-surface-elevated/30 p-6 sm:w-[400px]">
                 <div className="flex gap-0.5 text-primary">
                   {[...Array(5)].map((_, k) => <Star key={k} className="size-3.5 fill-current" />)}
                 </div>
@@ -609,9 +602,9 @@ function Tech() {
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
         <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-12 max-w-2xl">
           <SectionTag>Tech stack</SectionTag>
-          <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
             Tools we <span className="text-primary">love.</span>
-          </h2>
+          </TextEffect>
         </motion.div>
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
           {tech.map((t, i) => (
@@ -619,7 +612,7 @@ function Tech() {
               initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }} transition={{ delay: i * 0.04, duration: 0.4 }}
               whileHover={{ y: -4 }}
-              className="group grid aspect-square place-items-center rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-center text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground sm:text-sm">
+              className="group grid aspect-square place-items-center rounded-2xl border border-border bg-surface-elevated/30 p-4 text-center text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground sm:text-sm">
               <div className="flex flex-col items-center gap-2">
                 <Zap className="size-4 text-primary" />
                 {t}
@@ -650,9 +643,9 @@ function BlogTeaser() {
           className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div>
             <SectionTag>Latest tech news</SectionTag>
-            <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+            <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
               From the <span className="text-primary">blog.</span>
-            </h2>
+            </TextEffect>
           </div>
           <PillButton to="/blog" variant="ghost">View all posts</PillButton>
         </motion.div>
@@ -663,7 +656,7 @@ function BlogTeaser() {
               key={p.slug} href={`/blog/${p.slug}`}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-white/[0.02] p-6 transition-colors hover:border-primary/30"
+              className="group flex flex-col rounded-3xl border border-border bg-surface-elevated/30 p-6 transition-colors hover:border-primary/30"
             >
               <span className="self-start rounded-full bg-primary/15 px-2.5 py-0.5 text-xs font-medium text-primary">{p.tag}</span>
               <h3 className="text-display mt-5 text-2xl">{p.title}</h3>
@@ -689,14 +682,13 @@ function BlogTeaser() {
 function Community() {
   return (
     <section id="community" className="mt-24 px-4">
-      <div className="section-frame mx-auto max-w-6xl overflow-hidden px-6 py-14 sm:px-10 sm:py-20"
-        style={{ background: "linear-gradient(135deg, color-mix(in oklab, var(--violet) 25%, var(--surface)), var(--surface))" }}>
+      <div className="section-frame bg-community-gradient mx-auto max-w-6xl overflow-hidden px-6 py-14 sm:px-10 sm:py-20">
         <div className="grid gap-10 sm:grid-cols-[1.3fr_1fr] sm:items-center">
           <div>
             <SectionTag>Community</SectionTag>
-            <h2 className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
+            <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
               Join <span className="text-primary">TheDevFlo</span> community.
-            </h2>
+            </TextEffect>
             <p className="mt-6 max-w-lg text-base text-muted-foreground sm:text-lg">
               Connect with developers, founders, designers, and tech enthusiasts building the next wave of products.
             </p>
@@ -708,7 +700,7 @@ function Community() {
           <div className="grid grid-cols-3 gap-3">
             {socialLinks.map(({ name, Icon, href }) => (
               <a key={name} href={href} target="_blank" rel="noreferrer"
-                className="group flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] p-3 text-center transition-all hover:border-primary/40 hover:bg-white/[0.06]">
+                className="group flex aspect-square flex-col items-center justify-center gap-2 rounded-2xl border border-border bg-surface-elevated/40 p-3 text-center transition-all hover:border-primary/40 hover:bg-surface-elevated">
                 <Icon className="size-6 text-primary transition-transform group-hover:scale-110" />
                 <span className="text-[10px] font-medium text-muted-foreground">{name}</span>
               </a>
@@ -729,16 +721,16 @@ function CTA() {
         viewport={{ once: true }} transition={{ duration: 0.8 }}
         className="mx-auto max-w-6xl rounded-[2rem] bg-primary p-10 text-center sm:p-20"
       >
-        <h2 className="text-display mx-auto max-w-3xl text-5xl text-primary-foreground sm:text-7xl">
+        <TextEffect as="h2" className="text-display mx-auto max-w-3xl text-5xl text-primary-foreground sm:text-7xl">
           Ready to build something amazing?
-        </h2>
+        </TextEffect>
         <p className="mx-auto mt-6 max-w-xl text-primary-foreground/80">
           Whether you're a startup, business, or creator — TheDevFlo helps turn ideas into scalable digital products.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <PillButton href="mailto:hello@thedevflo.com" variant="white">Start project</PillButton>
           <a href="mailto:hello@thedevflo.com"
-            className="group inline-flex items-center justify-center gap-2 rounded-full border border-black/20 px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-black/10">
+            className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary-foreground/20 px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary-foreground/10">
             Book free consultation
             <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
@@ -755,12 +747,12 @@ function Footer() {
     { title: "Resources", links: [{ label: "Blog", href: "/blog" }, { label: "Community", href: "/#community" }, { label: "Contact", href: "mailto:hello@thedevflo.com" }] },
   ];
   return (
-    <footer className="mt-24 border-t border-white/10 px-4 pb-10 pt-20">
+    <footer className="mt-24 border-t border-border px-4 pb-10 pt-20">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           <div className="col-span-2">
             <div className="flex items-center gap-2.5">
-              <div className="grid size-9 place-items-center rounded-lg bg-white">
+              <div className="grid size-9 place-items-center rounded-lg bg-inverse">
                 <img src={tdfLogo} alt="TheDevFlo brand mark" className="size-7 object-contain" />
               </div>
               <span className="text-display text-base font-bold">TheDevFlo</span>
@@ -771,12 +763,12 @@ function Footer() {
             <div className="mt-6 flex flex-wrap gap-2">
               {socialLinks.map(({ name, Icon, href }) => (
                 <a key={name} href={href} target="_blank" rel="noreferrer" aria-label={name}
-                  className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] transition-colors hover:text-primary">
+                  className="grid size-10 place-items-center rounded-full border border-border bg-surface-elevated/40 transition-colors hover:text-primary">
                   <Icon className="size-4" />
                 </a>
               ))}
               <a href="mailto:hello@thedevflo.com" aria-label="Email"
-                className="grid size-10 place-items-center rounded-full border border-white/10 bg-white/[0.03] transition-colors hover:text-primary">
+                 className="grid size-10 place-items-center rounded-full border border-border bg-surface-elevated/40 transition-colors hover:text-primary">
                 <Mail className="size-4" />
               </a>
             </div>
@@ -792,7 +784,7 @@ function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-muted-foreground">
+        <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground">
           <div>© {new Date().getFullYear()} TheDevFlo. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <a href="mailto:hello@thedevflo.com" className="hover:text-primary">hello@thedevflo.com</a>
