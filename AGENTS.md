@@ -15,3 +15,4 @@
 - Keep project enquiries client-only and prepare a mailto brief instead of claiming submission; static Hostinger hosting cannot receive forms or securely run AI.
 - Share agency FAQ data and basic page metadata through agency-content; reuse factual copy across the homepage and content pages.
 - Use dedicated TanStack content routes for company, contact, services and legal information; static hosting needs a corresponding HTML shell for each path.
+- Keep the TanStack packages on the last verified compatible versions until serialization compatibility is resolved; the existing seroval override lacks isStream required by newer server packages.
