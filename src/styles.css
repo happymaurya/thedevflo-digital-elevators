@@ -207,3 +207,54 @@ main .section-frame.bg-community-gradient {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- TDF shatter intro (3s, transform/opacity only) ---------- */
+:root {
+  --intro-dark: radial-gradient(ellipse at 50% 60%, color-mix(in oklab, var(--primary) 14%, var(--background)), var(--background) 70%);
+  --intro-light: oklch(1 0 0);
+  --intro-shadow: 0 24px 40px -18px oklch(0 0 0 / 0.35);
+}
+.intro-root { background: var(--intro-light); } .intro-root[data-play] { animation: intro-out 3s linear forwards; }
+.intro-root::before { content: ""; position: absolute; inset: 0; background: var(--intro-dark); } .intro-root[data-play]::before { animation: intro-bg 3s linear forwards; }
+.intro-stage { position: relative; }
+.intro-crack { opacity: 0; } [data-play] .intro-crack { animation: intro-crack 0.6s linear forwards; }
+.intro-crack polyline { fill: none; stroke: var(--foreground); stroke-width: 1.2; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 3px var(--primary-glow)); }
+.intro-shard { will-change: transform, opacity; } [data-play] .intro-shard { animation: intro-shard 1.5s forwards; }
+.intro-particle { opacity: 0; will-change: transform, opacity; } [data-play] .intro-particle { animation: intro-particle 1.2s cubic-bezier(.4,0,1,1) forwards; }
+.intro-final { opacity: 0; transform: translateY(16px) scale(.96); } [data-play] .intro-final { animation: intro-final 3s cubic-bezier(.22,1,.36,1) forwards; }
+.intro-final-box { box-shadow: var(--intro-shadow); border-color: transparent; }
+.intro-reflection { transform: scaleY(-1); opacity: .18; mask-image: linear-gradient(to top, var(--background), transparent 55%); }
+.intro-reflection .intro-box { border-color: transparent; }
+
+@keyframes intro-bg { 0%, 60% { opacity: 1; } 83%, 100% { opacity: 0; } }
+@keyframes intro-crack { 0%, 50% { opacity: 0; } 75% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes intro-shard {
+  0% { transform: translate3d(0,0,0) rotate(0); opacity: 1; animation-timing-function: ease-out; }
+  20% { transform: translate3d(calc(var(--dx) * .2), -8px, 0) rotate(calc(var(--rot) * .08)); animation-timing-function: cubic-bezier(.55,0,1,.45); }
+  85% { opacity: 1; }
+  100% { transform: translate3d(var(--dx), 75vh, 0) rotate(var(--rot)) scale(.85); opacity: 0; }
+}
+@keyframes intro-particle {
+  0% { transform: translate3d(0,0,0); opacity: 1; }
+  30% { transform: translate3d(calc(var(--px) * .6), -40px, 0); }
+  100% { transform: translate3d(var(--px), 60vh, 0) rotate(180deg); opacity: 0; }
+}
+@keyframes intro-final { 0%, 78% { opacity: 0; transform: translateY(16px) scale(.96); } 92%, 100% { opacity: 1; transform: none; } }
+@keyframes intro-out { 0%, 92% { opacity: 1; } 100% { opacity: 0; } }
+
+@media (min-width: 768px) and (hover: hover) {
+  @keyframes intro-shard {
+    0% { transform: translate3d(0,0,0) rotate(0); opacity: 1; filter: blur(0); animation-timing-function: ease-out; }
+    20% { transform: translate3d(calc(var(--dx) * .2), -8px, 0) rotate(calc(var(--rot) * .08)); animation-timing-function: cubic-bezier(.55,0,1,.45); }
+    70% { filter: blur(1.5px); }
+    85% { opacity: 1; }
+    100% { transform: translate3d(var(--dx), 75vh, 0) rotate(var(--rot)) scale(.85); opacity: 0; filter: blur(2px); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-root, .intro-root::before { animation: intro-out 3s linear forwards !important; }
+  .intro-root::before { opacity: 0; }
+  .intro-stage { display: none; }
+  .intro-final { animation: none !important; opacity: 1; transform: none; }
+}

@@ -1,3 +1,4 @@
+import { IntroShatter } from "@/components/intro-shatter";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import {
@@ -709,6 +710,7 @@ export { Nav, Footer };
 export default function HomePage() {
   return (
     <main className="relative">
+      <IntroShatter />
       <PremiumBackground />
       <CursorSpotlight />
       <FloatingLogos />
