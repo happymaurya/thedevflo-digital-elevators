@@ -406,6 +406,15 @@ const projects = [
 ];
 
 function Work() {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const element = carouselRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section id="work" className="mt-24 px-4">
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
@@ -422,32 +431,30 @@ function Work() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {projects.map((p, i) => (
-            <motion.div
-              key={p.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.7, delay: i * 0.1 }}
-            >
+        <div ref={carouselRef} className="project-carousel overflow-hidden" data-visible={isVisible}>
+          <div className="project-carousel-track flex w-max">
+          {[0, 1].map((copy) => <div key={copy} className="project-carousel-group flex shrink-0 gap-5 pr-5" aria-hidden={copy === 1 ? true : undefined}>
+          {projects.map((p) => (
               <Link
+                key={p.name}
                 to={p.href}
-                className="group relative block overflow-hidden rounded-3xl border border-border"
+                tabIndex={copy === 1 ? -1 : undefined}
+                className="project-carousel-card group block w-[280px] shrink-0 overflow-hidden rounded-lg border border-border bg-content-panel outline-none transition-colors hover:border-primary focus-visible:ring-2 focus-visible:ring-ring sm:w-[400px]"
               >
                 <img src={p.image} alt={`${p.name} ${p.tag.toLowerCase()} project preview`} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                <div className="bg-image-overlay absolute inset-x-0 bottom-0 flex items-end justify-between p-6 sm:p-7">
-                  <div>
-                    <div className="text-xs uppercase tracking-widest text-foreground/70">{p.tag}</div>
-                    <h3 className="text-display mt-1 text-3xl text-foreground sm:text-4xl">{p.name}</h3>
+                <div className="flex min-h-28 items-center justify-between gap-3 p-5 sm:p-6">
+                  <div className="min-w-0">
+                    <div className="text-xs text-muted-foreground">{p.tag}</div>
+                    <h3 className="mt-2 text-2xl font-semibold text-foreground sm:text-3xl">{p.name}</h3>
                   </div>
-                  <div className="grid size-11 place-items-center rounded-full bg-inverse text-inverse-foreground transition-transform group-hover:rotate-45">
+                  <div className="grid size-10 shrink-0 place-items-center rounded-full bg-inverse text-inverse-foreground transition-transform group-hover:rotate-45">
                     <ArrowUpRight className="size-5" />
                   </div>
                 </div>
               </Link>
-            </motion.div>
           ))}
+          </div>)}
+          </div>
         </div>
       </div>
     </section>
