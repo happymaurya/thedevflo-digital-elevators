@@ -5,6 +5,7 @@
 - [x] Add static email project brief and quote-request flow without invented pricing.
 - [x] Add factual privacy/cookie pages and project terms information without invented policies.
 - [x] Update static prerender/sitemap paths and validate the preview pages and email flow.
-- [ ] Regenerate public_html and upload to Hostinger — export awaits the permitted build workflow; hosting upload requires owner access.
+- [x] Regenerate public_html with the current site (WhatsApp chat link, black panels, project carousel).
+- [ ] Upload public_html to Hostinger — hosting upload requires owner access.
 - [ ] Live Ask Flo and file submission — blocked by static-only hosting; requires an online service.
 - [ ] Founder photo/year, verified reviews/results, approved pricing and final legal policies — awaiting owner details.
