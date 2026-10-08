@@ -10,6 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { TextEffect } from "@/components/text-effect";
 import { AboutSection, AiSection, FaqSection } from "@/components/agency-sections";
 import { ProjectBrief } from "@/components/project-brief";
+import { TdfIntro } from "@/components/tdf-intro";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workRollingPanda from "@/assets/work-rollingpanda.jpg";
 import workCandidClicks from "@/assets/work-candidclicks.jpg";
@@ -708,6 +709,8 @@ export { Nav, Footer };
 
 export default function HomePage() {
   return (
+    <>
+    <TdfIntro />
     <main className="relative">
       <PremiumBackground />
       <CursorSpotlight />
@@ -728,5 +731,6 @@ export default function HomePage() {
       <CTA />
       <Footer />
     </main>
+    </>
   );
 }
