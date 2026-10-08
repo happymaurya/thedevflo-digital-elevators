@@ -1,4 +1,5 @@
 # Website expansion
+- [x] Add consistent black content panels across the website and verify their appearance.
 - [x] Add founder/about, AI and SaaS service pages, technology details and FAQ.
 - [x] Deepen existing case studies and remove unsupported reviews/results.
 - [x] Add static email project brief and quote-request flow without invented pricing.
