@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 - Define all TheDevFlo visual colors and gradients as semantic Tailwind v4 tokens in `src/styles.css`; this keeps the full site palette consistent and themeable.
+- Use the shared content-panel utility for individual content boxes and the content-panel surface token for existing frames; this keeps page surfaces consistent without changing layouts.
 - Use the shared `TextEffect` component for prominent word-by-word heading reveals; it preserves reduced-motion accessibility and mobile performance.
 
 - Keep project enquiries client-only and prepare a mailto brief instead of claiming submission; static Hostinger hosting cannot receive forms or securely run AI.
