@@ -44,6 +44,7 @@
   --color-ring: var(--ring);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-content-panel: var(--content-panel);
 
   --shadow-glow: var(--glow-lg);
   --shadow-glow-sm: var(--glow-sm);
@@ -71,6 +72,7 @@
   --radius: 1rem;
   /* TheDevFlo palette: all site color roles are defined here. */
   --background: oklch(0 0 0);
+  --content-panel: oklch(0 0 0);
   --foreground: oklch(0.98 0 0);
   --surface: oklch(0.08 0 0);
   --surface-elevated: oklch(0.12 0 0);
@@ -144,7 +146,19 @@
 @utility section-frame {
   border-radius: 2rem;
   border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
-  background: var(--surface);
+  background: var(--content-panel);
+}
+
+@utility content-panel {
+  background: var(--content-panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Existing framed content uses the same opaque black surface on every page. */
+main :is(article, div, a)[class*="border-border"]:is([class*="rounded-3xl"], [class*="rounded-2xl"], [class*="rounded-[2rem]"]):not([class*="bg-violet-gradient"]):not([class*="bg-primary-gradient"]):not([class*="bg-surface-gradient"]),
+main .section-frame.bg-community-gradient {
+  background: var(--content-panel);
 }
 
 @utility bg-brand-gradient { background: var(--gradient-brand); }
