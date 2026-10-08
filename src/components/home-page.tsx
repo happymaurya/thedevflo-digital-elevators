@@ -28,7 +28,7 @@ export const socialLinks = [
   { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/thedevflo/" },
   { name: "Facebook", Icon: Facebook, href: "https://www.facebook.com/share/1Byp6KJSkR/" },
   { name: "X (Twitter)", Icon: Twitter, href: "https://x.com/thedevflo?s=11" },
-  { name: "WhatsApp Community", Icon: MessageCircle, href: "https://chat.whatsapp.com/GbalzxobDs2DPPpa08PYEe" },
+  { name: "WhatsApp", Icon: MessageCircle, href: "https://wa.me/919305558338" },
 ];
 
 // ────────────────────────────────────────────────────────────
@@ -600,7 +600,7 @@ function Community() {
               Connect with developers, founders, designers, and tech enthusiasts building the next wave of products.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <PillButton href="https://chat.whatsapp.com/GbalzxobDs2DPPpa08PYEe">Join WhatsApp community</PillButton>
+              <PillButton href="https://wa.me/919305558338">Message TheDevFlo on WhatsApp</PillButton>
               <PillButton href="https://www.linkedin.com/company/109282455/" variant="ghost">Follow on LinkedIn</PillButton>
             </div>
           </div>
