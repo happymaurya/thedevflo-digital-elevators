@@ -9,7 +9,7 @@ const types = ["Website", "Web App", "Mobile App", "SaaS", "AI App", "E-commerce
 export function ProjectBrief() {
   const [error, setError] = useState("");
   const [emailLink, setEmailLink] = useState("");
-  const fieldClass = "mt-2 w-full rounded-md border border-input bg-background px-3 py-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring";
+  const fieldClass = "mt-2 block w-full rounded-md border border-foreground/70 bg-background px-3 py-3 text-sm text-foreground outline-none focus:border-foreground focus:ring-2 focus:ring-ring";
   function prepare(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const result = briefSchema.safeParse(Object.fromEntries(new FormData(event.currentTarget)));
