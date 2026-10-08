@@ -17,11 +17,9 @@ export const Route = createFileRoute("/projects/candid-clicks")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://thedevflo.com/projects/candid-clicks" },
-      { property: "og:image", content: cover },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: cover },
     ],
     links: [{ rel: "canonical", href: "https://thedevflo.com/projects/candid-clicks" }],
   }),
@@ -29,12 +27,7 @@ export const Route = createFileRoute("/projects/candid-clicks")({
 });
 
 function CandidClicksPage() {
-  const stats = [
-    { k: "10+", v: "Years since 2014" },
-    { k: "500+", v: "Weddings captured" },
-    { k: "4×", v: "Cities served" },
-    { k: "5★", v: "Client rating" },
-  ];
+  const stats = [{"k": "Photography", "v": "Industry"}, {"k": "Portfolio", "v": "Primary experience"}, {"k": "Enquiries", "v": "User journey"}, {"k": "Live website", "v": "Deliverable"}];
   const stack = ["WordPress", "Elementor", "PHP", "MySQL", "Tailwind ideas", "Cloud CDN"];
   const services = [
     "Wedding photography",
@@ -71,9 +64,9 @@ function CandidClicksPage() {
               Candid Clicks — a studio site as beautiful as their <span className="text-primary">frames.</span>
             </TextEffect>
             <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
-              Candid Clicks is one of Gorakhpur's most trusted wedding photography studios,
-              serving Lucknow, Kanpur and beyond since 2014. TheDevFlo shaped a website that
-              matches the emotion in their photographs and turns visitors into bookings.
+              Candid Clicks is a wedding photography studio in Gorakhpur,
+              serving Lucknow, Kanpur and beyond . TheDevFlo shaped a website that
+              matches the emotion in their photographs and helps visitors explore their work and make enquiries.
             </p>
             <a href="https://candidclicks.in" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-90">
               Visit candidclicks.in <ExternalLink className="size-4" />
@@ -104,7 +97,7 @@ function CandidClicksPage() {
           <div>
             <h2 className="text-display text-3xl sm:text-4xl">The brief</h2>
             <p className="mt-4 text-muted-foreground">
-              A decade-old wedding photography studio needed a digital presence that felt as
+              A wedding photography studio needed a digital presence that felt as
               cinematic as their work — timeless imagery, local SEO for UP's biggest wedding
               cities, and a booking flow that converts scrolls into calls.
             </p>
@@ -133,7 +126,7 @@ function CandidClicksPage() {
             <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Client</div>
               <div className="text-display mt-1 text-2xl">Candid Clicks</div>
-              <div className="mt-1 text-sm text-muted-foreground">Saurabh Raj Verma · Gorakhpur, UP · Est. 2014</div>
+              <div className="mt-1 text-sm text-muted-foreground">Saurabh Raj Verma · Gorakhpur, UP</div>
             </div>
             <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Services</div>
@@ -156,12 +149,12 @@ function CandidClicksPage() {
         </div>
       </section>
 
-      <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
-          <p className="text-display text-2xl sm:text-3xl">
-            "TheDevFlo rebuilt our studio site into a cinematic showcase — bookings from Gorakhpur & Lucknow doubled in weeks."
-          </p>
-          <div className="mt-5 text-sm text-muted-foreground">Saurabh Verma · Founder, Candid Clicks</div>
+      <section className="mx-auto mt-20 max-w-6xl px-4">
+        <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-2">
+          <div><h2 className="text-display text-3xl">The challenge</h2><p className="mt-4 leading-relaxed text-muted-foreground">Balance expressive wedding imagery with clear service information and a direct enquiry journey. Visitors need to explore the photography without losing sight of how to contact the studio.</p></div>
+          <div><h2 className="text-display text-3xl">Our approach</h2><p className="mt-4 leading-relaxed text-muted-foreground">The portfolio-led structure brings imagery, service categories and contact opportunities into one journey. The project screenshot above shows the visual treatment; the live site lets visitors explore the current experience.</p></div>
+          <div><h2 className="text-display text-3xl">Delivery & outcome</h2><p className="mt-4 leading-relaxed text-muted-foreground">A live digital experience, with the project screenshot and website linked above. Delivery dates and measured business results are not published without verified project records.</p></div>
+          <div><h2 className="text-display text-3xl">Plan a similar project</h2><p className="mt-4 leading-relaxed text-muted-foreground">Share your audience, content, key workflows and launch goals. We can use this project as a reference when discussing your own scope.</p><a href="/contact" className="mt-5 inline-block text-primary">Request a project proposal →</a></div>
         </div>
       </section>
 

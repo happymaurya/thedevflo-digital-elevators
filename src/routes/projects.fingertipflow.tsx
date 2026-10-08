@@ -18,11 +18,9 @@ export const Route = createFileRoute("/projects/fingertipflow")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://thedevflo.com/projects/fingertipflow" },
-      { property: "og:image", content: cover },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: cover },
     ],
     links: [{ rel: "canonical", href: "https://thedevflo.com/projects/fingertipflow" }],
   }),
@@ -30,12 +28,7 @@ export const Route = createFileRoute("/projects/fingertipflow")({
 });
 
 function FingertipFlowPage() {
-  const stats = [
-    { k: "6", v: "Practice modes" },
-    { k: "<1s", v: "Time to first keystroke" },
-    { k: "100%", v: "Client-side · offline-ready" },
-    { k: "0 ads", v: "Distraction-free" },
-  ];
+  const stats = [{"k": "Typing practice", "v": "Product"}, {"k": "Keyboard-first", "v": "Interaction"}, {"k": "Live statistics", "v": "Feedback"}, {"k": "Web app", "v": "Deliverable"}];
   const stack = ["React", "TypeScript", "Vite", "Tailwind CSS", "LocalStorage", "PWA"];
   const modes = ["Words", "Quotes", "Code", "Custom", "Zen", "Lesson"];
   const features = [
@@ -153,12 +146,12 @@ function FingertipFlowPage() {
         </div>
       </section>
 
-      <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
-          <p className="text-display text-2xl sm:text-3xl">
-            "TheDevFlo turned a rough idea into a shipped product in weeks — FingertipFlow feels effortless to use."
-          </p>
-          <div className="mt-5 text-sm text-muted-foreground">Product team · FingertipFlow</div>
+      <section className="mx-auto mt-20 max-w-6xl px-4">
+        <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-2">
+          <div><h2 className="text-display text-3xl">The challenge</h2><p className="mt-4 leading-relaxed text-muted-foreground">Keep typing practice focused while providing immediate feedback. Multiple practice options need to be discoverable without distracting from the typing area.</p></div>
+          <div><h2 className="text-display text-3xl">Our approach</h2><p className="mt-4 leading-relaxed text-muted-foreground">The interface centres the typing surface and keeps mode selection and statistics nearby. A keyboard-focused interaction model makes practice the primary task, not navigation.</p></div>
+          <div><h2 className="text-display text-3xl">Delivery & outcome</h2><p className="mt-4 leading-relaxed text-muted-foreground">A live digital experience, with the project screenshot and website linked above. Delivery dates and measured business results are not published without verified project records.</p></div>
+          <div><h2 className="text-display text-3xl">Plan a similar project</h2><p className="mt-4 leading-relaxed text-muted-foreground">Share your audience, content, key workflows and launch goals. We can use this project as a reference when discussing your own scope.</p><a href="/contact" className="mt-5 inline-block text-primary">Request a project proposal →</a></div>
         </div>
       </section>
 

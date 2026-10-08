@@ -69,7 +69,7 @@ export function ContentPage({
         <div className="mx-auto flex max-w-4xl flex-col items-start gap-4 rounded-3xl border border-primary/20 bg-primary/[0.04] p-8 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h3 className="text-display text-2xl">Ready to build?</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Email hello@thedevflo.com and we'll reply within one business day.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Share your goals with hello@thedevflo.com to discuss scope and next steps.</p>
           </div>
           <a href={cta.href} className="inline-flex items-center gap-2 rounded-full bg-button px-5 py-3 text-sm font-semibold text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-button-hover">
             {cta.label} <ArrowUpRight className="size-4" />

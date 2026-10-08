@@ -9,17 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as RefundsRouteImport } from './routes/refunds'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
 import { Route as ServicesUiUxDesignRouteImport } from './routes/services.ui-ux-design'
 import { Route as ServicesSeoRouteImport } from './routes/services.seo'
+import { Route as ServicesSaasDevelopmentRouteImport } from './routes/services.saas-development'
 import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
 import { Route as ServicesCloudRouteImport } from './routes/services.cloud'
+import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
 import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
 import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
 import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
@@ -28,6 +36,11 @@ import { Route as BlogNextJsSaasMvpRouteImport } from './routes/blog.next-js-saa
 import { Route as BlogMernVsNextjs2026RouteImport } from './routes/blog.mern-vs-nextjs-2026'
 import { Route as BlogHireSoftwareAgencyIndiaRouteImport } from './routes/blog.hire-software-agency-india'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -38,9 +51,34 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogRoute = BlogRouteImport.update({
   id: '/blog',
   path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -73,6 +111,11 @@ const ServicesSeoRoute = ServicesSeoRouteImport.update({
   path: '/seo',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesSaasDevelopmentRoute = ServicesSaasDevelopmentRouteImport.update({
+  id: '/saas-development',
+  path: '/saas-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
   id: '/mobile-apps',
   path: '/mobile-apps',
@@ -81,6 +124,11 @@ const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
 const ServicesCloudRoute = ServicesCloudRouteImport.update({
   id: '/cloud',
   path: '/cloud',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
+  id: '/ai-automation',
+  path: '/ai-automation',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
@@ -122,9 +170,15 @@ const BlogHireSoftwareAgencyIndiaRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
@@ -132,8 +186,10 @@ export interface FileRoutesByFullPath {
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/cloud': typeof ServicesCloudRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/saas-development': typeof ServicesSaasDevelopmentRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -142,7 +198,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
@@ -150,8 +212,10 @@ export interface FileRoutesByTo {
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/cloud': typeof ServicesCloudRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/saas-development': typeof ServicesSaasDevelopmentRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -161,9 +225,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/blog': typeof BlogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/cookies': typeof CookiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/refunds': typeof RefundsRoute
   '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/terms': typeof TermsRoute
   '/blog/hire-software-agency-india': typeof BlogHireSoftwareAgencyIndiaRoute
   '/blog/mern-vs-nextjs-2026': typeof BlogMernVsNextjs2026Route
   '/blog/next-js-saas-mvp': typeof BlogNextJsSaasMvpRoute
@@ -171,8 +241,10 @@ export interface FileRoutesById {
   '/projects/candid-clicks': typeof ProjectsCandidClicksRoute
   '/projects/fingertipflow': typeof ProjectsFingertipflowRoute
   '/projects/rolling-panda': typeof ProjectsRollingPandaRoute
+  '/services/ai-automation': typeof ServicesAiAutomationRoute
   '/services/cloud': typeof ServicesCloudRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
+  '/services/saas-development': typeof ServicesSaasDevelopmentRoute
   '/services/seo': typeof ServicesSeoRoute
   '/services/ui-ux-design': typeof ServicesUiUxDesignRoute
   '/services/web-development': typeof ServicesWebDevelopmentRoute
@@ -183,9 +255,15 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/blog'
+    | '/contact'
+    | '/cookies'
+    | '/privacy'
+    | '/refunds'
     | '/services'
     | '/sitemap.xml'
+    | '/terms'
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
@@ -193,8 +271,10 @@ export interface FileRouteTypes {
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/ai-automation'
     | '/services/cloud'
     | '/services/mobile-apps'
+    | '/services/saas-development'
     | '/services/seo'
     | '/services/ui-ux-design'
     | '/services/web-development'
@@ -203,7 +283,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/contact'
+    | '/cookies'
+    | '/privacy'
+    | '/refunds'
     | '/sitemap.xml'
+    | '/terms'
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
@@ -211,8 +297,10 @@ export interface FileRouteTypes {
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/ai-automation'
     | '/services/cloud'
     | '/services/mobile-apps'
+    | '/services/saas-development'
     | '/services/seo'
     | '/services/ui-ux-design'
     | '/services/web-development'
@@ -221,9 +309,15 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/blog'
+    | '/contact'
+    | '/cookies'
+    | '/privacy'
+    | '/refunds'
     | '/services'
     | '/sitemap.xml'
+    | '/terms'
     | '/blog/hire-software-agency-india'
     | '/blog/mern-vs-nextjs-2026'
     | '/blog/next-js-saas-mvp'
@@ -231,8 +325,10 @@ export interface FileRouteTypes {
     | '/projects/candid-clicks'
     | '/projects/fingertipflow'
     | '/projects/rolling-panda'
+    | '/services/ai-automation'
     | '/services/cloud'
     | '/services/mobile-apps'
+    | '/services/saas-development'
     | '/services/seo'
     | '/services/ui-ux-design'
     | '/services/web-development'
@@ -242,9 +338,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BlogRoute: typeof BlogRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  CookiesRoute: typeof CookiesRoute
+  PrivacyRoute: typeof PrivacyRoute
+  RefundsRoute: typeof RefundsRoute
   ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TermsRoute: typeof TermsRoute
   ProjectsCandidClicksRoute: typeof ProjectsCandidClicksRoute
   ProjectsFingertipflowRoute: typeof ProjectsFingertipflowRoute
   ProjectsRollingPandaRoute: typeof ProjectsRollingPandaRoute
@@ -252,6 +354,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -266,11 +375,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog': {
       id: '/blog'
       path: '/blog'
       fullPath: '/blog'
       preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -315,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSeoRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/saas-development': {
+      id: '/services/saas-development'
+      path: '/saas-development'
+      fullPath: '/services/saas-development'
+      preLoaderRoute: typeof ServicesSaasDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/mobile-apps': {
       id: '/services/mobile-apps'
       path: '/mobile-apps'
@@ -327,6 +478,13 @@ declare module '@tanstack/react-router' {
       path: '/cloud'
       fullPath: '/services/cloud'
       preLoaderRoute: typeof ServicesCloudRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ai-automation': {
+      id: '/services/ai-automation'
+      path: '/ai-automation'
+      fullPath: '/services/ai-automation'
+      preLoaderRoute: typeof ServicesAiAutomationRouteImport
       parentRoute: typeof ServicesRoute
     }
     '/projects/rolling-panda': {
@@ -400,8 +558,10 @@ const BlogRouteChildren: BlogRouteChildren = {
 const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 interface ServicesRouteChildren {
+  ServicesAiAutomationRoute: typeof ServicesAiAutomationRoute
   ServicesCloudRoute: typeof ServicesCloudRoute
   ServicesMobileAppsRoute: typeof ServicesMobileAppsRoute
+  ServicesSaasDevelopmentRoute: typeof ServicesSaasDevelopmentRoute
   ServicesSeoRoute: typeof ServicesSeoRoute
   ServicesUiUxDesignRoute: typeof ServicesUiUxDesignRoute
   ServicesWebDevelopmentRoute: typeof ServicesWebDevelopmentRoute
@@ -409,8 +569,10 @@ interface ServicesRouteChildren {
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesAiAutomationRoute: ServicesAiAutomationRoute,
   ServicesCloudRoute: ServicesCloudRoute,
   ServicesMobileAppsRoute: ServicesMobileAppsRoute,
+  ServicesSaasDevelopmentRoute: ServicesSaasDevelopmentRoute,
   ServicesSeoRoute: ServicesSeoRoute,
   ServicesUiUxDesignRoute: ServicesUiUxDesignRoute,
   ServicesWebDevelopmentRoute: ServicesWebDevelopmentRoute,
@@ -423,9 +585,15 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BlogRoute: BlogRouteWithChildren,
+  ContactRoute: ContactRoute,
+  CookiesRoute: CookiesRoute,
+  PrivacyRoute: PrivacyRoute,
+  RefundsRoute: RefundsRoute,
   ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TermsRoute: TermsRoute,
   ProjectsCandidClicksRoute: ProjectsCandidClicksRoute,
   ProjectsFingertipflowRoute: ProjectsFingertipflowRoute,
   ProjectsRollingPandaRoute: ProjectsRollingPandaRoute,

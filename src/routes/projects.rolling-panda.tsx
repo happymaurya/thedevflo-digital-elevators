@@ -17,11 +17,9 @@ export const Route = createFileRoute("/projects/rolling-panda")({
       { property: "og:description", content: DESC },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://thedevflo.com/projects/rolling-panda" },
-      { property: "og:image", content: cover },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
-      { name: "twitter:image", content: cover },
     ],
     links: [{ rel: "canonical", href: "https://thedevflo.com/projects/rolling-panda" }],
   }),
@@ -29,12 +27,7 @@ export const Route = createFileRoute("/projects/rolling-panda")({
 });
 
 function RollingPandaPage() {
-  const stats = [
-    { k: "25+", v: "Projects delivered" },
-    { k: "07", v: "Years in motion" },
-    { k: "03", v: "Awards & nods" },
-    { k: "∞", v: "Cups of chai" },
-  ];
+  const stats = [{"k": "Film & media", "v": "Industry"}, {"k": "Showreel", "v": "Primary experience"}, {"k": "Studio enquiries", "v": "User journey"}, {"k": "Live website", "v": "Deliverable"}];
   const stack = ["React", "TypeScript", "Framer Motion", "GSAP", "Lenis", "Tailwind CSS"];
   const features = [
     "Cinematic hero with full-bleed video treatment",
@@ -117,7 +110,7 @@ function RollingPandaPage() {
             <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Client</div>
               <div className="text-display mt-1 text-2xl">The Rolling Panda Productions</div>
-              <div className="mt-1 text-sm text-muted-foreground">Kanpur · India · Est. 2018</div>
+              <div className="mt-1 text-sm text-muted-foreground">Kanpur · India </div>
             </div>
             <div className="rounded-3xl border border-border bg-surface-elevated/30 p-6">
               <div className="text-xs uppercase tracking-widest text-muted-foreground">Services</div>
@@ -140,12 +133,12 @@ function RollingPandaPage() {
         </div>
       </section>
 
-      <section className="mt-20 px-4">
-        <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface-elevated/30 p-10 text-center">
-          <p className="text-display text-2xl sm:text-3xl">
-            "The site finally matches the energy of our films — cinematic, bold, unforgettable."
-          </p>
-          <div className="mt-5 text-sm text-muted-foreground">The Rolling Panda Studio</div>
+      <section className="mx-auto mt-20 max-w-6xl px-4">
+        <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-2">
+          <div><h2 className="text-display text-3xl">The challenge</h2><p className="mt-4 leading-relaxed text-muted-foreground">Give a film production portfolio enough visual space while keeping studio information and contact paths easy to find. Rich media needs deliberate loading and a usable experience on smaller screens.</p></div>
+          <div><h2 className="text-display text-3xl">Our approach</h2><p className="mt-4 leading-relaxed text-muted-foreground">A cinematic visual direction makes the work the focal point. Studio, service and contact information support the portfolio rather than competing with it. Explore the live website to see the current experience.</p></div>
+          <div><h2 className="text-display text-3xl">Delivery & outcome</h2><p className="mt-4 leading-relaxed text-muted-foreground">A live digital experience, with the project screenshot and website linked above. Delivery dates and measured business results are not published without verified project records.</p></div>
+          <div><h2 className="text-display text-3xl">Plan a similar project</h2><p className="mt-4 leading-relaxed text-muted-foreground">Share your audience, content, key workflows and launch goals. We can use this project as a reference when discussing your own scope.</p><a href="/contact" className="mt-5 inline-block text-primary">Request a project proposal →</a></div>
         </div>
       </section>
 

@@ -13,6 +13,8 @@ const services = [
   { slug: "mobile-apps", title: "Mobile App Development", desc: "Custom React Native and Flutter apps for iOS and Android." },
   { slug: "ui-ux-design", title: "UI/UX Design", desc: "Figma design systems, interactive prototypes, and conversion-first UI." },
   { slug: "seo", title: "SEO & Growth", desc: "Technical SEO, content strategy, and high-converting landing pages." },
+  { slug: "ai-automation", title: "AI Development & Automation", desc: "AI agents, RAG knowledge bases, voice interfaces and workflow automation." },
+  { slug: "saas-development", title: "SaaS & MVP Development", desc: "Product discovery, secure SaaS foundations and focused first releases." },
   { slug: "cloud", title: "Cloud & DevOps", desc: "Scalable AWS/GCP architecture, CI/CD, and observability for startups." },
 ] as const;
 
@@ -66,7 +68,7 @@ function ServicesIndex() {
           {services.map((s) => (
             <Link
               key={s.slug}
-              to={`/services/${s.slug}` as "/services/web-development"}
+              to={`/services/${s.slug}`}
               className="group flex flex-col rounded-3xl border border-border bg-surface-elevated/30 p-7 transition-colors hover:border-primary/30"
             >
               <h2 className="text-display text-2xl sm:text-3xl">{s.title}</h2>
