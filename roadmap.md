@@ -1,4 +1,5 @@
 # Website expansion
+- [ ] Add and verify the three-second branded intro, including phone and reduced-motion playback.
 - [x] Add consistent black content panels across the website and verify their appearance.
 - [x] Add founder/about, AI and SaaS service pages, technology details and FAQ.
 - [x] Deepen existing case studies and remove unsupported reviews/results.
