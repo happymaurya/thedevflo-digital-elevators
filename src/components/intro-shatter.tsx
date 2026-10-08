@@ -44,12 +44,14 @@ function Box({ letter, className, style }: { letter: string; className: string; 
 
 export function IntroShatter() {
   const [show, setShow] = useState(true);
+  const [play, setPlay] = useState(false);
 
   useEffect(() => {
     let played = false;
     try { played = sessionStorage.getItem(KEY) === "1"; sessionStorage.setItem(KEY, "1"); } catch {}
     if (played) { setShow(false); return; }
     document.documentElement.style.overflow = "hidden";
+    setPlay(true);
     const t = window.setTimeout(() => setShow(false), 3000);
     return () => { window.clearTimeout(t); document.documentElement.style.overflow = ""; };
   }, []);
@@ -61,7 +63,7 @@ export function IntroShatter() {
   if (!show) return null;
 
   return (
-    <div className="intro-root fixed inset-0 z-[100] grid place-items-center overflow-hidden" aria-hidden="true">
+    <div className="intro-root fixed inset-0 z-[100] grid place-items-center overflow-hidden" aria-hidden="true" data-play={play ? "" : undefined}>
       {/* Shatter stage */}
       <div className="intro-stage grid w-[min(80vw,520px)] grid-cols-3 gap-3 sm:gap-5">
         {boxes.map((b, bi) => (

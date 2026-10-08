@@ -214,14 +214,14 @@ main .section-frame.bg-community-gradient {
   --intro-light: oklch(1 0 0);
   --intro-shadow: 0 24px 40px -18px oklch(0 0 0 / 0.35);
 }
-.intro-root { background: var(--intro-light); animation: intro-out 3s linear forwards; }
-.intro-root::before { content: ""; position: absolute; inset: 0; background: var(--intro-dark); animation: intro-bg 3s linear forwards; }
+.intro-root { background: var(--intro-light); } .intro-root[data-play] { animation: intro-out 3s linear forwards; }
+.intro-root::before { content: ""; position: absolute; inset: 0; background: var(--intro-dark); } .intro-root[data-play]::before { animation: intro-bg 3s linear forwards; }
 .intro-stage { position: relative; }
-.intro-crack { opacity: 0; animation: intro-crack 0.6s linear forwards; }
+.intro-crack { opacity: 0; } [data-play] .intro-crack { animation: intro-crack 0.6s linear forwards; }
 .intro-crack polyline { fill: none; stroke: var(--foreground); stroke-width: 1.2; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 3px var(--primary-glow)); }
-.intro-shard { will-change: transform, opacity; animation: intro-shard 1.5s forwards; }
-.intro-particle { opacity: 0; will-change: transform, opacity; animation: intro-particle 1.2s cubic-bezier(.4,0,1,1) forwards; }
-.intro-final { opacity: 0; transform: translateY(16px) scale(.96); animation: intro-final 3s cubic-bezier(.22,1,.36,1) forwards; }
+.intro-shard { will-change: transform, opacity; } [data-play] .intro-shard { animation: intro-shard 1.5s forwards; }
+.intro-particle { opacity: 0; will-change: transform, opacity; } [data-play] .intro-particle { animation: intro-particle 1.2s cubic-bezier(.4,0,1,1) forwards; }
+.intro-final { opacity: 0; transform: translateY(16px) scale(.96); } [data-play] .intro-final { animation: intro-final 3s cubic-bezier(.22,1,.36,1) forwards; }
 .intro-final-box { box-shadow: var(--intro-shadow); border-color: transparent; }
 .intro-reflection { transform: scaleY(-1); opacity: .18; mask-image: linear-gradient(to top, var(--background), transparent 55%); }
 .intro-reflection .intro-box { border-color: transparent; }
