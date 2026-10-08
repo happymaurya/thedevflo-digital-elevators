@@ -117,7 +117,7 @@
   --text-shadow-soft: 0 4px 30px color-mix(in oklab, var(--background) 25%, transparent);
   --intro-white: oklch(1 0 0);
   --intro-shadow: 0 18px 25px -12px color-mix(in oklab, var(--background) 24%, transparent);
-  --intro-reflection: linear-gradient(transparent 25%, var(--background));
+  --intro-reflection: linear-gradient(transparent 38%, color-mix(in oklab, var(--background) 14%, transparent));
 }
 
 @layer base {
