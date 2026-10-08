@@ -347,9 +347,9 @@ const services = [
   { n: "02", icon: Smartphone, title: "Mobile Development", href: "/services/mobile-apps", desc: "High-performance, native-feeling iOS and Android apps engineered from a single, fast-to-ship codebase using Flutter and React Native.", tags: ["Flutter", "React Native"] },
   { n: "03", icon: Palette, title: "UI/UX Design Systems", href: "/services/ui-ux-design", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
   { n: "04", icon: Search, title: "SEO Optimization", href: "/services/seo", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
+  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", href: "/services/cloud", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
   { n: "06", icon: Bot, title: "AI & Automation", href: "/services/ai-automation", desc: "Task-oriented agents, knowledge bases, voice interfaces and automation designed around real business workflows.", tags: ["AI agents", "RAG", "Automation"] },
   { n: "07", icon: Code2, title: "SaaS Development", href: "/services/saas-development", desc: "Focused MVPs, subscription workflows and secure product foundations.", tags: ["MVP", "SaaS"] },
-  { n: "05", icon: Cloud, title: "Cloud & Infrastructure", href: "/services/cloud", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
 ];
 
 function Services() {
@@ -494,7 +494,7 @@ function Process() {
 
 // ────────────────────────────────────────────────────────────
 // ────────────────────────────────────────────────────────────
-const tech = ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "Flutter", "React Native", "AWS", "Vercel", "Docker", "Firebase"];
+const tech = ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "Flutter", "React Native", "AWS", "Vercel", "Docker", "Firebase", "OpenAI", "Gemini", "Claude"];
 
 function Tech() {
   return (
