@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import HomePage from "@/components/home-page";
+import { agencyFaqs } from "@/lib/agency-content";
 
 const SITE = "https://thedevflo.com";
 const TITLE = "TheDevFlo — Software Development Agency in India";
@@ -94,12 +95,7 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "FAQPage",
-              mainEntity: [
-                { "@type": "Question", name: "What services does TheDevFlo offer?", acceptedAnswer: { "@type": "Answer", text: "TheDevFlo builds web applications (MERN, Next.js), mobile apps (React Native, Flutter), UI/UX design systems in Figma, SEO and cloud/DevOps solutions for startups and businesses." } },
-                { "@type": "Question", name: "Where is TheDevFlo based?", acceptedAnswer: { "@type": "Answer", text: "TheDevFlo is a software development studio based in India (Delhi NCR), working with clients across Delhi, Noida, Gurugram, Mumbai, Bengaluru and internationally." } },
-                { "@type": "Question", name: "Does TheDevFlo build MVPs for SaaS startups?", acceptedAnswer: { "@type": "Answer", text: "Yes. We specialise in MVP development for SaaS startups using Next.js, Node.js and modern cloud infrastructure so founders can validate and scale quickly." } },
-                { "@type": "Question", name: "How can I hire TheDevFlo?", acceptedAnswer: { "@type": "Answer", text: "Email hello@thedevflo.com with a short brief. We reply within one business day with a scoping call and proposal." } },
-              ],
+               mainEntity: agencyFaqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })),
             },
           ],
         }),

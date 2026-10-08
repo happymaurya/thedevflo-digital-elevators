@@ -12,6 +12,15 @@ const css = root.match(/href="(\/assets\/[^"]+\.css)"/)?.[1];
 if (!js || !css) throw new Error("Could not read asset URLs from public_html/index.html");
 
 const routes = [
+  {"path": "/about", "title": "About TheDevFlo & Happy Maurya | Software Studio", "desc": "Meet Happy Maurya and TheDevFlo: product design, web and mobile engineering, AI automation and cloud development for businesses.", "h1": "About TheDevFlo", "body": "Meet Happy Maurya and TheDevFlo: product design, web and mobile engineering, AI automation and cloud development for businesses."},
+  {"path": "/contact", "title": "Start a Project & Request an Estimate | TheDevFlo", "desc": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email.", "h1": "Start your project", "body": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email."},
+  {"path": "/services/ai-automation", "title": "AI Development & Workflow Automation | TheDevFlo", "desc": "AI chatbots, agents, RAG knowledge bases, voice AI and workflow automation. Discuss secure OpenAI, Gemini and Claude integrations with TheDevFlo.", "h1": "AI development & automation", "body": "AI chatbots, agents, RAG knowledge bases, voice AI and workflow automation. Discuss secure OpenAI, Gemini and Claude integrations with TheDevFlo."},
+  {"path": "/services/saas-development", "title": "SaaS & MVP Development Services | TheDevFlo", "desc": "Plan and build SaaS MVPs with TheDevFlo: product discovery, UX design, subscription workflows, secure access, testing and launch preparation.", "h1": "SaaS & MVP development", "body": "Plan and build SaaS MVPs with TheDevFlo: product discovery, UX design, subscription workflows, secure access, testing and launch preparation."},
+  {"path": "/privacy", "title": "Website Privacy Information | TheDevFlo", "desc": "How the static TheDevFlo project brief handles your details, email enquiries and external links. Contact TheDevFlo with privacy questions.", "h1": "Privacy information", "body": "How the static TheDevFlo project brief handles your details, email enquiries and external links. Contact TheDevFlo with privacy questions."},
+  {"path": "/cookies", "title": "Cookie & Browser Storage Information | TheDevFlo", "desc": "Browser storage information for the TheDevFlo project enquiry form, external services and hosting-related settings.", "h1": "Cookie information", "body": "Browser storage information for the TheDevFlo project enquiry form, external services and hosting-related settings."},
+  {"path": "/terms", "title": "Project Terms, NDA & IP Information | TheDevFlo", "desc": "Discuss scope, pricing, project ownership, NDA, licensing and support before engaging TheDevFlo. Signed project agreements define your terms.", "h1": "Project terms information", "body": "Discuss scope, pricing, project ownership, NDA, licensing and support before engaging TheDevFlo. Signed project agreements define your terms."},
+  {"path": "/refunds", "title": "Refund & Cancellation Information | TheDevFlo", "desc": "Confirm refund, cancellation and project pause terms in your signed TheDevFlo agreement. Contact the studio to discuss an existing project.", "h1": "Refund information", "body": "Confirm refund, cancellation and project pause terms in your signed TheDevFlo agreement. Contact the studio to discuss an existing project."},
+
   {
     path: "/services",
     title: "Software Development Services India | TheDevFlo",
@@ -26,6 +35,8 @@ const routes = [
       ["/services/ui-ux-design", "UI/UX design"],
       ["/services/seo", "SEO & growth"],
       ["/services/cloud", "Cloud & DevOps"],
+      ["/services/ai-automation", "AI development & automation"],
+      ["/services/saas-development", "SaaS & MVP development"],
     ],
   },
   {

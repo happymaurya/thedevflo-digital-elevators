@@ -3,11 +3,13 @@ import { useRef, useEffect, useState } from "react";
 import {
   Code2, Smartphone, Palette, Search, Cloud, ArrowUpRight,
   Linkedin, Instagram, Facebook, Twitter, MessageCircle, Mail,
-  Zap, Star, ArrowRight, Calendar, User,
+  Zap, Bot, ArrowRight, Calendar, User,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { TextEffect } from "@/components/text-effect";
+import { AboutSection, AiSection, FaqSection } from "@/components/agency-sections";
+import { ProjectBrief } from "@/components/project-brief";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workRollingPanda from "@/assets/work-rollingpanda.jpg";
 import workCandidClicks from "@/assets/work-candidclicks.jpg";
@@ -22,7 +24,7 @@ const fadeUp: Variants = {
 // Social links (used in footer + community)
 // ────────────────────────────────────────────────────────────
 export const socialLinks = [
-  { name: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/109282455/admin/dashboard/" },
+  { name: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/109282455/" },
   { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/thedevflo/" },
   { name: "Facebook", Icon: Facebook, href: "https://www.facebook.com/share/1Byp6KJSkR/" },
   { name: "X (Twitter)", Icon: Twitter, href: "https://x.com/thedevflo?s=11" },
@@ -228,7 +230,7 @@ function Nav() {
             )
           )}
         </nav>
-        <a href="#cta"
+        <a href="/contact"
           className="hidden rounded-full bg-button px-4 py-2 text-sm font-semibold text-primary-foreground transition-all hover:bg-button-hover hover:scale-[1.03] sm:inline-flex">
           Start project →
         </a>
@@ -294,7 +296,7 @@ function Hero() {
             We build production-grade web apps, mobile applications, and cloud architecture for ambitious startups and enterprise teams. From blueprint to launch, we ship with absolute taste.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <PillButton href="#cta">Start a Project</PillButton>
+            <PillButton href="/contact">Start a Project</PillButton>
             <PillButton href="#work" variant="ghost">Explore Our Work</PillButton>
           </div>
         </motion.div>
@@ -325,7 +327,7 @@ function WhoWeAre() {
         </div>
 
         <div className="mt-14">
-          <p className="mb-6 text-sm text-muted-foreground">Trusted by teams building for:</p>
+          <p className="mb-6 text-sm text-muted-foreground">Digital products for:</p>
           <div className="mask-fade-wide relative overflow-hidden">
             <div className="flex w-max animate-marquee gap-14">
               {row.map((b, i) => (
@@ -346,6 +348,8 @@ const services = [
   { n: "03", icon: Palette, title: "UI/UX Design Systems", href: "/services/ui-ux-design", desc: "Immersive, high-converting interfaces and scalable Figma design systems crafted with interactive precision and modern motion.", tags: ["Figma", "Design systems"] },
   { n: "04", icon: Search, title: "SEO Optimization", href: "/services/seo", desc: "Technical SEO, local SEO, and content strategy — built to rank and convert from day one.", tags: ["Technical SEO", "Schema"] },
   { n: "05", icon: Cloud, title: "Cloud & Infrastructure", href: "/services/cloud", desc: "Secure, auto-scaling, resilient infrastructure on AWS and Vercel with Docker containerization.", tags: ["AWS", "Vercel", "Docker"] },
+  { n: "06", icon: Bot, title: "AI & Automation", href: "/services/ai-automation", desc: "Task-oriented agents, knowledge bases, voice interfaces and automation designed around real business workflows.", tags: ["AI agents", "RAG", "Automation"] },
+  { n: "07", icon: Code2, title: "SaaS Development", href: "/services/saas-development", desc: "Focused MVPs, subscription workflows and secure product foundations.", tags: ["MVP", "SaaS"] },
 ];
 
 function Services() {
@@ -489,51 +493,8 @@ function Process() {
 // ────────────────────────────────────────────────────────────
 
 // ────────────────────────────────────────────────────────────
-const reviews = [
-  { name: "Saurabh Verma", co: "Candid Clicks", quote: "TheDevFlo rebuilt our studio site into a cinematic showcase — bookings from Gorakhpur & Lucknow doubled in weeks." },
-  { name: "Sofia Reyes", co: "FameX", quote: "Their attention to detail is rare. Shipped on time, with taste." },
-  { name: "James Carter", co: "Vendly", quote: "A true extension of our team. Engineering quality is genuinely top-tier." },
-  { name: "Rolling Panda Studio", co: "The Rolling Panda Productions", quote: "The site finally matches the energy of our films — cinematic, bold, unforgettable." },
-  { name: "Liam Novak", co: "Stellar SaaS", quote: "Best agency we've worked with. Period." },
-];
-
-function Testimonials() {
-  const row = [...reviews, ...reviews];
-  return (
-    <section className="mt-24 px-4">
-      <div className="section-frame mx-auto max-w-6xl overflow-hidden px-6 py-14 sm:px-10 sm:py-20">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="mb-12">
-          <SectionTag>Testimonials</SectionTag>
-          <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
-            Words from <span className="text-primary">founders.</span>
-          </TextEffect>
-        </motion.div>
-        <div className="mask-fade-edge relative -mx-6 overflow-hidden sm:-mx-10">
-          <div className="flex w-max animate-marquee gap-5 px-6" style={{ animationDuration: "60s" }}>
-            {row.map((r, i) => (
-              <div key={i} className="w-[320px] shrink-0 rounded-2xl border border-border bg-surface-elevated/30 p-6 sm:w-[400px]">
-                <div className="flex gap-0.5 text-primary">
-                  {[...Array(5)].map((_, k) => <Star key={k} className="size-3.5 fill-current" />)}
-                </div>
-                <p className="mt-4 text-sm text-foreground/90">"{r.quote}"</p>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="grid size-10 place-items-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">{r.name[0]}</div>
-                  <div>
-                    <div className="text-sm font-medium">{r.name}</div>
-                    <div className="text-xs text-muted-foreground">{r.co}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ────────────────────────────────────────────────────────────
-const tech = ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "Flutter", "React Native", "AWS", "Vercel", "Docker", "Firebase"];
+const tech = ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "Flutter", "React Native", "AWS", "Vercel", "Docker", "Firebase", "OpenAI", "Gemini", "Claude"];
 
 function Tech() {
   return (
@@ -633,7 +594,7 @@ function Community() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <PillButton href="https://chat.whatsapp.com/GbalzxobDs2DPPpa08PYEe">Join WhatsApp community</PillButton>
-              <PillButton href="https://www.linkedin.com/company/109282455/admin/dashboard/" variant="ghost">Follow on LinkedIn</PillButton>
+              <PillButton href="https://www.linkedin.com/company/109282455/" variant="ghost">Follow on LinkedIn</PillButton>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-3">
@@ -667,7 +628,7 @@ function CTA() {
           Whether you're a startup, business, or creator — TheDevFlo helps turn ideas into scalable digital products.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
-          <PillButton href="mailto:hello@thedevflo.com" variant="white">Start project</PillButton>
+          <PillButton href="/contact" variant="white">Start project</PillButton>
           <a href="mailto:hello@thedevflo.com"
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-primary-foreground/20 px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:bg-primary-foreground/10">
             Book free consultation
@@ -682,8 +643,8 @@ function CTA() {
 // ────────────────────────────────────────────────────────────
 function Footer() {
   const cols = [
-    { title: "Company", links: [{ label: "Services", href: "/#services" }, { label: "Projects", href: "/#work" }] },
-    { title: "Resources", links: [{ label: "Blog", href: "/blog" }, { label: "Community", href: "/#community" }, { label: "Contact", href: "mailto:hello@thedevflo.com" }] },
+    { title: "Company", links: [{ label: "Services", href: "/#services" }, { label: "Projects", href: "/#work" }, { label: "About", href: "/about" }] },
+    { title: "Resources", links: [{ label: "Blog", href: "/blog" }, { label: "Community", href: "/#community" }, { label: "Contact", href: "/contact" }, { label: "Privacy", href: "/privacy" }, { label: "Cookies", href: "/cookies" }, { label: "Project terms", href: "/terms" }, { label: "Refunds", href: "/refunds" }] },
   ];
   return (
     <footer className="mt-24 border-t border-border px-4 pb-10 pt-20">
@@ -750,10 +711,13 @@ export default function HomePage() {
       <Services />
       <Work />
       <Process />
-      <Testimonials />
+      <AiSection />
+      <AboutSection />
       <Tech />
       <BlogTeaser />
       <Community />
+      <FaqSection />
+      <ProjectBrief />
       <CTA />
       <Footer />
     </main>
