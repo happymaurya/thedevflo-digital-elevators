@@ -13,9 +13,6 @@ import { AboutSection, AiSection, FaqSection } from "@/components/agency-section
 import { ProjectBrief } from "@/components/project-brief";
 import { ClientSuccess } from "@/components/client-success";
 import tdfLogo from "@/assets/tdf-logo.png";
-import workRollingPanda from "@/assets/work-rollingpanda.jpg";
-import workCandidClicks from "@/assets/work-candidclicks.jpg";
-import workFingertipFlow from "@/assets/work-fingertipflow.jpg";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -206,7 +203,6 @@ function Nav() {
   }, []);
   const links = [
     { label: "Services", href: "/#services" },
-    { label: "Work", href: "/#work" },
     { label: "Blog", to: "/blog" },
   ];
   return (
@@ -299,7 +295,7 @@ function Hero() {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <PillButton href="/contact">Start a Project</PillButton>
-            <PillButton href="#work" variant="ghost">Explore Our Work</PillButton>
+            <PillButton href="#testimonials" variant="ghost">Explore Our Work</PillButton>
           </div>
         </motion.div>
       </div>
@@ -400,68 +396,6 @@ function Services() {
   );
 }
 
-// ────────────────────────────────────────────────────────────
-const projects = [
-  { name: "FingertipFlow", tag: "Minimalist Typing Trainer", image: workFingertipFlow, href: "/projects/fingertipflow" },
-  { name: "The Rolling Panda", tag: "Film Production House", image: workRollingPanda, href: "/projects/rolling-panda" },
-  { name: "Candid Clicks", tag: "Wedding Photography Studio", image: workCandidClicks, href: "/projects/candid-clicks" },
-];
-
-function Work() {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  useEffect(() => {
-    const element = carouselRef.current;
-    if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-  return (
-    <section id="work" className="mt-24 px-4">
-      <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}
-          className="mb-12 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <SectionTag>Featured work</SectionTag>
-            <TextEffect as="h2" className="text-display mt-5 text-5xl sm:text-6xl md:text-7xl">
-              Selected <span className="text-primary">projects.</span>
-            </TextEffect>
-          </div>
-          <p className="max-w-md text-sm text-muted-foreground">
-            A handful of products we've shipped — from zero-to-launch and beyond.
-          </p>
-        </motion.div>
-
-        <div ref={carouselRef} className="project-carousel overflow-hidden" data-visible={isVisible}>
-          <div className="project-carousel-track flex w-max">
-          {[0, 1].map((copy) => <div key={copy} className="project-carousel-group flex shrink-0 gap-5 pr-5" aria-hidden={copy === 1 ? true : undefined}>
-          {projects.map((p) => (
-              <Link
-                key={p.name}
-                to={p.href}
-                tabIndex={copy === 1 ? -1 : undefined}
-                className="project-carousel-card group block w-[280px] shrink-0 overflow-hidden rounded-lg border border-border bg-content-panel outline-none transition-colors hover:border-primary focus-visible:ring-2 focus-visible:ring-ring sm:w-[400px]"
-              >
-                <img src={p.image} alt={`${p.name} ${p.tag.toLowerCase()} project preview`} loading="lazy" width={1600} height={900} className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-                <div className="flex min-h-28 items-center justify-between gap-3 p-5 sm:p-6">
-                  <div className="min-w-0">
-                    <div className="text-xs text-muted-foreground">{p.tag}</div>
-                    <h3 className="mt-2 text-2xl font-semibold text-foreground sm:text-3xl">{p.name}</h3>
-                  </div>
-                  <div className="grid size-10 shrink-0 place-items-center rounded-full bg-inverse text-inverse-foreground transition-transform group-hover:rotate-45">
-                    <ArrowUpRight className="size-5" />
-                  </div>
-                </div>
-              </Link>
-          ))}
-          </div>)}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 // ────────────────────────────────────────────────────────────
 const steps = [
@@ -662,7 +596,7 @@ function CTA() {
 // ────────────────────────────────────────────────────────────
 function Footer() {
   const cols = [
-    { title: "Company", links: [{ label: "Services", href: "/#services" }, { label: "Projects", href: "/#work" }, { label: "About", href: "/about" }] },
+    { title: "Company", links: [{ label: "Services", href: "/#services" }, { label: "Projects", href: "/#testimonials" }, { label: "About", href: "/about" }] },
     { title: "Resources", links: [{ label: "Blog", href: "/blog" }, { label: "Community", href: "/#community" }, { label: "Contact", href: "/contact" }, { label: "Privacy", href: "/privacy" }, { label: "Cookies", href: "/cookies" }, { label: "Project terms", href: "/terms" }, { label: "Refunds", href: "/refunds" }] },
   ];
   return (
@@ -729,7 +663,6 @@ export default function HomePage() {
       <Hero />
       <WhoWeAre />
       <Services />
-      <Work />
       <ClientSuccess />
       <Process />
       <AiSection />
