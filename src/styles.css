@@ -186,6 +186,7 @@ main .section-frame.bg-community-gradient {
   animation: project-drift 36s linear infinite;
   animation-play-state: paused;
 }
+.team-carousel-track { animation-duration: 80s; }
 .project-carousel[data-visible="true"] .project-carousel-track { animation-play-state: running; }
 .project-carousel:hover .project-carousel-track,
 .project-carousel:focus-within .project-carousel-track,
@@ -200,6 +201,7 @@ main .section-frame.bg-community-gradient {
   .project-carousel-group { display: grid; width: 100%; gap: 20px; padding: 0; }
   .project-carousel-group[aria-hidden="true"] { display: none; }
   .project-carousel-card { width: 100%; }
+  .team-carousel-group { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
   /* Tech cards stay compact in a wrapping grid instead of full-width rows. */
   .tech-group { display: flex; flex-wrap: wrap; }
   .tech-group[aria-hidden="true"] { display: flex; }
