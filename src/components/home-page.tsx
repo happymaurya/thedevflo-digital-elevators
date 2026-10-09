@@ -11,6 +11,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { TextEffect } from "@/components/text-effect";
 import { AboutSection, AiSection, FaqSection } from "@/components/agency-sections";
 import { ProjectBrief } from "@/components/project-brief";
+import { ClientSuccess } from "@/components/client-success";
 import tdfLogo from "@/assets/tdf-logo.png";
 import workRollingPanda from "@/assets/work-rollingpanda.jpg";
 import workCandidClicks from "@/assets/work-candidclicks.jpg";
@@ -729,6 +730,7 @@ export default function HomePage() {
       <WhoWeAre />
       <Services />
       <Work />
+      <ClientSuccess />
       <Process />
       <AiSection />
       <AboutSection />
