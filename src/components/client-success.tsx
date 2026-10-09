@@ -12,7 +12,7 @@ import fingertipFlow from "@/assets/work-fingertipflow.jpg";
 const spotlights = [
   { name: "The Rolling Panda", category: "Film production website", image: rollingPanda, to: "/projects/rolling-panda", summary: "A portfolio-led website for a film production house, bringing its work and creative identity into a focused digital experience.", focus: "Creative portfolio · Brand presentation" },
   { name: "Candid Clicks", category: "Photography website", image: candidClicks, to: "/projects/candid-clicks", summary: "A photography-led website that puts wedding imagery at the heart of the experience, with space to explore the studio’s work and enquire.", focus: "Visual storytelling · Project enquiries" },
-  { name: "FingertipFlow", category: "Web application", image: fingertipFlow, to: "/projects/fingertipflow", summary: "A distraction-free typing trainer with multiple practice modes and live statistics, designed around a clear, focused practice experience.", focus: "Product interface · Interactive practice" },
+  { name: "FingertipFlow", category: "In-house web application", image: fingertipFlow, to: "/projects/fingertipflow", summary: "Our in-house distraction-free typing trainer with multiple practice modes and live statistics, designed around a clear, focused practice experience.", focus: "Product interface · Interactive practice" },
 ] as const;
 
 export function ClientSuccess() {
@@ -20,7 +20,7 @@ export function ClientSuccess() {
   const [carouselRef, carousel] = useEmblaCarousel({ loop: true, align: "start", duration: reducedMotion ? 0 : 30 });
   const [selected, setSelected] = useState(0);
   const updateSelection = useCallback(() => {
-    if (carousel) setSelected(carousel.selectedScrollSnap());
+    if (carousel) setSelected(carousel.selectedScrollSnap() % spotlights.length);
   }, [carousel]);
   useEffect(() => {
     if (!carousel) return;
@@ -30,7 +30,7 @@ export function ClientSuccess() {
   }, [carousel, updateSelection]);
 
   return (
-    <section id="testimonials" aria-labelledby="client-success-heading" className="mx-auto mt-24 max-w-6xl px-6 py-12 sm:px-10">
+    <section id="testimonials" aria-labelledby="client-success-heading" className="mx-auto mt-24 max-w-6xl scroll-mt-28 px-6 py-12 sm:px-10">
       <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
         <p className="text-xs font-semibold text-primary">CLIENT SUCCESS STORIES</p>
         <TextEffect as="h2" className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
@@ -56,8 +56,8 @@ export function ClientSuccess() {
         if (event.key === "ArrowRight") { event.preventDefault(); carousel?.scrollNext(); }
       }} tabIndex={0}>
         <div className="-ml-5 flex touch-pan-y">
-          {spotlights.map((project, index) => (
-            <div key={project.name} role="group" aria-roledescription="slide" aria-label={`${index + 1} of ${spotlights.length}: ${project.name}`} className="min-w-0 shrink-0 basis-full pl-5 md:basis-1/3">
+          {[...spotlights, ...spotlights].map((project, index) => (
+            <div key={`${project.name}-${index}`} role="group" aria-roledescription="slide" aria-label={`${index % spotlights.length + 1} of ${spotlights.length}: ${project.name}`} className="min-w-0 shrink-0 basis-full pl-5 md:basis-1/3">
               <article className="success-card content-panel group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-primary/40 focus-within:border-primary/40">
                 <div className="overflow-hidden border-b border-border">
                   <img src={project.image} alt={`${project.name} website project screenshot`} loading="lazy" decoding="async" width={1600} height={900} className="aspect-video w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.025]" />
