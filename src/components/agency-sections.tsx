@@ -3,13 +3,11 @@ import { ArrowUpRight, Bot, Workflow, BookOpen, AudioLines } from "lucide-react"
 import { TextEffect } from "@/components/text-effect";
 import { Button } from "@/components/ui/button";
 import { agencyFaqs } from "@/lib/agency-content";
+import { FounderTeam } from "@/components/founder-team";
 
 export function AboutSection() {
   return <section id="founder" className="mx-auto mt-24 max-w-6xl border-y border-border px-6 py-16 sm:px-10">
-    <div className="grid gap-10 md:grid-cols-[1.2fr_1fr]">
-      <div><p className="text-sm text-primary">About TheDevFlo</p><TextEffect as="h2" className="text-display mt-5 text-4xl sm:text-5xl">The people behind <span className="text-primary">the product.</span></TextEffect><p className="mt-6 max-w-xl leading-relaxed text-muted-foreground">TheDevFlo brings product design and software engineering together to help businesses turn ideas into usable digital products. Our focus spans web, mobile, AI and cloud — from defining the problem to shaping the experience and preparing for launch.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/about">Meet TheDevFlo <ArrowUpRight /></Link></Button></div>
-      <div className="content-panel p-6"><div className="flex items-center gap-4"><img src="/images/happy-maurya.png" alt="Happy Maurya, founder of TheDevFlo" width={820} height={1330} loading="lazy" className="h-20 w-20 shrink-0 rounded-full border border-border bg-surface-elevated/50 object-cover object-top" /><div><span className="text-xs uppercase text-muted-foreground">About Me</span><h3 className="text-display mt-1 text-2xl">Happy Maurya</h3></div></div><p className="mt-3 text-sm text-muted-foreground">Full Stack &amp; Mobile App Developer · Founder of TheDevFlo</p><p className="mt-5 leading-relaxed text-muted-foreground">I specialize in WordPress, MERN Stack, and Flutter, building modern websites and mobile apps that help businesses attract customers, streamline operations, and grow faster.</p><p className="mt-4 leading-relaxed text-muted-foreground">Since 2024, my mission has been to turn ideas into powerful digital solutions through reliable development, user-focused design, and innovative AI-powered technology.</p><Button asChild variant="outline" className="mt-6"><Link to="/contact">Discuss your project <ArrowUpRight /></Link></Button></div>
-    </div>
+    <FounderTeam />
   </section>;
 }
 

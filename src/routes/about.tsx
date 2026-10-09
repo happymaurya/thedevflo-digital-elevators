@@ -1,14 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ContentPage } from "@/components/content-page";
+import { Nav, Footer } from "@/components/home-page";
+import { FounderTeam } from "@/components/founder-team";
+import { TextEffect } from "@/components/text-effect";
 import { pageHead } from "@/lib/agency-content";
 
 export const Route = createFileRoute("/about")({
-  head: pageHead("/about", "About TheDevFlo & Happy Maurya | Software Studio", "Meet Happy Maurya and TheDevFlo: product design, web and mobile engineering, AI automation and cloud development for businesses."),
-  component: () => <ContentPage eyebrow="About TheDevFlo" title={<>TheDevFlo — design meets <span className="text-primary">engineering.</span></>} intro="A software studio focused on making digital products useful, clear and ready for real-world users." cta={{ label: "Discuss your project", href: "/contact" }} sections={[
-    { heading: "About Me", body: <div className="space-y-5"><div className="flex flex-col gap-6 sm:flex-row sm:items-start"><img src="/images/happy-maurya.png" alt="Happy Maurya, Full Stack and Mobile App Developer and founder of TheDevFlo" width={820} height={1330} loading="lazy" className="h-72 w-auto max-w-full shrink-0 self-center object-contain drop-shadow-2xl sm:self-start" /><div className="space-y-4"><p className="text-lg leading-relaxed text-foreground/90">Hi, I'm <span className="font-semibold text-primary">Happy Maurya</span>, Full Stack &amp; Mobile App Developer and founder of TheDevFlo. I specialize in WordPress, MERN Stack, and Flutter, building modern websites and mobile apps that help businesses attract customers, streamline operations, and grow faster.</p><p>Since 2024, my mission has been to turn ideas into powerful digital solutions through reliable development, user-focused design, and innovative AI-powered technology.</p></div></div><div className="flex flex-wrap gap-2 pt-1">{["WordPress", "MERN Stack", "Flutter", "AI-Powered Technology"].map((s) => <span key={s} className="rounded-full border border-border bg-surface-elevated/40 px-3 py-1 text-xs font-medium text-muted-foreground">{s}</span>)}</div></div> },
+  head: pageHead("/about", "Happy Maurya & the TheDevFlo Team | About Us", "Meet Happy Maurya, Aman Sharma and Aditya Pratap Singh: TheDevFlo’s team for full-stack development, mobile apps, Python, AI, UI/UX and video."),
+  component: AboutPage,
+});
+
+function AboutPage() {
+  const sections = [
     { heading: "What we focus on", body: <p>Web applications, mobile experiences, SaaS products, UI/UX design systems, search visibility, AI integrations and cloud infrastructure. Projects start with the problem and the people using the product — not with a predetermined technology.</p> },
     { heading: "Our purpose", body: <p>Turn business ideas into practical digital experiences through clear product thinking, thoughtful design and maintainable engineering. Our goal is to make technology a useful foundation for your next stage of growth.</p> },
     { heading: "Working together", body: <p>We define scope, priorities and milestones before development. Design reviews, testing and handover form part of the project conversation. Delivery dates, pricing, ownership and support are documented in your agreed proposal.</p> },
     { heading: "Where we work", body: <p>TheDevFlo serves businesses across India and works remotely with international teams. Email hello@thedevflo.com to discuss your location, timezone and collaboration requirements.</p> },
-  ]} />,
-});
+  ];
+  return <main className="relative min-h-screen">
+    <Nav />
+    <section id="founder" className="mx-auto max-w-6xl px-6 pt-32 sm:px-10 sm:pt-40"><FounderTeam page /></section>
+    <section className="mx-auto my-20 grid max-w-6xl gap-8 px-6 sm:px-10 md:grid-cols-2">
+      {sections.map(section => <article key={section.heading} className="content-panel p-7 sm:p-9"><TextEffect as="h2" className="text-display text-2xl !leading-tight !tracking-normal">{section.heading}</TextEffect><div className="mt-5 text-base leading-7 text-muted-foreground">{section.body}</div></article>)}
+    </section>
+    <Footer />
+  </main>;
+}
