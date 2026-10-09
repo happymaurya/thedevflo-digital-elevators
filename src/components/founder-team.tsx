@@ -4,8 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/text-effect";
-import amanPortrait from "@/assets/aman-sharma.webp.asset.json";
-import adityaPortrait from "@/assets/aditya-pratap-singh.webp.asset.json";
+
+
 
 const team = [
   {
@@ -18,14 +18,14 @@ const team = [
   {
     name: "Aman Sharma",
     role: "Python, Flask & AI Developer",
-    image: amanPortrait.url,
+    image: "/images/aman-sharma.webp",
     bio: "Focuses on Python, Flask backend development, API integration, and AI-powered solutions to build intelligent and efficient applications.",
     skills: "Python · Flask · AI",
   },
   {
     name: "Aditya Pratap Singh",
     role: "UI/UX Designer & Video Editor",
-    image: adityaPortrait.url,
+    image: "/images/aditya-pratap-singh.webp",
     bio: "Creates engaging user interfaces, intuitive digital experiences, and polished video content that strengthen product branding and visual storytelling.",
     skills: "UI/UX · Video · Visual storytelling",
   },
