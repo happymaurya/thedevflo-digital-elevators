@@ -123,7 +123,7 @@ export function ClientSuccess() {
                 <article className="success-card content-panel group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-primary/40 focus-within:border-primary/40">
                   <div className="testimonial-visual relative flex aspect-video items-center justify-center border-b border-border">
                     <span className="flex size-16 items-center justify-center rounded-full border border-primary/30 bg-surface-elevated/60 text-primary"><Icon className="size-7" aria-hidden="true" /></span>
-                    <span className="absolute right-3 top-3 rounded-full border border-border bg-surface-elevated/70 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">Sample preview</span>
+                    <span className="absolute right-3 top-3 rounded-full border border-border bg-content-panel/95 px-2.5 py-1 text-[11px] font-medium text-foreground/85">Sample preview</span>
                     <span className="absolute bottom-3 left-4 text-xs font-medium text-foreground/70">{item.service}</span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
