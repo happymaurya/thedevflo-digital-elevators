@@ -9,71 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as RefundsRouteImport } from './routes/refunds'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as CookiesRouteImport } from './routes/cookies'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as RefundsRouteImport } from './routes/refunds'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
-import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
-import { Route as ServicesUiUxDesignRouteImport } from './routes/services.ui-ux-design'
-import { Route as ServicesSeoRouteImport } from './routes/services.seo'
-import { Route as ServicesSaasDevelopmentRouteImport } from './routes/services.saas-development'
-import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
-import { Route as ServicesCloudRouteImport } from './routes/services.cloud'
-import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
-import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
-import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
-import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
-import { Route as BlogSaasMvpCostGuideRouteImport } from './routes/blog.saas-mvp-cost-guide'
-import { Route as BlogNextJsSaasMvpRouteImport } from './routes/blog.next-js-saas-mvp'
-import { Route as BlogMernVsNextjs2026RouteImport } from './routes/blog.mern-vs-nextjs-2026'
 import { Route as BlogHireSoftwareAgencyIndiaRouteImport } from './routes/blog.hire-software-agency-india'
+import { Route as BlogMernVsNextjs2026RouteImport } from './routes/blog.mern-vs-nextjs-2026'
+import { Route as BlogNextJsSaasMvpRouteImport } from './routes/blog.next-js-saas-mvp'
+import { Route as BlogSaasMvpCostGuideRouteImport } from './routes/blog.saas-mvp-cost-guide'
+import { Route as ProjectsCandidClicksRouteImport } from './routes/projects.candid-clicks'
+import { Route as ProjectsFingertipflowRouteImport } from './routes/projects.fingertipflow'
+import { Route as ProjectsRollingPandaRouteImport } from './routes/projects.rolling-panda'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesAiAutomationRouteImport } from './routes/services.ai-automation'
+import { Route as ServicesCloudRouteImport } from './routes/services.cloud'
+import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
+import { Route as ServicesSaasDevelopmentRouteImport } from './routes/services.saas-development'
+import { Route as ServicesSeoRouteImport } from './routes/services.seo'
+import { Route as ServicesUiUxDesignRouteImport } from './routes/services.ui-ux-design'
+import { Route as ServicesWebDevelopmentRouteImport } from './routes/services.web-development'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RefundsRoute = RefundsRouteImport.update({
-  id: '/refunds',
-  path: '/refunds',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CookiesRoute = CookiesRouteImport.update({
-  id: '/cookies',
-  path: '/cookies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -81,84 +46,49 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ServicesRoute,
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RefundsRoute = RefundsRouteImport.update({
+  id: '/refunds',
+  path: '/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => BlogRoute,
-} as any)
-const ServicesWebDevelopmentRoute = ServicesWebDevelopmentRouteImport.update({
-  id: '/web-development',
-  path: '/web-development',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesUiUxDesignRoute = ServicesUiUxDesignRouteImport.update({
-  id: '/ui-ux-design',
-  path: '/ui-ux-design',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesSeoRoute = ServicesSeoRouteImport.update({
-  id: '/seo',
-  path: '/seo',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesSaasDevelopmentRoute = ServicesSaasDevelopmentRouteImport.update({
-  id: '/saas-development',
-  path: '/saas-development',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
-  id: '/mobile-apps',
-  path: '/mobile-apps',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesCloudRoute = ServicesCloudRouteImport.update({
-  id: '/cloud',
-  path: '/cloud',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
-  id: '/ai-automation',
-  path: '/ai-automation',
-  getParentRoute: () => ServicesRoute,
-} as any)
-const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
-  id: '/projects/rolling-panda',
-  path: '/projects/rolling-panda',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsFingertipflowRoute = ProjectsFingertipflowRouteImport.update({
-  id: '/projects/fingertipflow',
-  path: '/projects/fingertipflow',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
-  id: '/projects/candid-clicks',
-  path: '/projects/candid-clicks',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogSaasMvpCostGuideRoute = BlogSaasMvpCostGuideRouteImport.update({
-  id: '/saas-mvp-cost-guide',
-  path: '/saas-mvp-cost-guide',
-  getParentRoute: () => BlogRoute,
-} as any)
-const BlogNextJsSaasMvpRoute = BlogNextJsSaasMvpRouteImport.update({
-  id: '/next-js-saas-mvp',
-  path: '/next-js-saas-mvp',
-  getParentRoute: () => BlogRoute,
-} as any)
-const BlogMernVsNextjs2026Route = BlogMernVsNextjs2026RouteImport.update({
-  id: '/mern-vs-nextjs-2026',
-  path: '/mern-vs-nextjs-2026',
   getParentRoute: () => BlogRoute,
 } as any)
 const BlogHireSoftwareAgencyIndiaRoute =
@@ -167,6 +97,76 @@ const BlogHireSoftwareAgencyIndiaRoute =
     path: '/hire-software-agency-india',
     getParentRoute: () => BlogRoute,
   } as any)
+const BlogMernVsNextjs2026Route = BlogMernVsNextjs2026RouteImport.update({
+  id: '/mern-vs-nextjs-2026',
+  path: '/mern-vs-nextjs-2026',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogNextJsSaasMvpRoute = BlogNextJsSaasMvpRouteImport.update({
+  id: '/next-js-saas-mvp',
+  path: '/next-js-saas-mvp',
+  getParentRoute: () => BlogRoute,
+} as any)
+const BlogSaasMvpCostGuideRoute = BlogSaasMvpCostGuideRouteImport.update({
+  id: '/saas-mvp-cost-guide',
+  path: '/saas-mvp-cost-guide',
+  getParentRoute: () => BlogRoute,
+} as any)
+const ProjectsCandidClicksRoute = ProjectsCandidClicksRouteImport.update({
+  id: '/projects/candid-clicks',
+  path: '/projects/candid-clicks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsFingertipflowRoute = ProjectsFingertipflowRouteImport.update({
+  id: '/projects/fingertipflow',
+  path: '/projects/fingertipflow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRollingPandaRoute = ProjectsRollingPandaRouteImport.update({
+  id: '/projects/rolling-panda',
+  path: '/projects/rolling-panda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesAiAutomationRoute = ServicesAiAutomationRouteImport.update({
+  id: '/ai-automation',
+  path: '/ai-automation',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesCloudRoute = ServicesCloudRouteImport.update({
+  id: '/cloud',
+  path: '/cloud',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
+  id: '/mobile-apps',
+  path: '/mobile-apps',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSaasDevelopmentRoute = ServicesSaasDevelopmentRouteImport.update({
+  id: '/saas-development',
+  path: '/saas-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSeoRoute = ServicesSeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesUiUxDesignRoute = ServicesUiUxDesignRouteImport.update({
+  id: '/ui-ux-design',
+  path: '/ui-ux-design',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesWebDevelopmentRoute = ServicesWebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -354,60 +354,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/refunds': {
-      id: '/refunds'
-      path: '/refunds'
-      fullPath: '/refunds'
-      preLoaderRoute: typeof RefundsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cookies': {
-      id: '/cookies'
-      path: '/cookies'
-      fullPath: '/cookies'
-      preLoaderRoute: typeof CookiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -417,19 +368,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/': {
-      id: '/services/'
-      path: '/'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
-      parentRoute: typeof ServicesRoute
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/refunds': {
+      id: '/refunds'
+      path: '/refunds'
+      fullPath: '/refunds'
+      preLoaderRoute: typeof RefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/blog/': {
       id: '/blog/'
@@ -438,88 +431,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof BlogRoute
     }
-    '/services/web-development': {
-      id: '/services/web-development'
-      path: '/web-development'
-      fullPath: '/services/web-development'
-      preLoaderRoute: typeof ServicesWebDevelopmentRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/ui-ux-design': {
-      id: '/services/ui-ux-design'
-      path: '/ui-ux-design'
-      fullPath: '/services/ui-ux-design'
-      preLoaderRoute: typeof ServicesUiUxDesignRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/seo': {
-      id: '/services/seo'
-      path: '/seo'
-      fullPath: '/services/seo'
-      preLoaderRoute: typeof ServicesSeoRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/saas-development': {
-      id: '/services/saas-development'
-      path: '/saas-development'
-      fullPath: '/services/saas-development'
-      preLoaderRoute: typeof ServicesSaasDevelopmentRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/mobile-apps': {
-      id: '/services/mobile-apps'
-      path: '/mobile-apps'
-      fullPath: '/services/mobile-apps'
-      preLoaderRoute: typeof ServicesMobileAppsRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/cloud': {
-      id: '/services/cloud'
-      path: '/cloud'
-      fullPath: '/services/cloud'
-      preLoaderRoute: typeof ServicesCloudRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/services/ai-automation': {
-      id: '/services/ai-automation'
-      path: '/ai-automation'
-      fullPath: '/services/ai-automation'
-      preLoaderRoute: typeof ServicesAiAutomationRouteImport
-      parentRoute: typeof ServicesRoute
-    }
-    '/projects/rolling-panda': {
-      id: '/projects/rolling-panda'
-      path: '/projects/rolling-panda'
-      fullPath: '/projects/rolling-panda'
-      preLoaderRoute: typeof ProjectsRollingPandaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/fingertipflow': {
-      id: '/projects/fingertipflow'
-      path: '/projects/fingertipflow'
-      fullPath: '/projects/fingertipflow'
-      preLoaderRoute: typeof ProjectsFingertipflowRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projects/candid-clicks': {
-      id: '/projects/candid-clicks'
-      path: '/projects/candid-clicks'
-      fullPath: '/projects/candid-clicks'
-      preLoaderRoute: typeof ProjectsCandidClicksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog/saas-mvp-cost-guide': {
-      id: '/blog/saas-mvp-cost-guide'
-      path: '/saas-mvp-cost-guide'
-      fullPath: '/blog/saas-mvp-cost-guide'
-      preLoaderRoute: typeof BlogSaasMvpCostGuideRouteImport
-      parentRoute: typeof BlogRoute
-    }
-    '/blog/next-js-saas-mvp': {
-      id: '/blog/next-js-saas-mvp'
-      path: '/next-js-saas-mvp'
-      fullPath: '/blog/next-js-saas-mvp'
-      preLoaderRoute: typeof BlogNextJsSaasMvpRouteImport
+    '/blog/hire-software-agency-india': {
+      id: '/blog/hire-software-agency-india'
+      path: '/hire-software-agency-india'
+      fullPath: '/blog/hire-software-agency-india'
+      preLoaderRoute: typeof BlogHireSoftwareAgencyIndiaRouteImport
       parentRoute: typeof BlogRoute
     }
     '/blog/mern-vs-nextjs-2026': {
@@ -529,12 +445,96 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogMernVsNextjs2026RouteImport
       parentRoute: typeof BlogRoute
     }
-    '/blog/hire-software-agency-india': {
-      id: '/blog/hire-software-agency-india'
-      path: '/hire-software-agency-india'
-      fullPath: '/blog/hire-software-agency-india'
-      preLoaderRoute: typeof BlogHireSoftwareAgencyIndiaRouteImport
+    '/blog/next-js-saas-mvp': {
+      id: '/blog/next-js-saas-mvp'
+      path: '/next-js-saas-mvp'
+      fullPath: '/blog/next-js-saas-mvp'
+      preLoaderRoute: typeof BlogNextJsSaasMvpRouteImport
       parentRoute: typeof BlogRoute
+    }
+    '/blog/saas-mvp-cost-guide': {
+      id: '/blog/saas-mvp-cost-guide'
+      path: '/saas-mvp-cost-guide'
+      fullPath: '/blog/saas-mvp-cost-guide'
+      preLoaderRoute: typeof BlogSaasMvpCostGuideRouteImport
+      parentRoute: typeof BlogRoute
+    }
+    '/projects/candid-clicks': {
+      id: '/projects/candid-clicks'
+      path: '/projects/candid-clicks'
+      fullPath: '/projects/candid-clicks'
+      preLoaderRoute: typeof ProjectsCandidClicksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/fingertipflow': {
+      id: '/projects/fingertipflow'
+      path: '/projects/fingertipflow'
+      fullPath: '/projects/fingertipflow'
+      preLoaderRoute: typeof ProjectsFingertipflowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/rolling-panda': {
+      id: '/projects/rolling-panda'
+      path: '/projects/rolling-panda'
+      fullPath: '/projects/rolling-panda'
+      preLoaderRoute: typeof ProjectsRollingPandaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ai-automation': {
+      id: '/services/ai-automation'
+      path: '/ai-automation'
+      fullPath: '/services/ai-automation'
+      preLoaderRoute: typeof ServicesAiAutomationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/cloud': {
+      id: '/services/cloud'
+      path: '/cloud'
+      fullPath: '/services/cloud'
+      preLoaderRoute: typeof ServicesCloudRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/mobile-apps': {
+      id: '/services/mobile-apps'
+      path: '/mobile-apps'
+      fullPath: '/services/mobile-apps'
+      preLoaderRoute: typeof ServicesMobileAppsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/saas-development': {
+      id: '/services/saas-development'
+      path: '/saas-development'
+      fullPath: '/services/saas-development'
+      preLoaderRoute: typeof ServicesSaasDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/seo': {
+      id: '/services/seo'
+      path: '/seo'
+      fullPath: '/services/seo'
+      preLoaderRoute: typeof ServicesSeoRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ui-ux-design': {
+      id: '/services/ui-ux-design'
+      path: '/ui-ux-design'
+      fullPath: '/services/ui-ux-design'
+      preLoaderRoute: typeof ServicesUiUxDesignRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/web-development': {
+      id: '/services/web-development'
+      path: '/web-development'
+      fullPath: '/services/web-development'
+      preLoaderRoute: typeof ServicesWebDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
     }
   }
 }
@@ -601,13 +601,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
