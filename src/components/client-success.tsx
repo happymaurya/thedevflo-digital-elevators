@@ -36,18 +36,6 @@ export function ClientSuccess() {
     return () => { carousel.off("select", updateSelection).off("reInit", updateSelection); };
   }, [carousel, updateSelection]);
 
-  const [quoteRef, quoteCarousel] = useEmblaCarousel({ loop: true, align: "start", duration: reducedMotion ? 0 : 30 });
-  const [quoteSelected, setQuoteSelected] = useState(0);
-  const updateQuoteSelection = useCallback(() => {
-    if (quoteCarousel) setQuoteSelected(quoteCarousel.selectedScrollSnap() % testimonials.length);
-  }, [quoteCarousel]);
-  useEffect(() => {
-    if (!quoteCarousel) return;
-    updateQuoteSelection();
-    quoteCarousel.on("select", updateQuoteSelection).on("reInit", updateQuoteSelection);
-    return () => { quoteCarousel.off("select", updateQuoteSelection).off("reInit", updateQuoteSelection); };
-  }, [quoteCarousel, updateQuoteSelection]);
-
   return (
     <section id="testimonials" aria-labelledby="client-success-heading" className="mx-auto mt-24 max-w-6xl scroll-mt-28 px-6 py-12 sm:px-10">
       <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
@@ -99,9 +87,33 @@ export function ClientSuccess() {
         {spotlights.map((project, index) => <Button key={project.name} variant="ghost" size="icon" className="size-8 rounded-full" aria-label={`Show ${project.name} spotlight`} aria-current={selected === index ? "true" : undefined} onClick={() => carousel?.scrollTo(index)}><span className={`h-1.5 rounded-full transition-all ${selected === index ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"}`} /></Button>)}
       </div>
 
-      <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+      <div className="mt-10 flex flex-col items-start justify-between gap-5 border-y border-border py-8 sm:flex-row sm:items-center">
+        <h3 className="text-2xl font-semibold">Ready to Build Your Next Project?</h3>
+        <Button asChild size="lg" className="h-auto shrink-0 whitespace-normal py-3"><Link to="/contact">Start Your Project<ArrowRight /></Link></Button>
+      </div>
+    </section>
+  );
+}
+
+export function ClientTestimonials() {
+  const reducedMotion = useReducedMotion();
+  const [quoteRef, quoteCarousel] = useEmblaCarousel({ loop: true, align: "start", duration: reducedMotion ? 0 : 30 });
+  const [quoteSelected, setQuoteSelected] = useState(0);
+  const updateQuoteSelection = useCallback(() => {
+    if (quoteCarousel) setQuoteSelected(quoteCarousel.selectedScrollSnap() % testimonials.length);
+  }, [quoteCarousel]);
+  useEffect(() => {
+    if (!quoteCarousel) return;
+    updateQuoteSelection();
+    quoteCarousel.on("select", updateQuoteSelection).on("reInit", updateQuoteSelection);
+    return () => { quoteCarousel.off("select", updateQuoteSelection).off("reInit", updateQuoteSelection); };
+  }, [quoteCarousel, updateQuoteSelection]);
+
+  return (
+    <section id="client-testimonials" aria-labelledby="client-testimonials-heading" className="mx-auto mt-16 max-w-6xl scroll-mt-28 px-6 pb-12 sm:px-10">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
         <div>
-          <p className="text-sm font-medium">Client testimonials</p>
+          <h2 id="client-testimonials-heading" className="text-sm font-medium">Client testimonials</h2>
           <p className="mt-1 max-w-xl text-xs text-muted-foreground">Sample content for the preview — not verified client reviews. Genuine, client-approved feedback replaces these before publishing.</p>
         </div>
         <div className="flex gap-2">
@@ -143,11 +155,6 @@ export function ClientSuccess() {
       <p className="sr-only" aria-live="polite" aria-atomic="true">Sample testimonial {quoteSelected + 1} of {testimonials.length}</p>
       <div className="mt-6 flex justify-center gap-1">
         {testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="size-8 rounded-full" aria-label={`Show sample testimonial from ${item.name}`} aria-current={quoteSelected === index ? "true" : undefined} onClick={() => quoteCarousel?.scrollTo(index)}><span className={`h-1.5 rounded-full transition-all ${quoteSelected === index ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"}`} /></Button>)}
-      </div>
-
-      <div className="mt-10 flex flex-col items-start justify-between gap-5 border-y border-border py-8 sm:flex-row sm:items-center">
-        <h3 className="text-2xl font-semibold">Ready to Build Your Next Project?</h3>
-        <Button asChild size="lg" className="h-auto shrink-0 whitespace-normal py-3"><Link to="/contact">Start Your Project<ArrowRight /></Link></Button>
       </div>
     </section>
   );
