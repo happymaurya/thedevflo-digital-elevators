@@ -1,4 +1,5 @@
 # Website expansion
+- [ ] Redesign the founder profile and add the three supplied team portraits; verify desktop and mobile.
 - [x] Add consistent black content panels across the website and verify their appearance.
 - [x] Add founder/about, AI and SaaS service pages, technology details and FAQ.
 - [x] Deepen existing case studies and remove unsupported reviews/results.
@@ -8,4 +9,4 @@
 - [x] Regenerate public_html with the current site (WhatsApp chat link, black panels, project carousel).
 - [ ] Upload public_html to Hostinger — hosting upload requires owner access.
 - [ ] Live Ask Flo and file submission — blocked by static-only hosting; requires an online service.
-- [ ] Founder photo/year, verified reviews/results, approved pricing and final legal policies — awaiting owner details.
+- [ ] Verified reviews/results, approved pricing and final legal policies — awaiting owner details.
