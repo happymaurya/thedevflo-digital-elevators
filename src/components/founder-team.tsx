@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -32,6 +33,7 @@ const team = [
 
 export function FounderTeam({ page = false }: { page?: boolean }) {
   const reducedMotion = useReducedMotion();
+  const [teamVisible, setTeamVisible] = useState(false);
   const reveal = {
     initial: reducedMotion ? false as const : { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
@@ -60,8 +62,10 @@ export function FounderTeam({ page = false }: { page?: boolean }) {
 
     <div className="mt-16 border-t border-border pt-12 sm:mt-20">
       <TextEffect as="h2" className="text-display text-3xl !leading-tight !tracking-normal sm:text-4xl">Meet the <span className="text-primary">Team</span></TextEffect>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map((member, index) => <motion.article key={member.name} {...reveal} transition={{ duration: reducedMotion ? 0 : 0.5, delay: reducedMotion ? 0 : index * 0.08 }} className="content-panel group min-w-0 overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 motion-reduce:transform-none">
+      <motion.div onViewportEnter={() => setTeamVisible(true)} onViewportLeave={() => setTeamVisible(false)} viewport={{ amount: 0.1 }} data-visible={teamVisible} role="region" aria-label="TheDevFlo team" tabIndex={0} className="project-carousel team-carousel mt-8 overflow-hidden py-2 outline-none focus-visible:ring-2 focus-visible:ring-primary">
+        <div className="project-carousel-track team-carousel-track flex w-max">
+        {[false, true].map(duplicate => <div key={String(duplicate)} aria-hidden={duplicate || undefined} className="project-carousel-group team-carousel-group flex shrink-0 gap-6 pr-6">
+        {team.map((member, index) => <article key={member.name} className="project-carousel-card content-panel group w-[280px] shrink-0 overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:border-primary/40 motion-reduce:transform-none sm:w-[340px]">
           <div className="relative aspect-[4/3] overflow-hidden bg-surface-elevated">
             <img src={member.image} alt={`${member.name}, ${member.role} at TheDevFlo`} width={800} height={600} loading="lazy" className={`h-full w-full transition-transform duration-500 group-hover:scale-[1.025] motion-reduce:transform-none ${index === 0 ? "object-contain pt-4" : "object-cover object-center"}`} />
             <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-brand-gradient" />
@@ -72,8 +76,10 @@ export function FounderTeam({ page = false }: { page?: boolean }) {
             <p className="mt-4 text-sm leading-7 text-muted-foreground">{member.bio}</p>
             <p className="mt-6 border-t border-border pt-4 text-xs leading-6 text-foreground/70">{member.skills}</p>
           </div>
-        </motion.article>)}
-      </div>
+        </article>)}
+        </div>)}
+        </div>
+      </motion.div>
     </div>
   </>;
 }
