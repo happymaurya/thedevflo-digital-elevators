@@ -1,5 +1,5 @@
 # Website expansion
-- [ ] Refresh the client success section with honest project spotlights and an accessible desktop/mobile carousel.
+- [x] Refresh the client success section with honest project spotlights and an accessible desktop/mobile carousel.
 - [x] Redesign the founder profile and add the three supplied team portraits; verify desktop and mobile.
 - [x] Add consistent black content panels across the website and verify their appearance.
 - [x] Add founder/about, AI and SaaS service pages, technology details and FAQ.
