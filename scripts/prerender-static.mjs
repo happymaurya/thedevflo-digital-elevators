@@ -11,6 +11,45 @@ const js = root.match(/src="(\/assets\/[^"]+\.js)"/)?.[1];
 const css = root.match(/href="(\/assets\/[^"]+\.css)"/)?.[1];
 if (!js || !css) throw new Error("Could not read asset URLs from public_html/index.html");
 
+const aboutJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://thedevflo.com/about",
+      "url": "https://thedevflo.com/about",
+      "name": "About Happy Maurya — TheDevFlo",
+      "inLanguage": "en",
+      "mainEntity": { "@id": "https://thedevflo.com/#founder" },
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://thedevflo.com/#organization",
+      "name": "TheDevFlo",
+      "url": "https://thedevflo.com/",
+      "email": "hello@thedevflo.com",
+      "logo": "https://thedevflo.com/favicon.svg",
+    },
+    {
+      "@type": "Person",
+      "@id": "https://thedevflo.com/#founder",
+      "name": "Happy Maurya",
+      "jobTitle": "Full Stack & Mobile App Developer",
+      "description": "Founder of TheDevFlo. Builds WordPress, MERN stack and Flutter websites and mobile apps that help businesses attract customers, streamline operations and grow faster.",
+      "image": "https://thedevflo.com/images/happy-maurya.png",
+      "email": "hello@thedevflo.com",
+      "worksFor": { "@id": "https://thedevflo.com/#organization" },
+      "foundingDate": "2024",
+      "url": "https://thedevflo.com/about",
+      "sameAs": [
+        "https://www.linkedin.com/company/109282455/",
+        "https://www.instagram.com/thedevflo/",
+        "https://x.com/thedevflo",
+      ],
+    },
+  ],
+};
+
 const routes = [
   {"path": "/about", "title": "About TheDevFlo & Happy Maurya | Software Studio", "desc": "Meet Happy Maurya and TheDevFlo: product design, web and mobile engineering, AI automation and cloud development for businesses.", "h1": "About TheDevFlo", "body": "Hi, I'm Happy Maurya, Full Stack & Mobile App Developer and founder of TheDevFlo. I specialize in WordPress, MERN Stack, and Flutter, building modern websites and mobile apps that help businesses attract customers, streamline operations, and grow faster. Since 2024, my mission has been to turn ideas into powerful digital solutions through reliable development, user-focused design, and innovative AI-powered technology. TheDevFlo covers web applications, mobile apps, SaaS products, UI/UX design systems, SEO, AI integrations and cloud infrastructure."},
   {"path": "/contact", "title": "Start a Project & Request an Estimate | TheDevFlo", "desc": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email.", "h1": "Start your project", "body": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email."},
@@ -155,6 +194,13 @@ const routes = [
   },
 ];
 
+routes.find((r) => r.path === "/about").jsonLd = aboutJsonLd;
+
+// Optional page photo shown inside each route's crawlable shell.
+const pageImages = {
+  "/about": { src: "/images/happy-maurya.png", alt: "Happy Maurya, Full Stack and Mobile App Developer and founder of TheDevFlo", width: 820, height: 1330 },
+};
+
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 for (const r of routes) {
@@ -165,6 +211,13 @@ for (const r of routes) {
     : "";
   const list = r.links
     ? `<ul>${r.links.map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}</ul>`
+    : "";
+  const photo = pageImages[r.path];
+  const image = photo
+    ? `<img src="${photo.src}" alt="${esc(photo.alt)}" width="${photo.width}" height="${photo.height}" />`
+    : "";
+  const schema = r.jsonLd
+    ? `\n    <script type="application/ld+json">${JSON.stringify(r.jsonLd)}</script>`
     : "";
   const html = `<!doctype html>
 <html lang="en">
@@ -179,11 +232,11 @@ for (const r of routes) {
     <meta property="og:url" content="${url}" />
     <meta property="og:title" content="${esc(r.ogTitle ?? r.title)}" />
     <meta property="og:description" content="${esc(r.desc)}" />
-    <meta name="twitter:card" content="summary_large_image" />${img}
+    <meta name="twitter:card" content="summary_large_image" />${img}${schema}
     <script type="module" crossorigin src="${js}"></script>
     <link rel="stylesheet" crossorigin href="${css}" />
   </head>
-  <body><div id="root"></div><main id="seo-prerender" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"><h1>${esc(r.h1)}</h1><p>${esc(r.body)}</p>${list}</main></body>
+  <body><div id="root"></div><main id="seo-prerender" aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"><h1>${esc(r.h1)}</h1>${image}<p>${esc(r.body)}</p>${list}</main></body>
 </html>
 `;
   const dir = join(OUT, r.path.replace(/^\//, ""));
