@@ -505,6 +505,15 @@ function Process() {
 const tech = ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "Flutter", "React Native", "AWS", "Vercel", "Docker", "Firebase", "OpenAI", "Gemini", "Claude"];
 
 function Tech() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  useEffect(() => {
+    const element = trackRef.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setIsVisible(entry.isIntersecting));
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   return (
     <section className="mt-24 px-4">
       <div className="section-frame mx-auto max-w-6xl px-6 py-14 sm:px-10 sm:py-20">
@@ -514,19 +523,20 @@ function Tech() {
             Tools we <span className="text-primary">love.</span>
           </TextEffect>
         </motion.div>
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
-          {tech.map((t, i) => (
-            <motion.div key={t}
-              initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }} transition={{ delay: i * 0.04, duration: 0.4 }}
-              whileHover={{ y: -4 }}
-              className="group grid aspect-square place-items-center rounded-2xl border border-border bg-surface-elevated/30 p-4 text-center text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground sm:text-sm">
-              <div className="flex flex-col items-center gap-2">
-                <Zap className="size-4 text-primary" />
-                {t}
+        <div ref={trackRef} className="project-carousel overflow-hidden" data-visible={isVisible}>
+          <div className="project-carousel-track flex w-max">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="project-carousel-group tech-group flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1 ? true : undefined}>
+                {tech.map((t) => (
+                  <div key={t}
+                    className="tech-card group flex w-[130px] shrink-0 flex-col items-center gap-2 rounded-2xl border border-border bg-surface-elevated/30 px-4 py-6 text-center text-xs font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground sm:w-[150px] sm:text-sm">
+                    <Zap className="size-4 text-primary" />
+                    {t}
+                  </div>
+                ))}
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

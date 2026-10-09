@@ -200,6 +200,10 @@ main .section-frame.bg-community-gradient {
   .project-carousel-group { display: grid; width: 100%; gap: 20px; padding: 0; }
   .project-carousel-group[aria-hidden="true"] { display: none; }
   .project-carousel-card { width: 100%; }
+  /* Tech cards stay compact in a wrapping grid instead of full-width rows. */
+  .tech-group { display: flex; flex-wrap: wrap; }
+  .tech-group[aria-hidden="true"] { display: flex; }
+  .tech-card { width: auto; min-width: 130px; }
   *, *::before, *::after {
     scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
