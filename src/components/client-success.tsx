@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Code2, Globe, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TextEffect } from "@/components/text-effect";
 import rollingPanda from "@/assets/work-rollingpanda.jpg";
@@ -13,6 +13,13 @@ const spotlights = [
   { name: "The Rolling Panda", category: "Film production website", image: rollingPanda, to: "/projects/rolling-panda", summary: "A portfolio-led website for a film production house, bringing its work and creative identity into a focused digital experience.", focus: "Creative portfolio · Brand presentation" },
   { name: "Candid Clicks", category: "Photography website", image: candidClicks, to: "/projects/candid-clicks", summary: "A photography-led website that puts wedding imagery at the heart of the experience, with space to explore the studio’s work and enquire.", focus: "Visual storytelling · Project enquiries" },
   { name: "FingertipFlow", category: "In-house web application", image: fingertipFlow, to: "/projects/fingertipflow", summary: "Our in-house distraction-free typing trainer with multiple practice modes and live statistics, designed around a clear, focused practice experience.", focus: "Product interface · Interactive practice" },
+] as const;
+
+// Sample copy for the development preview only — clearly labelled, never presented as verified reviews.
+const testimonials = [
+  { name: "Alex Morgan", project: "Mobile App Development", service: "Flutter App Development", Icon: Smartphone, quote: "TheDevFlo transformed our app idea into a modern, user-friendly mobile experience. The design feels polished, and the development process was smooth and professional." },
+  { name: "Daniel Smith", project: "Business Website", service: "WordPress Development", Icon: Globe, quote: "TheDevFlo created a clean, responsive WordPress website that reflects our brand perfectly. The experience was professional, and the website is easy to navigate." },
+  { name: "Ryan Cooper", project: "Web Application", service: "MERN Stack Development", Icon: Code2, quote: "TheDevFlo helped bring our web application idea to life with a clean interface and well-structured functionality. Communication throughout development was clear and efficient." },
 ] as const;
 
 export function ClientSuccess() {
@@ -29,6 +36,18 @@ export function ClientSuccess() {
     return () => { carousel.off("select", updateSelection).off("reInit", updateSelection); };
   }, [carousel, updateSelection]);
 
+  const [quoteRef, quoteCarousel] = useEmblaCarousel({ loop: true, align: "start", duration: reducedMotion ? 0 : 30 });
+  const [quoteSelected, setQuoteSelected] = useState(0);
+  const updateQuoteSelection = useCallback(() => {
+    if (quoteCarousel) setQuoteSelected(quoteCarousel.selectedScrollSnap() % testimonials.length);
+  }, [quoteCarousel]);
+  useEffect(() => {
+    if (!quoteCarousel) return;
+    updateQuoteSelection();
+    quoteCarousel.on("select", updateQuoteSelection).on("reInit", updateQuoteSelection);
+    return () => { quoteCarousel.off("select", updateQuoteSelection).off("reInit", updateQuoteSelection); };
+  }, [quoteCarousel, updateQuoteSelection]);
+
   return (
     <section id="testimonials" aria-labelledby="client-success-heading" className="mx-auto mt-24 max-w-6xl scroll-mt-28 px-6 py-12 sm:px-10">
       <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.45 }}>
@@ -36,7 +55,7 @@ export function ClientSuccess() {
         <TextEffect as="h2" className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
           <span id="client-success-heading">Real Feedback.<br /><span className="text-primary">Meaningful Results.</span></span>
         </TextEffect>
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">Discover how thoughtful design and reliable development help businesses turn ideas into successful digital experiences.</p>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">What clients say about working with TheDevFlo.</p>
       </motion.div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
@@ -79,9 +98,56 @@ export function ClientSuccess() {
       <div className="mt-6 flex justify-center gap-1">
         {spotlights.map((project, index) => <Button key={project.name} variant="ghost" size="icon" className="size-8 rounded-full" aria-label={`Show ${project.name} spotlight`} aria-current={selected === index ? "true" : undefined} onClick={() => carousel?.scrollTo(index)}><span className={`h-1.5 rounded-full transition-all ${selected === index ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"}`} /></Button>)}
       </div>
+
+      <div className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+        <div>
+          <p className="text-sm font-medium">Client testimonials</p>
+          <p className="mt-1 max-w-xl text-xs text-muted-foreground">Sample content for the preview — not verified client reviews. Genuine, client-approved feedback replaces these before publishing.</p>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline" size="icon" className="size-10 rounded-full" aria-label="Previous testimonial" title="Previous testimonial" aria-controls="testimonial-carousel" onClick={() => quoteCarousel?.scrollPrev()}><ArrowLeft /></Button>
+          <Button variant="outline" size="icon" className="size-10 rounded-full" aria-label="Next testimonial" title="Next testimonial" aria-controls="testimonial-carousel" onClick={() => quoteCarousel?.scrollNext()}><ArrowRight /></Button>
+        </div>
+      </div>
+
+      <div id="testimonial-carousel" ref={quoteRef} role="region" aria-roledescription="carousel" aria-label="Client testimonials, sample content for preview" className="mt-6 overflow-hidden" onKeyDown={event => {
+        if (event.target !== event.currentTarget) return;
+        if (event.key === "ArrowLeft") { event.preventDefault(); quoteCarousel?.scrollPrev(); }
+        if (event.key === "ArrowRight") { event.preventDefault(); quoteCarousel?.scrollNext(); }
+      }} tabIndex={0}>
+        <div className="-ml-5 flex touch-pan-y">
+          {[...testimonials, ...testimonials].map((item, index) => {
+            const Icon = item.Icon;
+            return (
+              <div key={`${item.name}-${index}`} role="group" aria-roledescription="slide" aria-label={`${index % testimonials.length + 1} of ${testimonials.length}: sample testimonial for ${item.service}`} className="min-w-0 shrink-0 basis-full pl-5 md:basis-1/2 lg:basis-1/3">
+                <article className="success-card content-panel group flex h-full flex-col overflow-hidden transition-colors duration-300 hover:border-primary/40 focus-within:border-primary/40">
+                  <div className="testimonial-visual relative flex aspect-video items-center justify-center border-b border-border">
+                    <span className="flex size-16 items-center justify-center rounded-full border border-primary/30 bg-surface-elevated/60 text-primary"><Icon className="size-7" aria-hidden="true" /></span>
+                    <span className="absolute right-3 top-3 rounded-full border border-border bg-content-panel/95 px-2.5 py-1 text-[11px] font-medium text-foreground/85">Sample preview</span>
+                    <span className="absolute bottom-3 left-4 text-xs font-medium text-foreground/70">{item.service}</span>
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <p className="flex items-center gap-2 text-xs font-medium text-primary"><span aria-hidden="true" className="size-1.5 rounded-full bg-primary" />Client Testimonial</p>
+                    <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/85">“{item.quote}”</blockquote>
+                    <div className="mt-5 border-t border-border pt-4">
+                      <p className="text-sm font-semibold">{item.name}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{item.project}</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <p className="sr-only" aria-live="polite" aria-atomic="true">Sample testimonial {quoteSelected + 1} of {testimonials.length}</p>
+      <div className="mt-6 flex justify-center gap-1">
+        {testimonials.map((item, index) => <Button key={item.name} variant="ghost" size="icon" className="size-8 rounded-full" aria-label={`Show sample testimonial from ${item.name}`} aria-current={quoteSelected === index ? "true" : undefined} onClick={() => quoteCarousel?.scrollTo(index)}><span className={`h-1.5 rounded-full transition-all ${quoteSelected === index ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/40"}`} /></Button>)}
+      </div>
+
       <div className="mt-10 flex flex-col items-start justify-between gap-5 border-y border-border py-8 sm:flex-row sm:items-center">
-        <h3 className="text-2xl font-semibold">Ready to Build Something Great?</h3>
-        <Button asChild size="lg" className="h-auto shrink-0 whitespace-normal py-3"><Link to="/contact">Discuss Your Project<ArrowUpRight /></Link></Button>
+        <h3 className="text-2xl font-semibold">Ready to Build Your Next Project?</h3>
+        <Button asChild size="lg" className="h-auto shrink-0 whitespace-normal py-3"><Link to="/contact">Start Your Project<ArrowRight /></Link></Button>
       </div>
     </section>
   );
