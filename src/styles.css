@@ -164,6 +164,15 @@ main .section-frame.bg-community-gradient {
 
 @utility bg-brand-gradient { background: var(--gradient-brand); }
 .success-card { background: var(--gradient-success); }
+/* Tasteful 16:9 visual for sample testimonial cards: green + purple glow over the black panel, with the site grid. */
+@utility testimonial-visual {
+  background-color: var(--content-panel);
+  background-image:
+    radial-gradient(120% 130% at 10% 6%, color-mix(in oklab, var(--primary) 26%, transparent), transparent 58%),
+    radial-gradient(110% 120% at 92% 96%, color-mix(in oklab, var(--accent-end) 24%, transparent), transparent 60%),
+    var(--gradient-grid);
+  background-size: auto, auto, 34px 34px;
+}
 @utility bg-violet-gradient { background: var(--gradient-violet); }
 @utility bg-primary-gradient { background: var(--gradient-primary); }
 @utility bg-surface-gradient { background: var(--gradient-surface); }
