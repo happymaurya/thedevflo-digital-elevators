@@ -7,7 +7,6 @@ import { FounderTeam } from "@/components/founder-team";
 
 export function AboutSection() {
   return <section id="founder" className="mx-auto mt-24 max-w-6xl border-y border-border px-6 py-16 sm:px-10">
-    <p className="text-sm text-primary">Who we are</p>
     <FounderTeam />
   </section>;
 }
