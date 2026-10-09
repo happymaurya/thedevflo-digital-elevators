@@ -6,6 +6,18 @@ import { join } from "node:path";
 const OUT = "public_html";
 const SITE = "https://thedevflo.com";
 
+// Mirror managed portraits at their pointer paths for non-Lovable static hosting.
+for (const name of ["aman-sharma", "aditya-pratap-singh"]) {
+  const asset = JSON.parse(readFileSync(`src/assets/${name}.webp.asset.json`, "utf8"));
+  const response = await fetch(`https://id-preview--27415876-2568-4c96-9245-4fde4691efbe.lovable.app${asset.url}`);
+  if (!response.ok || !response.headers.get("content-type")?.startsWith("image/")) {
+    throw new Error(`Could not export ${name} portrait: ${response.status}`);
+  }
+  const file = join(OUT, asset.url.replace(/^\//, ""));
+  mkdirSync(join(file, ".."), { recursive: true });
+  writeFileSync(file, new Uint8Array(await response.arrayBuffer()));
+}
+
 const root = readFileSync(join(OUT, "index.html"), "utf8");
 const js = root.match(/src="(\/assets\/[^"]+\.js)"/)?.[1];
 const css = root.match(/href="(\/assets\/[^"]+\.css)"/)?.[1];
@@ -51,7 +63,7 @@ const aboutJsonLd = {
 };
 
 const routes = [
-  {"path": "/about", "title": "About TheDevFlo & Happy Maurya | Software Studio", "desc": "Meet Happy Maurya and TheDevFlo: product design, web and mobile engineering, AI automation and cloud development for businesses.", "h1": "About TheDevFlo", "body": "Hi, I'm Happy Maurya, Full Stack & Mobile App Developer and founder of TheDevFlo. I specialize in WordPress, MERN Stack, and Flutter, building modern websites and mobile apps that help businesses attract customers, streamline operations, and grow faster. Since 2024, my mission has been to turn ideas into powerful digital solutions through reliable development, user-focused design, and innovative AI-powered technology. TheDevFlo covers web applications, mobile apps, SaaS products, UI/UX design systems, SEO, AI integrations and cloud infrastructure."},
+  {"path": "/about", "title": "Happy Maurya & the TheDevFlo Team | About Us", "desc": "Meet Happy Maurya, Aman Sharma and Aditya Pratap Singh: TheDevFlo’s team for full-stack development, mobile apps, Python, AI, UI/UX and video.", "h1": "Happy Maurya", "body": "Happy Maurya — Founder & Full Stack / Mobile App Developer. I build modern digital products that help businesses grow, from WordPress websites and MERN Stack applications to Flutter mobile apps and AI-powered solutions. As the founder of TheDevFlo, I focus on creating reliable, scalable, and user-friendly digital experiences. Building digital solutions since 2024. Meet the Team: Happy Maurya — Founder & MERN Stack / App Developer. Specializes in full-stack web development, WordPress, MERN Stack, and Flutter mobile applications, turning business ideas into scalable digital products. Aman Sharma — Python, Flask & AI Developer. Focuses on Python, Flask backend development, API integration, and AI-powered solutions to build intelligent and efficient applications. Aditya Pratap Singh — UI/UX Designer & Video Editor. Creates engaging user interfaces, intuitive digital experiences, and polished video content that strengthen product branding and visual storytelling."},
   {"path": "/contact", "title": "Start a Project & Request an Estimate | TheDevFlo", "desc": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email.", "h1": "Start your project", "body": "Share your website, mobile app, SaaS or AI project requirements with TheDevFlo. Prepare a project brief and request a detailed proposal by email."},
   {"path": "/services/ai-automation", "title": "AI Development & Workflow Automation | TheDevFlo", "desc": "AI chatbots, agents, RAG knowledge bases, voice AI and workflow automation. Discuss secure OpenAI, Gemini and Claude integrations with TheDevFlo.", "h1": "AI development & automation", "body": "AI chatbots, agents, RAG knowledge bases, voice AI and workflow automation. Discuss secure OpenAI, Gemini and Claude integrations with TheDevFlo."},
   {"path": "/services/saas-development", "title": "SaaS & MVP Development Services | TheDevFlo", "desc": "Plan and build SaaS MVPs with TheDevFlo: product discovery, UX design, subscription workflows, secure access, testing and launch preparation.", "h1": "SaaS & MVP development", "body": "Plan and build SaaS MVPs with TheDevFlo: product discovery, UX design, subscription workflows, secure access, testing and launch preparation."},
